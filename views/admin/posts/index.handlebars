@@ -1,1 +1,26 @@
-<h1>all post</h1>
+<div class="container">
+    <div class="alert-secondary text-center">
+        <h1>All POSTS</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="bg-dark">
+            <tr class="text-white">
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <td>{{this._id}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

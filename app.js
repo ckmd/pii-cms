@@ -2,6 +2,8 @@ const {globalVariables} = require('./config/configuration');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const Handlebars = require('handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const hbs = require('express-handlebars');
 const {mongoDbUrl, PORT} = require('./config/configuration');
 const flash = require('connect-flash');
@@ -38,7 +40,10 @@ app.use(flash());
 app.use(globalVariables);
 
 // setup express engine to use handlebars
-app.engine('handlebars', hbs({defaultLayout:'default'}));
+app.engine('handlebars', hbs({
+    defaultLayout:'default',
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
 app.set('view engine', 'handlebars');
 
 // routes
