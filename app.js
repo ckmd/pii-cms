@@ -9,6 +9,7 @@ const {mongoDbUrl, PORT} = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 // body parser
@@ -38,6 +39,7 @@ app.use(session({
 }));
 app.use(flash());
 app.use(globalVariables);
+app.use(fileUpload());
 
 // setup express engine to use handlebars
 app.engine('handlebars', hbs({

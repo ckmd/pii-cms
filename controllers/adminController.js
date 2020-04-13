@@ -1,4 +1,5 @@
 const Post = require('../models/postModel').Post;
+const {isEmpty} = require('../config/customFunction');
 
 module.exports = {
     index : (req,res) => {
@@ -10,10 +11,22 @@ module.exports = {
         });
     },
     submitPosts: (req, res) => {
+        let filename = '';
+        if(!isEmpty(req.files)){
+            let file = req.files.uploadedFile;
+            filename = file.name;
+            let uploadDir = './public/uploads/';
+            
+            file.mv(uploadDir + filename, (err) =>{
+                if(err)
+                    throw err;
+            });
+        }
         const newPost = new Post({
             title: req.body.title,
             description: req.body.description,
-            status: req.body.status
+            status: req.body.status,
+            file: `/uploads/${filename}`
         });
         newPost.save().then(post => {
             req.flash('success-message', 'Post created successfully.');

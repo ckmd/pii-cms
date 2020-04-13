@@ -18,6 +18,10 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now()
     },
+    file:{
+        type:String,
+        default: ''
+    },
     category:{
         type: Schema.Types.ObjectId,
         ref: 'category'
