@@ -24,8 +24,8 @@ mongoose.connect(mongoDbUrl, {useUnifiedTopology : true, useNewUrlParser: true})
 
 
 // configuration express
-// app.use(express.json());
-// app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,'public')));
 
 // flash and session
