@@ -18,4 +18,7 @@ router.route('/posts/edit/:id')
     .get(adminController.editPost)
     .post(adminController.submitEditPost);
 
+router.route('/posts/delete/:id')
+    .get(adminController.deletePost);
+
 module.exports = router;

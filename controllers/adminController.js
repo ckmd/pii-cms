@@ -39,4 +39,13 @@ module.exports = {
             }
         });
     },
+    deletePost: (req, res) => {
+        Post.findByIdAndRemove(req.params.id, (err, doc) => {
+            if(!err){
+                res.redirect('/admin/posts');
+            }else{
+                console.log('error during delete record : '+ err);
+            }
+        });
+    }
 }
