@@ -22,5 +22,21 @@ module.exports = {
     },
     createPosts : (req, res) => {
         res.render('admin/posts/create');
-    }
+    },
+    editPost: (req, res) => {
+        const id = req.params.id;
+        Post.findById(id).then( post => {
+            res.render('admin/posts/edit', {post : post});
+        });
+    },
+    submitEditPost: (req, res) => {
+        Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                req.flash('success-message', 'Post edited successfully.');
+                res.redirect('/admin/posts')
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
 }

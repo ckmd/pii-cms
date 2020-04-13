@@ -18,6 +18,10 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now()
     },
+    category:{
+        type: Schema.Types.ObjectId,
+        ref: 'category'
+    }
 });
 
 module.exports = {Post: mongoose.model('post', PostSchema)};

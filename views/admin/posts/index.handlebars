@@ -10,6 +10,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.status}}</td>
+                <td>
+                    <a href="/admin/posts/edit/{{this._id}}" class="btn btn-warning">Edit Post</a>
+                </td>
             </tr>
             {{/each}}
         </tbody>
