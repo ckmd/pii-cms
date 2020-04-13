@@ -22,9 +22,9 @@ const PostSchema = new Schema({
         type:String,
         default: ''
     },
-    category:{
+    user:{
         type: Schema.Types.ObjectId,
-        ref: 'category'
+        ref: 'user'
     }
 });
 
