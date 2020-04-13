@@ -1,5 +1,8 @@
+const Post = require('../models/postModel').Post;
+
 module.exports = {
-    index : (req,res) => {
-        res.render('default/index');
+    index : async(req,res) => {
+        const posts = await Post.find();
+        res.render('default/index', {posts: posts});
     },
 }
