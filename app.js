@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const passport = require('passport');
 
 const app = express();
 // body parser
@@ -37,7 +38,10 @@ app.use(session({
     saveUninitialized: true,
     resave:true
 }));
+
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(globalVariables);
 app.use(fileUpload());
 

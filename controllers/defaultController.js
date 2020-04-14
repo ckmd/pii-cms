@@ -43,7 +43,7 @@ module.exports = {
         }else{
             User.findOne({email:req.body.email}).then(user =>{
                 if(user){
-                    req.flash('error-message', 'Email already registered, try to login');
+                    req.flash('error-message', 'Email already registered, try to login.');
                     res.redirect('/login');
                 }else{
                     const newUser = new User(req.body);
@@ -51,7 +51,7 @@ module.exports = {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
                             newUser.password = hash;
                             newUser.save().then( user => {
-                                req.flash('success-message', 'you are now registered');
+                                req.flash('success-message', 'you are now registered.');
                                 res.redirect('/login');
                             });
                         });
