@@ -60,5 +60,10 @@ module.exports = {
                 console.log('error during delete record : '+ err);
             }
         });
+    },
+    logout: (req, res) => {
+        console.log('log out !');
+        req.logout();
+        res.redirect('/');
     }
 }

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
+const {isUserAuthenticated} = require('../config/customFunction');
 
-router.all('/*', (req, res, next) => {
+router.all('/*', isUserAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'admin';
     next();
 });
@@ -20,5 +21,8 @@ router.route('/posts/edit/:id')
 
 router.route('/posts/delete/:id')
     .get(adminController.deletePost);
+
+router.route('/logout')
+    .get(adminController.logout);
 
 module.exports = router;
