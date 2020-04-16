@@ -1,6 +1,6 @@
 const {globalVariables} = require('./config/configuration');
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const path = require('path');
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
@@ -19,12 +19,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 
 // configuration mongodb
-mongoose.connect(mongoDbUrl, {useUnifiedTopology : true, useNewUrlParser: true})
-    .then(response => {
-        console.log('mongodb connected succesfully');
-    }).catch(err => {
-        console.log('mongodb connection failed');
-});
+// mongoose.connect(mongoDbUrl, {useUnifiedTopology : true, useNewUrlParser: true})
+//     .then(response => {
+//         console.log('mongodb connected succesfully');
+//     }).catch(err => {
+//         console.log('mongodb connection failed');
+// });
 
 
 // configuration express
