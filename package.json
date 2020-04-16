@@ -4,7 +4,8 @@
   "description": "nodeJS CMS for PII",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "herokustart":"app.js"
   },
   "author": "Rachmad Hidayat",
   "license": "ISC",
