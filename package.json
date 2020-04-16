@@ -4,7 +4,7 @@
   "description": "nodeJS CMS for PII",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "herokustart":"node app.js"
   },
   "author": "Rachmad Hidayat",
