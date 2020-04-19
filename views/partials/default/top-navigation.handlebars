@@ -15,13 +15,65 @@
 
         <ul class="navbar-nav ml-auto large mb-2 mb-md-0" style="font-size:24.5pt; font-family:Impact, Charcoal, sans-serif">
             <li class="nav-item active">
-                <a class="nav-link py-1" href="#">SERTIFIKASI<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt="">|</a>
+                <div class="dropdown">
+                <a class="nav-link py-1 dropdown-toggle" data-toggle="dropdown" href="#">SERTIFIKASI<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt="">|</a>
+                <div class="dropdown-menu bg-dark">
+                       <div  id="accordionExample">
+                            <div class="cards">
+                                <div class="card-header" id="headingOne">
+                                    <a class="dropdown-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">INFO</a>
+                                </div>
+                        <div id="collapseOne" class="collapse"  aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <a class="dropdown-item dropdown-title" href="#">Mengapa saya perlu sertifikasi ?</a>
+                            <a class="dropdown-item dropdown-title" href="#">Persyaratan</a>
+                            <a class="dropdown-item dropdown-title" href="#">Tingkatan IP</a>
+                            <a class="dropdown-item dropdown-title" href="#">Cara Mengisi Formulir</a>
+                            <a class="dropdown-item dropdown-title" href="#">Bakuan Kompetisi</a>         
+                        </div>
+                    </div>  
+                     <div class="card-header" id="headingOne">
+                    <h5 class="dropdown-header">SERTIFIKAT KEAHLIAN</h5>
+                    </div>
+                        <div class="cards">
+                            <div class="card-header" id="headingTwo">
+                                <a class="dropdown-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">PENGEMBANGAN PROFESI </a>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <a class="dropdown-item dropdown-title">Pelatihan</a>
+                                <a class="dropdown-item dropdown-title">Konsultasi</a>
+                            </div>
+                        <div class="card-header" id="headingOne">    
+                            <h5 class="dropdown-header">SERTIFIKASI INTERNASIONAL</h5>
+                        </div>   
+                        </div>  
+                   </div>
+                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link py-1" href="#">REGISTRASI<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt="">|</a>
+                {{!-- <a class="nav-link py-1" href="#">REGISTRASI<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt="">|</a> --}}
+               <div class="dropdown">
+                <a class="nav-link py-1 dropdown-toggle" data-toggle="dropdown" href="#">STRI<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt="">|</a>
+                <div class="dropdown-menu bg-dark">
+                   <div class="container">
+                    <a class="dropdown-item dropdown-title" href="#">Desktripsi STRI</a>
+                    <a class="dropdown-item dropdown-title" href="#">Mengapa Saya Perlu STRI ?</a>
+                    <a class="dropdown-item dropdown-title" href="#">Persyaratan</a>
+                    </div>
+                </div>
+                </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link py-1" href="#">KEANGGOTAAN<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt=""></a>
+                <div class="dropdown">
+                <a class="nav-link py-1 dropdown-toggle" data-toggle="dropdown" href="#">KEANGGOTAAN<img src="/assets/img/PII_or_id-16.png" style="width: 25px;" alt=""></a>
+                 <div class="dropdown-menu bg-dark">
+                   <div class="container">
+                    <a class="dropdown-item dropdown-title" href="#">Daftar Disini</a>
+                    <a class="dropdown-item dropdown-title" href="#">Syarat Anggota Baru</a>
+                    <a class="dropdown-item dropdown-title" href="#">Syarat Perpanjang Keanggotaan</a>
+                    <a class="dropdown-item dropdown-title" href="#">Biaya</a>
+                    </div>
+                </div>
+                </div>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto small">

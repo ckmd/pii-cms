@@ -42,5 +42,10 @@
         text: 'Thumbnail'
       });
     </script>
+    <script>
+      $('[data-toggle="collapse"]').on('mouseenter', function() {
+        $(this).parents('.cards').find('.collapse').collapse('show');
+    });
+    </script>
   </body>
 </html>
