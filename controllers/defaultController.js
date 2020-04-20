@@ -8,6 +8,11 @@ module.exports = {
         const posts = await Post.find({status:'Draft'});
         res.render('default/index', {posts: posts});
     },
+    info : async(req,res) => {
+        // const posts = await Post.find();
+        const posts = await Post.find({status:'Info'});
+        res.render('default/info', {posts: posts});
+    },
     loginGet: (req, res) => {
         res.render('default/login');
     },

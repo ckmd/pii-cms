@@ -10,6 +10,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Status</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.status}}</td>
+                <td><img src="{{this.file}}" width="100px" alt=""></td>
                 <td>
                     <a href="/admin/posts/edit/{{this._id}}" class="btn btn-warning">Edit Post</a>
                     <a href="/admin/posts/delete/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post ?');">Delete Post</a>

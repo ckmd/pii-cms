@@ -14,7 +14,10 @@ router.all('/*', (req, res, next) => {
 router.route('/')
     .get(defaultController.index);
 
-passport.use(new LocalStrategy({
+router.route('/info')
+    .get(defaultController.info);
+
+    passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true
 }, (req, email, password, done) => {

@@ -1,0 +1,31 @@
+<div class="row">
+
+    <!-- Blog Entries Column -->
+    <div class="col-md-8 box" style="background-color: #fff;">
+        <!-- Blog Post -->
+        {{#each posts}}
+            <img width="100%" src="{{file}}" alt="Card image cap">
+            <div class="card mb-4">
+                <div id="labelbox">
+                    <p class="card-text">{{status}}</p>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">{{title}}</h1>
+                    <p class="card-text">{{description}}</p>
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4 box" style="background-color: whitesmoke">
+        <img width="100%" src="/assets/img/PII_or_id-07.png" alt="">
+        <img width="100%" src="/assets/img/PII_or_id-12.png" alt="">
+        <img width="100%" src="/assets/img/PII_or_id-10.png" alt="">
+        <img width="100%" src="/assets/img/PII_or_id-14.png" alt="">
+
+    </div>
+
+</div>
+<!-- /.row -->
