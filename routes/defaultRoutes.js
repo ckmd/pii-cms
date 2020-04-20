@@ -17,6 +17,12 @@ router.route('/')
 router.route('/info')
     .get(defaultController.info);
 
+router.route('/news')
+    .get(defaultController.news);
+
+router.route('/video')
+    .get(defaultController.video);
+
     passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true

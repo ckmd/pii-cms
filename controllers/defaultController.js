@@ -13,6 +13,16 @@ module.exports = {
         const posts = await Post.find({status:'Info'});
         res.render('default/info', {posts: posts});
     },
+    news : async(req,res) => {
+        // const posts = await Post.find();
+        const posts = await Post.find({status:'News'});
+        res.render('default/news', {posts: posts});
+    },
+    video : async(req,res) => {
+        // const posts = await Post.find();
+        const posts = await Post.find({status:'Video'});
+        res.render('default/video', {posts: posts});
+    },
     loginGet: (req, res) => {
         res.render('default/login');
     },
