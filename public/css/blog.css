@@ -142,7 +142,9 @@ h1, h2, h3, h4, h5, h6 {
   left: 100;
   padding: $card-img-overlay-padding;
 }
-
+.bg-orange{
+  background:#EB6C24;
+}
 .card-img-overlaysright{
   position: absolute;
   top: 0;
@@ -159,4 +161,8 @@ h1, h2, h3, h4, h5, h6 {
 .overlayhovers:hover{
   background:rgba(60, 60, 60, 0.8);
   transform: scale(1);
+}
+.text-card-content{
+  line-height: 16px;
+  font-size:15px;
 }
