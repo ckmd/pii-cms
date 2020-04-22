@@ -8,20 +8,45 @@ module.exports = {
         const posts = await Post.find({status:'Draft'});
         res.render('default/index', {posts: posts});
     },
-    info : async(req,res) => {
-        // const posts = await Post.find();
+    infoall : async(req,res) => {
         const posts = await Post.find({status:'Info'});
-        res.render('default/info', {posts: posts});
+        res.render('default/infoall', {posts: posts});
+    },
+    info : async(req,res) => {
+        const id = req.params.id;
+        Post.findById(id).then( post => {
+            res.render('default/info', {post : post});
+        });
+    },
+    artikelall : async(req,res) => {
+        const posts = await Post.find({status:'Artikel'});
+        res.render('default/artikelall', {posts: posts});
+    },
+    artikel : async(req,res) => {
+        const id = req.params.id;
+        Post.findById(id).then( post => {
+            res.render('default/artikel', {post : post});
+        });
+    },
+    newsall : async(req,res) => {
+        const posts = await Post.find({status:'News'});
+        res.render('default/newsall', {posts: posts});
     },
     news : async(req,res) => {
-        // const posts = await Post.find();
-        const posts = await Post.find({status:'News'});
-        res.render('default/news', {posts: posts});
+        const id = req.params.id;
+        Post.findById(id).then( post => {
+            res.render('default/news', {post : post});
+        });
+    },
+    videoall : async(req,res) => {
+        const posts = await Post.find({status:'Video'});
+        res.render('default/videoall', {posts: posts});
     },
     video : async(req,res) => {
-        // const posts = await Post.find();
-        const posts = await Post.find({status:'Video'});
-        res.render('default/video', {posts: posts});
+        const id = req.params.id;
+        Post.findById(id).then( post => {
+            res.render('default/video', {post : post});
+        });
     },
     loginGet: (req, res) => {
         res.render('default/login');

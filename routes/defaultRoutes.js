@@ -15,12 +15,27 @@ router.route('/')
     .get(defaultController.index);
 
 router.route('/info')
+    .get(defaultController.infoall);
+
+router.route('/info/:id')
     .get(defaultController.info);
 
+router.route('/artikel')
+    .get(defaultController.artikelall);
+
+router.route('/artikel/:id')
+    .get(defaultController.artikel);
+
 router.route('/news')
+    .get(defaultController.newsall);
+
+router.route('/news/:id')
     .get(defaultController.news);
 
 router.route('/video')
+    .get(defaultController.videoall);
+
+router.route('/video/:id')
     .get(defaultController.video);
 
     passport.use(new LocalStrategy({

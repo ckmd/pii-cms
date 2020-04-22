@@ -1,0 +1,28 @@
+<div class="row">
+
+    <!-- Blog Entries Column -->
+    <div class="col-md-8 box" style="background-color: #fff;">
+        <!-- Blog Post -->
+        {{#each posts}}
+            <img width="100%" src="{{file}}" alt="Card image cap">
+            <div class="card mb-4">
+                <div id="labelboxartikel">
+                    <p class="card-text">{{status}}</p>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title artikel">{{title}}</h1>
+                    {{!-- <p class="card-text">{{description}}</p> --}}
+                    <p class="card-text">
+                        {{description}}
+                    </p>
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+
+    {{> 'default/sidebar'}}
+    <!-- Sidebar Widgets Column -->
+
+</div>
+<!-- /.row -->
