@@ -130,3 +130,33 @@ h1, h2, h3, h4, h5, h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+.cards-hover{
+  background:rgba(0, 0, 0, 1);
+  transition: 0.4s ease-in-out;
+}
+.card-img-overlays{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100;
+  padding: $card-img-overlay-padding;
+}
+
+.card-img-overlaysright{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $card-img-overlay-padding;
+}
+.overlayhovers{
+  background:rgba(255, 255, 255, 0);
+  transform: scale(0.85);
+  transition: 0.5s ease-in-out;
+}
+.overlayhovers:hover{
+  background:rgba(60, 60, 60, 0.8);
+  transform: scale(1);
+}
