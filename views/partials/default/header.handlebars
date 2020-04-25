@@ -21,6 +21,20 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <style>
+      /* [1] The container */
+.img-hover-zoom {
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.15);
+}
     .dropbtn {
       background-color: transparent;
       color: white;
@@ -176,6 +190,15 @@
 .dropdown-title:hover{
   background:black;
   color:#eb6c24 !important;
+}
+.dropdown-title-1{
+  color:#eb6c24 !important;
+  transition: 0.4s ease-in-out;
+  font-family: 'Montserrat';
+}
+.dropdown-title-1:hover{
+  background:black;
+  color:white !important;
 }
 .dropdown-header{
   
