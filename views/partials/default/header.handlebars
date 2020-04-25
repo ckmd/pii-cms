@@ -140,47 +140,9 @@
     padding: 0px 0px 10px 0px;
     }
     
-.dropdown:hover .dropdown-menu{
+{{!-- .dropdown:hover .dropdown-menu{
   display: block;
-}
-{{!-- flip image --}}
-.dropdown:hover .flip-box-inner {
-  transform: rotateX(180deg);
-}
-.flip-box {
-  display:inline-block;
-  background-color: transparent;
-  width: 20px;
-  height: 37px;
-}
-
-.flip-box-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.flip-box-front, .flip-box-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-box-front {
-  background-color: transparent;
-}
-
-.flip-box-back {
-  background-color: transparent;
-  transform: rotateX(180deg);
-}
-
-{{!-- flipbox end --}}
-
+} --}}
 
 .dropdown-title{
   color:white !important;
@@ -263,5 +225,23 @@
 #withoutline{
   text-decoration: none;
 }
+.dropdown-toggle[aria-expanded="true"]:after {
+  transform: rotateX(180deg) ;
+}
+/*for animation*/ 
+.dropdown-toggle:after {
+  border: none;
+  content:"\f107 ";
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 20pt;
+  position: relative;
+  width: 9px;
+  height: 1%;
+  pointer-events: none;
+  transition: all linear 0.25s;
+  transform: rotate(0deg);
+  color: #3c3c3b;
+}
+
     </style>
   </head>
