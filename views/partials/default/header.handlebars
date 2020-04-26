@@ -21,6 +21,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <style>
+      a{
+        color: inherit;
+      }
       /* [1] The container */
 .img-hover-zoom {
   overflow: hidden; /* [1.2] Hide the overflowing of child elements */
@@ -199,7 +202,14 @@
       font-family: 'Montserrat'; 
       color:#00a199;
     }
-    .card-title{
+    .card-img{
+      overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+      transition: transform .5s ease;
+    }
+    .img-hover-zoom:hover h6 {
+      text-decoration:underline;
+    }
+    .card-title.news{
       font-family: 'Montserrat'; 
       color:#eb6c24;
     }
@@ -249,6 +259,49 @@
       transition: all linear 0.25s;
       transform: rotate(0deg);
       color: #3c3c3b;
+    }
+    {{!-- rubix --}}
+    .labeltag-video{
+      display: flex;
+      padding-bottom:10px;
+      color: #a3195c;
+      font-family:'Montserrat';
+      font-size:6pt;
+    }
+    .labeltag-news{
+      display: flex;
+      padding-bottom:10px;
+      color: #eb6c24;
+      font-family:'Montserrat';
+      font-size:6pt;
+    }
+    .labeltag-artikel{
+      display: flex;
+      padding-bottom:10px;
+      color: #00a199;
+      font-family:'Montserrat';
+      font-size:6pt;
+    }
+    #video-inovasi{
+      background-color: #a3195c; 
+      width:50px;
+      margin-right:2px;
+      text-transform: uppercase;
+      padding: 1px;
+    }
+    #news{
+      background-color: #eb6c24; 
+      width:50px;
+      margin-right:2px;
+      text-transform: uppercase;
+      padding: 1px;
+    }
+    #artikel{
+      background-color: #00a199;
+      width:50px;
+      margin-right:2px;
+      text-transform: uppercase;
+      padding: 1px;
     }
 
     </style>
