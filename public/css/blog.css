@@ -153,15 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   padding: $card-img-overlay-padding;
 }
-.overlayhovers{
-  background:rgba(255, 255, 255, 0);
-  transform: scale(0.85);
-  transition: 0.5s ease-in-out;
-}
-.overlayhovers:hover{
-  background:rgba(60, 60, 60, 0.8);
-  transform: scale(1);
-}
+
 .text-card-content{
   line-height: 12px;
   font-size:11px;
