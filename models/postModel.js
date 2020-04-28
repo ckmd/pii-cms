@@ -25,6 +25,10 @@ const PostSchema = new Schema({
     user:{
         type: Schema.Types.ObjectId,
         ref: 'user'
+    },
+    category:{
+        type: Schema.Types.ObjectId,
+        ref: 'category'
     }
 });
 

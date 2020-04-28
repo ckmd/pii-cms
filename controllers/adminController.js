@@ -43,6 +43,23 @@ module.exports = {
         });
     },
     submitEditPost: (req, res) => {
+        let filename = '';
+        if(!isEmpty(req.files)){
+            let file = req.files.uploadedFile;
+            filename = file.name;
+            let uploadDir = './public/uploads/';
+        
+            file.mv(uploadDir + filename, (err) =>{
+                if(err)
+                    throw err;
+            });
+            req.body.file = `/uploads/${filename}`;
+        }else{
+            const id = req.params.id;
+            Post.findById(id).then( post => {
+                req.body.file = post.file;
+            });
+        }
         Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
                 req.flash('success-message', 'Post edited successfully.');
