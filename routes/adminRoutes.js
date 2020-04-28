@@ -25,4 +25,8 @@ router.route('/posts/delete/:id')
 router.route('/logout')
     .get(adminController.logout);
 
-module.exports = router;
+router.route('/category')
+    .get(adminController.getCategories)
+    .post(adminController.createCategories);
+
+    module.exports = router;

@@ -1,4 +1,5 @@
 const Post = require('../models/postModel').Post;
+const Category = require('../models/categoryModel').Category;
 const {isEmpty} = require('../config/customFunction');
 
 module.exports = {
@@ -82,5 +83,22 @@ module.exports = {
         console.log('log out !');
         req.logout();
         res.redirect('/');
+    },
+    getCategories: (req, res) => {
+        Category.find().then(cats => {
+            res.render('admin/category/index', {categories:cats});
+        });
+    },
+    createCategories:(req, res)=>{
+        var categoryName = req.body.name;
+        if(categoryName){
+            const newCategory = new Category({
+                title: categoryName
+            });
+            newCategory.save().then(category =>{
+                res.status(200).json(category);
+            });
+        }
+        console.log(categoryName);
     }
 }

@@ -46,7 +46,7 @@
             e.preventDefault();
             var data = $("#category-title").val();
             $.ajax({
-                url: '/admin/category/create',
+                url: '/admin/category',
                 type: 'POST',
                 data: {name: data},
                 success: function (response) {
