@@ -1,4 +1,5 @@
 const {globalVariables} = require('./config/configuration');
+const {selectOption} = require('./config/customFunction');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -48,6 +49,7 @@ app.use(fileUpload());
 // setup express engine to use handlebars
 app.engine('handlebars', hbs({
     defaultLayout:'default',
+    helpers:{select:selectOption},
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 app.set('view engine', 'handlebars');

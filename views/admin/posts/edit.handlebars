@@ -27,15 +27,17 @@
                 </div>
 
 
-                {{!-- <div class="form-group">
+                <div class="form-group">
                     <label for="category">Category</label>
                     <select name="category" id="category" class="form-control">
-                        {{#each categories}}
-                            <option value="{{_id}}">{{title}}</option>    
-                        {{/each}}
+                        {{#select post.category}}
+                            {{#each categories}}
+                                <option value="{{_id}}">{{title}}</option>
+                            {{/each}}
+                        {{/select}}
                                              
                     </select>
-                </div> --}}
+                </div>
                 
                                 
                 <div class="form-group">

@@ -10,6 +10,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Status</th>
+                <th>Category</th>
                 <th>Image</th>
                 <th>Actions</th>
             </tr>
@@ -21,6 +22,7 @@
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.status}}</td>
+                <td>{{this.category.title}}</td>
                 <td><img src="{{this.file}}" width="100px" alt=""></td>
                 <td>
                     <a href="/admin/posts/edit/{{this._id}}" class="btn btn-warning">Edit Post</a>

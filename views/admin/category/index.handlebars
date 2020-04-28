@@ -14,7 +14,7 @@
                     <tr>
                         <td>{{this.title}}</td>
                         <td class="d-flex justify-content-center">
-                            <a href="/admin/categories/edit/{{this._id}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/admin/categories/edit/{{this._id}}" class="btn btn-warning btn-sm mr-2">Edit</a>
                             <form action="/admin/categories/delete/{{this._id}}?newMethod=DELETE" method="post">
                                 {{!-- <a href="/" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post ?');">Delete Post</a> --}}
                                 <button class="btn btn-sm btn-danger" type="submit">Delete</button>
