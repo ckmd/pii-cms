@@ -104,7 +104,6 @@ module.exports = {
                 res.status(200).json(category);
             });
         }
-        console.log(categoryName);
     },
     editCategoriesGetRoute: async(req, res) => {
         const catId = req.params.id;
