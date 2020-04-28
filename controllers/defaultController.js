@@ -1,12 +1,13 @@
 const Post = require('../models/postModel').Post;
 const User = require('../models/userModel').User;
+const Slider = require('../models/sliderModel').Slider;
 const bcrypt = require('bcryptjs');
 
 module.exports = {
     index : async(req,res) => {
-        // const posts = await Post.find();
-        const posts = await Post.find({status:'Draft'});
-        res.render('default/index', {posts: posts});
+        Slider.find().then(sliders => {
+            res.render('default/index', {sliders: sliders});
+        });
     },
     infoall : async(req,res) => {
         const posts = await Post.find({status:'Info'});

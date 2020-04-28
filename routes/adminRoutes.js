@@ -36,4 +36,19 @@ router.route('/category/edit/:id')
 router.route('/category/delete/:id')
     .get(adminController.deleteCategory);
 
+    // Slider routes
+router.route('/slider')
+    .get(adminController.getSlider);
+
+router.route('/slider/create')
+    .get(adminController.createSlider)
+    .post(adminController.submitSlider);
+
+router.route('/slider/edit/:id')
+    .get(adminController.editSlider)
+    .post(adminController.submitEditSlider);
+
+router.route('/slider/delete/:id')
+    .get(adminController.deleteSlider);
+
     module.exports = router;
