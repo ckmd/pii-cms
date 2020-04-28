@@ -17,7 +17,7 @@ router.route('/')
 router.route('/info')
     .get(defaultController.infoall);
 
-router.route('/info/:id')
+router.route('/info/:slug')
     .get(defaultController.info);
 
 router.route('/artikel')

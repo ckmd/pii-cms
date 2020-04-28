@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "herokustart":"node app.js"
+    "herokustart": "node app.js"
   },
   "author": "Rachmad Hidayat",
   "license": "ISC",
@@ -20,6 +20,8 @@
     "express-session": "^1.17.0",
     "flash": "^1.1.0",
     "mongoose": "^5.9.7",
+    "mongoose-slug-generator": "^1.0.4",
+    "mongoose-url-slugs": "^1.0.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   }

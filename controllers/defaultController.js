@@ -13,8 +13,7 @@ module.exports = {
         res.render('default/infoall', {posts: posts});
     },
     info : async(req,res) => {
-        const id = req.params.id;
-        Post.findById(id).then( post => {
+        Post.findOne({slug:req.params.slug}).then( post => {
             res.render('default/info', {post : post});
         });
     },

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var slug = require('mongoose-slug-generator');
+mongoose.plugin(slug);
 
 const PostSchema = new Schema({
     title: {
@@ -29,7 +31,10 @@ const PostSchema = new Schema({
     category:{
         type: Schema.Types.ObjectId,
         ref: 'category'
-    }
+    },
+    slug: { 
+        type: String,
+        slug: "title" }
 });
 
 module.exports = {Post: mongoose.model('post', PostSchema)};
