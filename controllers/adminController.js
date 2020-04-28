@@ -105,5 +105,34 @@ module.exports = {
             });
         }
         console.log(categoryName);
-    }
+    },
+    editCategoriesGetRoute: async(req, res) => {
+        const catId = req.params.id;
+        const cats = await Category.find();
+        Category.findById(catId).then( cat => {
+            res.render('admin/category/edit', {category:cat, categories:cats})
+        });
+    },
+    editCategoriesPostRoute: (req, res) => {
+        const catId = req.params.id;
+        const newTitle = req.body.name;
+        if(newTitle){
+            Category.findById(catId).then(category => {
+                category.title = newTitle;
+                category.save().then( updated => {
+                    res.status(200).json({url:'/admin/category'});
+                });
+            });
+        }
+    },
+    deleteCategory: (req, res) => {
+        Category.findByIdAndRemove(req.params.id, (err, doc) => {
+            if(!err){
+                res.redirect('/admin/category');
+            }else{
+                console.log('error during delete record : '+ err);
+            }
+        });
+    },
+
 }

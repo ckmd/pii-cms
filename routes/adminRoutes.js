@@ -29,4 +29,11 @@ router.route('/category')
     .get(adminController.getCategories)
     .post(adminController.createCategories);
 
+router.route('/category/edit/:id')
+    .get(adminController.editCategoriesGetRoute)
+    .post(adminController.editCategoriesPostRoute);
+
+router.route('/category/delete/:id')
+    .get(adminController.deleteCategory);
+
     module.exports = router;
