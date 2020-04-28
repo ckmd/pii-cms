@@ -22,11 +22,16 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="admin/logout">Logout</a>
+                <a class="btn btn-primary" href="/admin/logout">Logout</a>
             </div>
         </div>
     </div>
 </div>
+{{!-- CKEditor --}}
+<script src="/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description');
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="/vendor/jquery/jquery.min.js"></script>
 <script src="/dist/js/bootstrap.bundle.min.js"></script>

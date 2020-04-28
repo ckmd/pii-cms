@@ -3,7 +3,7 @@
         <h1>All POSTS</h1>
     </div>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-responsive">
         <thead class="bg-dark text-center">
             <tr class="text-white">
                 <th>ID</th>
@@ -20,7 +20,7 @@
             <tr>
                 <td>{{this._id}}</td>
                 <td>{{this.title}}</td>
-                <td>{{this.description}}</td>
+                <td>{{{this.description}}}</td>
                 <td>{{this.status}}</td>
                 <td>{{this.category.title}}</td>
                 <td><img src="{{this.file}}" width="100px" alt=""></td>
