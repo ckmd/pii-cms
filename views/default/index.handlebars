@@ -48,12 +48,9 @@
             {{/each}}
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img class="d-block w-100" src="/assets/img/PII_or_id-08.png" alt="Second slide">
-            </div>
             {{#each sliders}}
-            <div class="carousel-item">
-            <img class="d-block w-100" src="{{this.file}}" alt="{{this.title}}">
+            <div class="carousel-item {{#ifCond this.slideke '==' 0}} active {{/ifCond}} ">
+                <img class="d-block w-100" src="{{this.file}}" alt="{{this.title}}">
             </div>
             {{/each}}
             {{!-- <div class="carousel-item">
