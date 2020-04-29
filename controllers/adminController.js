@@ -212,9 +212,18 @@ module.exports = {
 // Sidebar Customizer
     getSidebar: (req, res) => {
         Post.find({}).sort({views:'descending'}).then(popular => {
-            Post.find({}).sort({creationDate:'descending'}).then(recent =>{
+            Post.find({}).sort({creationDate:'descending'}).limit(3).then(recent =>{
                 res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
             });
         });
     },
+    postSidebar:(req, res)=>{
+        const lim = parseInt(req.body.banyakSidebar);
+        console.log(lim);
+        Post.find({}).sort({views:'descending'}).then(popular => {
+            Post.find({}).sort({creationDate:'descending'}).limit(lim).then(recent =>{
+                res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
+            });
+        });
+    }
 }
