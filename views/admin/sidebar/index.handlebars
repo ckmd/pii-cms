@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="alert-secondary text-center">
+        <h1>Customize Sidebar</h1>
+    </div>
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="banyakSidebar">Jumlah Sidebar Tampil</label>
+            <input type="text" class="form-control" name="banyakSidebar" id="banyakSidebar" placeholder="Masukkan Jumlah Sidebar" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Set</button>
+    </form>
+    <form action="">
+        <div class="form-group">
+            <label for="tipe">Tampilkan Post Di Sidebar Berdasarkan</label>
+            <select name="status" id="tipe" class="form-control">
+                <option value="recent">Paling Baru</option>
+                <option value="Populer">Paling Populer</option>
+            </select>
+        </div>
+    </form>
+    <h3>Preview Post yang akan Ditampilkan</h3>
+    <table class="table table-bordered table-responsive">
+        <thead class="bg-dark text-center">
+            <tr class="text-white">
+                <th>Link</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Views</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {{#each recentposts}}
+            <tr>
+                <td>{{this.slug}}</td>
+                <td>{{this.title}}</td>
+                <td>{{{this.description}}}</td>
+                <td>{{this.status}}</td>
+                <td>{{this.category.title}}</td>
+                <td>{{this.views}}</td>
+                <td><img src="{{this.file}}" width="100px" alt=""></td>
+                <td>
+                    <a href="/admin/posts/edit/{{this._id}}" class="btn btn-warning">Edit Post</a>
+                    <a href="/admin/posts/delete/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post ?');">Delete Post</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -12,6 +12,10 @@ const PostSchema = new Schema({
         type: String,
         default: 'public'
     },
+    introText: {
+        type: String,
+        default: ''
+    },
     description: {
         type: String,
         required: true
@@ -24,6 +28,22 @@ const PostSchema = new Schema({
         type:String,
         default: ''
     },
+    views: {
+        type: Number,
+        default: 0
+    },
+    author: {
+        type: String,
+        default: ''
+    },
+    videoLink: {
+        type: String,
+        default: ''
+    },
+    slug: { 
+        type: String,
+        slug: "title" 
+    },
     user:{
         type: Schema.Types.ObjectId,
         ref: 'user'
@@ -31,10 +51,7 @@ const PostSchema = new Schema({
     category:{
         type: Schema.Types.ObjectId,
         ref: 'category'
-    },
-    slug: { 
-        type: String,
-        slug: "title" }
+    }
 });
 
 module.exports = {Post: mongoose.model('post', PostSchema)};

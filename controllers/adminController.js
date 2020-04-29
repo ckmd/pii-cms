@@ -69,6 +69,7 @@ module.exports = {
         }
         Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
+                console.log(req.body);
                 req.flash('success-message', 'Post edited successfully.');
                 res.redirect('/admin/posts')
             }else{
@@ -206,6 +207,14 @@ module.exports = {
             }else{
                 console.log('error during delete record : '+ err);
             }
+        });
+    },
+// Sidebar Customizer
+    getSidebar: (req, res) => {
+        Post.find({}).sort({views:'descending'}).then(popular => {
+            Post.find({}).sort({creationDate:'descending'}).then(recent =>{
+                res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
+            });
         });
     },
 }

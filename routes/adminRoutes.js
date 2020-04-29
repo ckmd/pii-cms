@@ -51,4 +51,8 @@ router.route('/slider/edit/:id')
 router.route('/slider/delete/:id')
     .get(adminController.deleteSlider);
 
-    module.exports = router;
+// custom sidebar routes
+router.route('/sidebar')
+    .get(adminController.getSidebar);
+
+module.exports = router;

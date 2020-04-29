@@ -14,8 +14,15 @@ module.exports = {
         res.render('default/infoall', {posts: posts});
     },
     info : async(req,res) => {
-        Post.findOne({slug:req.params.slug}).then( post => {
-            res.render('default/info', {post : post});
+        const post = await Post.findOne({slug:req.params.slug});
+        post.views = post.views + 1;
+        // update views
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/info', {post : post});
+            }else{
+                console.log('error during record update : '+err);
+            }
         });
     },
     artikelall : async(req,res) => {
