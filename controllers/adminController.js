@@ -226,7 +226,6 @@ module.exports = {
     postSidebar:(req, res)=>{
         const lim = parseInt(req.body.banyakSidebar);
         sidebarlimit = lim;
-        console.log(sidebarlimit);
         Post.find({}).sort({views:'descending'}).limit(sidebarlimit).then(popular => {
             Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
                 if(tipesidebarpost == 'recent'){
