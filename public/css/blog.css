@@ -154,6 +154,15 @@ h1, h2, h3, h4, h5, h6 {
   padding: $card-img-overlay-padding;
 }
 
+.card-img-overlaysdown{
+  position: absolute;
+  top: 150px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $card-img-overlay-padding;
+}
+
 .text-card-content{
   line-height: 12px;
   font-size:11px;

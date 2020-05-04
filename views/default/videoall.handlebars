@@ -1,24 +1,32 @@
-<div class="row">
-
+<div class="row" style="background-color: #fff;">
     <!-- Blog Entries Column -->
-    <div class="col-md-8 box" style="background-color: #fff;">
+    <div id="labelall-video">
+        <p class="card-text">Video</p>
+    </div>
+    <div class="row" style="padding: 30px 60px">
         <!-- Blog Post -->
         {{#each posts}}
-            <img width="100%" src="{{file}}" alt="Card image cap">
-            <div class="card mb-4">
-                <div id="labelboxvideo">
-                    <p class="card-text">{{status}}</p>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title video">{{title}}</h1>
-                    <p class="card-text">{{description}}</p>
-                </div>
+            <div class="col-md-4 box">
+                <a href="video/{{this.slug}}">
+                    <div class="card rounded-0 border-0 img-hover-zoom" style="height: 300px">
+                        <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                        <div class="card-img-overlaysdown justify-content-end" style="background-color: rgba(255, 255, 255, 0.8);">
+                            <div class="container ml-1">
+                                <div class="labeltag-video">
+                                    <div id="video" ><span class="ml-2 text-white"> Video </span></div>
+                                    <span>By {{this.author}}</span>
+                                </div>
+                                <h6 class="card-title news">{{this.title}}</h6>
+                                <p class="text-card-content">{{this.introText}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         {{/each}}
-
     </div>
 
-    {{> 'default/sidebar'}}
+    {{!-- {{> 'default/sidebar'}} --}}
     <!-- Sidebar Widgets Column -->
 
 </div>
