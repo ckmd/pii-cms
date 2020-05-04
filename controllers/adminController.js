@@ -2,6 +2,7 @@ const Post = require('../models/postModel').Post;
 const Category = require('../models/categoryModel').Category;
 const Slider = require('../models/sliderModel').Slider;
 const {isEmpty} = require('../config/customFunction');
+global.sidebarlimit = 3;
 
 module.exports = {
     index : (req,res) => {
@@ -212,14 +213,15 @@ module.exports = {
 // Sidebar Customizer
     getSidebar: (req, res) => {
         Post.find({}).sort({views:'descending'}).then(popular => {
-            Post.find({}).sort({creationDate:'descending'}).limit(3).then(recent =>{
+            Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
                 res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
             });
         });
     },
     postSidebar:(req, res)=>{
         const lim = parseInt(req.body.banyakSidebar);
-        console.log(lim);
+        sidebarlimit = lim;
+        console.log(sidebarlimit);
         Post.find({}).sort({views:'descending'}).then(popular => {
             Post.find({}).sort({creationDate:'descending'}).limit(lim).then(recent =>{
                 res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
