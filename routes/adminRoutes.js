@@ -56,4 +56,7 @@ router.route('/sidebar')
     .get(adminController.getSidebar)
     .post(adminController.postSidebar);
 
+router.route('/sidebar/edit')
+    .post(adminController.editSidebarTypePostRoute);
+
 module.exports = router;

@@ -1,24 +1,25 @@
 <div class="container">
     <div class="alert-secondary text-center">
-        <h1>Customize Sidebar</h1>
+        <h1>Customize Sidebar Post</h1>
     </div>
     <form action="" method="post">
         <div class="form-group">
             <label for="banyakSidebar">Jumlah Sidebar Tampil</label>
-            <input type="number" class="form-control" name="banyakSidebar" id="banyakSidebar" placeholder="Masukkan Jumlah Sidebar" required>
+            <input type="number" class="form-control" name="banyakSidebar" id="banyakSidebar" placeholder="{{lim}}" required>
         </div>
         <button type="submit" class="btn btn-primary">Set</button>
     </form>
     <form action="">
         <div class="form-group">
-            <label for="tipe">Tampilkan Post Di Sidebar Berdasarkan</label>
-            <select name="status" id="tipe" class="form-control">
+            <label for="tipepostsidebar">Tampilkan Post Di Sidebar Berdasarkan</label>
+            <select name="status" id="tipepostsidebar" class="form-control">
+                <option value="" selected disabled>-- Pilih Kategori --</option>
                 <option value="recent">Paling Baru</option>
-                <option value="Populer">Paling Populer</option>
+                <option value="populer">Paling Populer</option>
             </select>
         </div>
     </form>
-    <h3>Preview Post yang akan Ditampilkan</h3>
+    <h3>Preview Post yang akan Ditampilkan berdasarkan {{tipe}}</h3>
     <table class="table table-bordered table-responsive">
         <thead class="bg-dark text-center">
             <tr class="text-white">
@@ -27,13 +28,13 @@
                 <th>Description</th>
                 <th>Status</th>
                 <th>Category</th>
-                <th>Image</th>
                 <th>Views</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody class="text-center">
-            {{#each recentposts}}
+            {{#each posts}}
             <tr>
                 <td>{{this.slug}}</td>
                 <td>{{this.title}}</td>

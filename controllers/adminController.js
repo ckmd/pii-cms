@@ -3,6 +3,7 @@ const Category = require('../models/categoryModel').Category;
 const Slider = require('../models/sliderModel').Slider;
 const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
+global.tipesidebarpost = 'recent';
 
 module.exports = {
     index : (req,res) => {
@@ -212,9 +213,13 @@ module.exports = {
     },
 // Sidebar Customizer
     getSidebar: (req, res) => {
-        Post.find({}).sort({views:'descending'}).then(popular => {
+        Post.find({}).sort({views:'descending'}).limit(sidebarlimit).then(popular => {
             Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
-                res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
+                if(tipesidebarpost == 'recent'){
+                    res.render('admin/sidebar/index', {posts:recent, lim:sidebarlimit, tipe:tipesidebarpost});
+                } else{
+                    res.render('admin/sidebar/index', {posts:popular, lim:sidebarlimit, tipe:tipesidebarpost});
+                }
             });
         });
     },
@@ -222,9 +227,25 @@ module.exports = {
         const lim = parseInt(req.body.banyakSidebar);
         sidebarlimit = lim;
         console.log(sidebarlimit);
-        Post.find({}).sort({views:'descending'}).then(popular => {
-            Post.find({}).sort({creationDate:'descending'}).limit(lim).then(recent =>{
-                res.render('admin/sidebar/index', {popularposts:popular, recentposts:recent});
+        Post.find({}).sort({views:'descending'}).limit(sidebarlimit).then(popular => {
+            Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
+                if(tipesidebarpost == 'recent'){
+                    res.render('admin/sidebar/index', {posts:recent, lim:sidebarlimit, tipe:tipesidebarpost});
+                } else{
+                    res.render('admin/sidebar/index', {posts:popular, lim:sidebarlimit, tipe:tipesidebarpost});
+                }
+            });
+        });
+    },
+    editSidebarTypePostRoute:(req, res) => {
+        tipesidebarpost = req.body.name;
+        Post.find({}).sort({views:'descending'}).limit(sidebarlimit).then(popular => {
+            Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
+                if(tipesidebarpost == 'recent'){
+                    res.render('admin/sidebar/index', {posts:recent, lim:sidebarlimit, tipe:tipesidebarpost});
+                } else{
+                    res.render('admin/sidebar/index', {posts:popular, lim:sidebarlimit, tipe:tipesidebarpost});
+                }
             });
         });
     }

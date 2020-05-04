@@ -82,5 +82,16 @@
                 }
             });
         });
+        $("#tipepostsidebar").change(function(){
+            var selectedtipe = $("#tipepostsidebar option:selected").val();
+            $.ajax({
+                url: `/admin/sidebar/edit/`,
+                type: 'POST',
+                data: {name: selectedtipe},
+                success: function (response) {
+                    window.location.href = '/admin/sidebar';
+                }
+            });
+        });
     });
 </script>
