@@ -28,6 +28,7 @@ module.exports = {
         }
         const newPost = new Post({
             title: req.body.title,
+            introText: req.body.introText,
             description: req.body.description,
             status: req.body.status,
             file: `/uploads/${filename}`,

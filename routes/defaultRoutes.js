@@ -23,19 +23,19 @@ router.route('/info/:slug')
 router.route('/artikel')
     .get(defaultController.artikelall);
 
-router.route('/artikel/:id')
+router.route('/artikel/:slug')
     .get(defaultController.artikel);
 
 router.route('/news')
     .get(defaultController.newsall);
 
-router.route('/news/:id')
+router.route('/news/:slug')
     .get(defaultController.news);
 
 router.route('/video')
     .get(defaultController.videoall);
 
-router.route('/video/:id')
+router.route('/video/:slug')
     .get(defaultController.video);
 
     passport.use(new LocalStrategy({

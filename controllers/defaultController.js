@@ -30,9 +30,14 @@ module.exports = {
         res.render('default/artikelall', {posts: posts});
     },
     artikel : async(req,res) => {
-        const id = req.params.id;
-        Post.findById(id).then( post => {
-            res.render('default/artikel', {post : post});
+        const post = await Post.findOne({slug:req.params.slug});
+        post.views = post.views + 1;
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/artikel', {post : post});
+            }else{
+                console.log('error during record update : '+err);
+            }
         });
     },
     newsall : async(req,res) => {
@@ -40,20 +45,38 @@ module.exports = {
         res.render('default/newsall', {posts: posts});
     },
     news : async(req,res) => {
-        const id = req.params.id;
-        Post.findById(id).then( post => {
-            res.render('default/news', {post : post});
+        const post = await Post.findOne({slug:req.params.slug});
+        post.views = post.views + 1;
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/news', {post : post});
+            }else{
+                console.log('error during record update : '+err);
+            }
         });
+        // const id = req.params.id;
+        // Post.findById(id).then( post => {
+        //     res.render('default/news', {post : post});
+        // });
     },
     videoall : async(req,res) => {
         const posts = await Post.find({status:'Video'});
         res.render('default/videoall', {posts: posts});
     },
     video : async(req,res) => {
-        const id = req.params.id;
-        Post.findById(id).then( post => {
-            res.render('default/video', {post : post});
+        const post = await Post.findOne({slug:req.params.slug});
+        post.views = post.views + 1;
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/video', {post : post});
+            }else{
+                console.log('error during record update : '+err);
+            }
         });
+        // const id = req.params.id;
+        // Post.findById(id).then( post => {
+        //     res.render('default/video', {post : post});
+        // });
     },
     loginGet: (req, res) => {
         res.render('default/login');
