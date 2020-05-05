@@ -7,47 +7,25 @@
                 <a class="text-white" href="/info/5ea070ff8ffe08448b1c79d1"><i>Klik disini</i></a>
             </div>
         </div>
-        <a href="/news/5e9ddadad0b662114fb9a982">
+        {{#each sidebarposts}}
+        <a href="/{{status}}/{{this.slug}}">
             <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Insinyur-Teknik-Sipil-Pertama-Indonesia-Lulusan-Belanda.jpg" style="object-fit: cover; height: 100%;" alt="">
+                <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
                 <div class="card-img-overlaysright justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
                     <div class="container ml-1">
-                        <div class="labeltag-news">
-                            <div id="news" ><span class="ml-2 text-white"> News </span></div>
-                        </div>
-                        <h6 class="card-title news">Insinyur Teknik Sipil Pertama Indonesia Lulusan Belanda</h6>
-                        <p class="text-card-content">Jembatan itu dibangun mulai dari Oktober 2007 sampai selesai pada November 2008 dengan menelan biaya Rp24,2 milyar.</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="/news/5ea071e88ffe08448b1c79d5">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Insinyur-boeing-bergaji-murah.jpg" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-news">
-                            <div id="news" ><span class="ml-2 text-white"> News </span></div>
-                        </div>
-                        <h6 class="card-title news">ternyata Insinyur Boeing Outsourching & Bergaji Murah</h6>
-                        <p class="text-card-content">Persoalan ini mencuat di tengah misteri krisis 737 MAX yang diduga terkandung kesalahan perangkat lunak yang mematikan.</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <a href="/video/5e9ddb23d0b662114fb9a983">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/video.PNG" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlaysright justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-video">
-                            <div id="video-inovasi" ><span class="ml-2 text-white"> Video </span></div>
+                        <div class="labeltag-{{this.status}}">
+                            <div id="{{this.status}}" >
+                                <span class="ml-2 text-white"> {{this.status}} </span>
+                            </div>
+                            {{#ifCond this.status '==' 'Video'}}
                             <span>Engineering for Kids</span>
+                            {{/ifCond}}
                         </div>
-                        <h6 class="card-title video">Yuk Bikin Percobaan Membuat Pelangi</h6>
-                        <p class="text-card-content">Isaac Newton dikenal sebagai orang pertama yang menemukan bahwa cahata putih tersusun dari warna-warna spektrum yang terlihat oleh mata.</p>
+                        <h6 class="card-title news">{{this.title}}{{sidebarposts}}</h6>
+                        <p class="text-card-content">{{this.introText}}</p>
                     </div>
                 </div>
             </div>
         </a>
+        {{/each}}
     </div>

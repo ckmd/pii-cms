@@ -72,7 +72,6 @@ module.exports = {
         }
         Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                console.log(req.body);
                 req.flash('success-message', 'Post edited successfully.');
                 res.redirect('/admin/posts')
             }else{

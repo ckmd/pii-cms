@@ -16,10 +16,20 @@ module.exports = {
     info : async(req,res) => {
         const post = await Post.findOne({slug:req.params.slug});
         post.views = post.views + 1;
+        // create navbar post
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        console.log(sidebarposts);
         // update views
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/info', {post : post});
+                res.render('default/info', {post : post, lim:sidebarlimit, sidebarposts:sidebarposts});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -54,10 +64,6 @@ module.exports = {
                 console.log('error during record update : '+err);
             }
         });
-        // const id = req.params.id;
-        // Post.findById(id).then( post => {
-        //     res.render('default/news', {post : post});
-        // });
     },
     videoall : async(req,res) => {
         const posts = await Post.find({status:'Video'});
@@ -73,10 +79,6 @@ module.exports = {
                 console.log('error during record update : '+err);
             }
         });
-        // const id = req.params.id;
-        // Post.findById(id).then( post => {
-        //     res.render('default/video', {post : post});
-        // });
     },
     loginGet: (req, res) => {
         res.render('default/login');
