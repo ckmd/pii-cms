@@ -25,11 +25,10 @@ module.exports = {
         } else{
             sidebarposts = popular;
         }
-        console.log(sidebarposts);
         // update views
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/info', {post : post, lim:sidebarlimit, sidebarposts:sidebarposts});
+                res.render('default/info', {post : post, sidebarposts:sidebarposts});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -42,9 +41,17 @@ module.exports = {
     artikel : async(req,res) => {
         const post = await Post.findOne({slug:req.params.slug});
         post.views = post.views + 1;
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/artikel', {post : post});
+                res.render('default/artikel', {post : post, sidebarposts:sidebarposts});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -57,9 +64,17 @@ module.exports = {
     news : async(req,res) => {
         const post = await Post.findOne({slug:req.params.slug});
         post.views = post.views + 1;
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/news', {post : post});
+                res.render('default/news', {post : post, sidebarposts:sidebarposts});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -72,9 +87,17 @@ module.exports = {
     video : async(req,res) => {
         const post = await Post.findOne({slug:req.params.slug});
         post.views = post.views + 1;
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/video', {post : post});
+                res.render('default/video', {post : post, sidebarposts:sidebarposts});
             }else{
                 console.log('error during record update : '+err);
             }
