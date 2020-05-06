@@ -2,6 +2,11 @@ module.exports = {
     selectOption: function(status, options) {
         return options.fn(this).replace(new RegExp('value=\"'+status+'\"'), '$&selected="selected"');
     },
+    moduloIf: function(num, mod, res, block) {
+        if (parseInt(num) % parseInt(mod) === parseInt(res)) {
+            return block.fn(this);
+        }
+    },
     ifCondition: function(v1, operator, v2, options){
         switch (operator) {
             case '==':

@@ -1,5 +1,5 @@
 const {globalVariables} = require('./config/configuration');
-const {selectOption, ifCondition} = require('./config/customFunction');
+const {selectOption, ifCondition, moduloIf} = require('./config/customFunction');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -52,6 +52,7 @@ app.engine('handlebars', hbs({
     helpers:{
         select:selectOption,
         ifCond:ifCondition,
+        moduloIf:moduloIf
     },
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
