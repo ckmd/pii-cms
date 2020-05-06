@@ -24,6 +24,7 @@ module.exports = {
         });
     },
     submitPosts: (req, res) => {
+        console.log(req.files);
         let filename = '';
         if(!isEmpty(req.files)){
             let file = req.files.uploadedFile;
@@ -31,6 +32,22 @@ module.exports = {
             let uploadDir = './public/uploads/';
             
             file.mv(uploadDir + filename, (err) =>{
+                if(err)
+                    throw err;
+            });
+            let sp1 = req.files.sponsor1;
+            sponsor1name = sp1.name;
+            let sp1Dir = './public/uploads/';
+            
+            sp1.mv(sp1Dir + sponsor1name, (err) =>{
+                if(err)
+                    throw err;
+            });
+            let sp2 = req.files.sponsor2;
+            sponsor2name = sp2.name;
+            let sp2Dir = './public/uploads/';
+            
+            sp2.mv(sp2Dir + sponsor2name, (err) =>{
                 if(err)
                     throw err;
             });
@@ -42,6 +59,8 @@ module.exports = {
             introText: req.body.introText,
             description: req.body.description,
             status: req.body.status,
+            sponsor1: `/uploads/${sponsor1name}`,
+            sponsor2: `/uploads/${sponsor2name}`,
             videoLink: 'https://www.youtube.com/embed/' + videoId,
             file: `/uploads/${filename}`,
             category: req.body.category

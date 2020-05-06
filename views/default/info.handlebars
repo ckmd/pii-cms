@@ -11,10 +11,16 @@
                 </div>
                 <div class="card-body">
                     <h1 class="card-title {{post.status}}">{{post.title}}</h1>
-                    {{!-- <p class="card-text">{{description}}</p> --}}
+                        <div class="col-md-3">
+                            <center><p class="text-card-content">Brought to you by</p></center>
+                            <div class="row">
+                                <img id="sponsor" src="{{post.sponsor1}}" alt="">
+                                <img id="sponsor" src="{{post.sponsor2}}" alt="">
+                            </div>
+                        </div>
                     <p class="card-text">
+                        {{{post.description}}}
                     </p>
-                    {{{post.description}}}
                 </div>
             </div>
         {{!-- {{/each}} --}}

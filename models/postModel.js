@@ -28,6 +28,14 @@ const PostSchema = new Schema({
         type:String,
         default: ''
     },
+    sponsor2:{
+        type:String,
+        default: ''
+    },
+    sponsor1:{
+        type:String,
+        default: ''
+    },
     views: {
         type: Number,
         default: 0
