@@ -7,16 +7,16 @@
         <!-- Blog Post -->
         {{#each posts}}
             <div class="col-md-4 box">
-                <a href="artikel/{{this.slug}}">
+                <a href="{{this.status}}/{{this.slug}}">
                     <div class="card rounded-0 border-0 img-hover-zoom" style="height: 300px">
                         <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
                         <div class="card-img-overlaysdown justify-content-end" style="background-color: rgba(255, 255, 255, 0.8);">
                             <div class="container ml-1">
-                                <div class="labeltag-artikel">
-                                    <div id="artikel" ><span class="ml-2 text-white"> Artikel </span></div>
+                                <div class="labeltag-Artikel">
+                                    <div id="Artikel" ><span class="ml-2 text-white"> Artikel </span></div>
                                     <span>Tips Harian</span>
                                 </div>
-                                <h6 class="card-title news">{{this.title}}</h6>
+                                <h6 class="card-title Artikel">{{this.title}}</h6>
                                 <p class="text-card-content">{{this.introText}}</p>
                             </div>
                         </div>
