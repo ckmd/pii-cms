@@ -5,6 +5,15 @@ const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
 global.tipesidebarpost = 'recent';
 
+function getId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
+}
+
 module.exports = {
     index : (req,res) => {
         res.render('admin/index');
@@ -26,11 +35,14 @@ module.exports = {
                     throw err;
             });
         }
+        const videoId = getId(req.body.videoLink);
+        console.log('Video ID:', videoId)
         const newPost = new Post({
             title: req.body.title,
             introText: req.body.introText,
             description: req.body.description,
             status: req.body.status,
+            videoLink: 'https://www.youtube.com/embed/' + videoId,
             file: `/uploads/${filename}`,
             category: req.body.category
         });
