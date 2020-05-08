@@ -87,6 +87,15 @@
                             {{!-- <span>Inovasi by Heru Dewanto</span> --}}
                         </div>
                         <h6 class="card-title Video">{{this.title}}</h6>
+                        {{#ifCond this.sponsor1 '!=' ''}}
+                            {{#ifCond this.sponsor2 '!=' ''}}
+                                <center><p class="text-card-content">Brought to you by</p></center>
+                                <div class="row">
+                                    <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                    <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                </div>
+                            {{/ifCond}}
+                        {{/ifCond}}
                         <p class="text-card-content">{{this.introText}}</p>
                     </div>
                 </div>
