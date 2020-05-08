@@ -5,8 +5,9 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     index : async(req,res) => {
+        const rubix = await Post.find({}).sort({views:'descending'}).limit(6);
         Slider.find().then(sliders => {
-            res.render('default/index', {sliders: sliders});
+            res.render('default/index', {sliders: sliders, rubix:rubix});
         });
     },
     infoall : async(req,res) => {
