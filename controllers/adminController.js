@@ -13,6 +13,13 @@ function getId(url) {
       ? match[2]
       : null;
 }
+function convertToBool(status){
+    if(status == 'on'){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 module.exports = {
     index : (req,res) => {
@@ -56,10 +63,13 @@ module.exports = {
             });
         }
         const videoId = getId(req.body.videoLink);
+        const rubix = convertToBool(req.body.setAsRubix);
+        console.log(rubix);
         const newPost = new Post({
             title: req.body.title,
             introText: req.body.introText,
             description: req.body.description,
+            setAsRubix: rubix,
             status: req.body.status,
             sponsor1: `/uploads/${sponsor1name}`,
             sponsor2: `/uploads/${sponsor2name}`,

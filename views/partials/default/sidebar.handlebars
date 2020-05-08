@@ -11,8 +11,8 @@
         <a href="/{{status}}/{{this.slug}}">
             <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
                 <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
-                <div class="{{#moduloIf this.views 2 0}}card-img-overlaysright{{/moduloIf}}
-                            {{#moduloIf this.views 2 1}}card-img-overlays{{/moduloIf}} 
+                <div class="{{#moduloIf @index 2 0}}card-img-overlaysright{{/moduloIf}}
+                            {{#moduloIf @index 2 1}}card-img-overlays{{/moduloIf}} 
                             justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
                     <div class="container ml-1">
                         <div class="labeltag-{{this.status}}">

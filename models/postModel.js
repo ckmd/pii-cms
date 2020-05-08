@@ -48,6 +48,10 @@ const PostSchema = new Schema({
         type: String,
         default: ''
     },
+    setAsRubix: {
+        type: Boolean,
+        default: false
+    },
     slug: { 
         type: String,
         slug: "title" 
