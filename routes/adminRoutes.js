@@ -59,4 +59,7 @@ router.route('/sidebar')
 router.route('/sidebar/edit')
     .post(adminController.editSidebarTypePostRoute);
 
+router.route('/rubix')
+    .get(adminController.getRubix);
+
 module.exports = router;

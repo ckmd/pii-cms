@@ -96,56 +96,60 @@ module.exports = {
         });
     },
     submitEditPost: (req, res) => {
-        console.log(req.files);
         let filename = '';
-        if(!isEmpty(req.files.uploadedFile)){
-            let file = req.files.uploadedFile;
-            filename = file.name;
-            let uploadDir = './public/uploads/';
-        
-            file.mv(uploadDir + filename, (err) =>{
-                if(err)
-                    throw err;
-            });
-            req.body.file = `/uploads/${filename}`;
-        }else{
-            const id = req.params.id;
-            Post.findById(id).then( post => {
-                req.body.file = post.file;
-            });
-        }
-        if(!isEmpty(req.files.sponsor1)){
-            let sp1 = req.files.sponsor1;
-            sponsor1name = sp1.name;
-            let sp1Dir = './public/uploads/';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/';
             
-            sp1.mv(sp1Dir + sponsor1name, (err) =>{
-                if(err)
-                    throw err;
-            });
-            req.body.sponsor1 = `/uploads/${sponsor1name}`;
-        }else{
-            const id = req.params.id;
-            Post.findById(id).then( post => {
-                req.body.sponsor1 = post.sponsor1;
-            });
-        }
-        if(!isEmpty(req.files.sponsor2)){
-            let sp2 = req.files.sponsor2;
-            sponsor2name = sp2.name;
-            let sp2Dir = './public/uploads/';
-            
-            sp2.mv(sp2Dir + sponsor2name, (err) =>{
-                if(err)
-                    throw err;
-            });
-            req.body.sponsor2 = `/uploads/${sponsor2name}`;
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                req.body.file = `/uploads/${filename}`;
+            }else{
+                const id = req.params.id;
+                Post.findById(id).then( post => {
+                    req.body.file = post.file;
+                });
+            }
+            if(!isEmpty(req.files.sponsor1)){
+                let sp1 = req.files.sponsor1;
+                sponsor1name = sp1.name;
+                let sp1Dir = './public/uploads/';
+                
+                sp1.mv(sp1Dir + sponsor1name, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                req.body.sponsor1 = `/uploads/${sponsor1name}`;
+            }else{
+                const id = req.params.id;
+                Post.findById(id).then( post => {
+                    req.body.sponsor1 = post.sponsor1;
+                });
+            }
+            if(!isEmpty(req.files.sponsor2)){
+                let sp2 = req.files.sponsor2;
+                sponsor2name = sp2.name;
+                let sp2Dir = './public/uploads/';
+                
+                sp2.mv(sp2Dir + sponsor2name, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                req.body.sponsor2 = `/uploads/${sponsor2name}`;
+            }
         }else{
             const id = req.params.id;
             Post.findById(id).then( post => {
                 req.body.sponsor2 = post.sponsor2;
             });
         }
+        // req.body.setAsRubix = convertToBool(post.setAsRubix);
+        console.log(req.body.setAsRubix);
+        req.body.setAsRubix = convertToBool(req.body.setAsRubix);
 
         Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
@@ -324,5 +328,11 @@ module.exports = {
                 }
             });
         });
-    }
+    },
+    getRubix: (req, res) => {
+        Post.find({setAsRubix:true}).then(posts => {
+            res.render('admin/rubix/index', {posts:posts});
+        });
+    },
+
 }
