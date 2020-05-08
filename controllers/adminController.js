@@ -25,7 +25,7 @@ module.exports = {
     },
     submitPosts: (req, res) => {
         let filename = '';
-        if(!isEmpty(req.files)){
+        if(!isEmpty(req.files.uploadedFile)){
             let file = req.files.uploadedFile;
             filename = file.name;
             let uploadDir = './public/uploads/';
@@ -34,6 +34,8 @@ module.exports = {
                 if(err)
                     throw err;
             });
+        }
+        if(!isEmpty(req.files.sponsor1)){
             let sp1 = req.files.sponsor1;
             sponsor1name = sp1.name;
             let sp1Dir = './public/uploads/';
@@ -42,6 +44,8 @@ module.exports = {
                 if(err)
                     throw err;
             });
+        }
+        if(!isEmpty(req.files.sponsor2)){
             let sp2 = req.files.sponsor2;
             sponsor2name = sp2.name;
             let sp2Dir = './public/uploads/';
