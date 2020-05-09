@@ -62,4 +62,7 @@ router.route('/sidebar/edit')
 router.route('/rubix')
     .get(adminController.getRubix);
 
+router.route('/banner')
+    .get(adminController.getBanner);
+
 module.exports = router;

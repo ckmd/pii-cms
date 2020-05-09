@@ -52,6 +52,10 @@ const PostSchema = new Schema({
         type: Boolean,
         default: false
     },
+    setAsBanner: {
+        type: Boolean,
+        default: false
+    },
     slug: { 
         type: String,
         slug: "title" 

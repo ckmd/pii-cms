@@ -63,12 +63,13 @@ module.exports = {
             });
         }
         const videoId = getId(req.body.videoLink);
+        const banner = convertToBool(req.body.setAsBanner);
         const rubix = convertToBool(req.body.setAsRubix);
-        console.log(rubix);
         const newPost = new Post({
             title: req.body.title,
             introText: req.body.introText,
             description: req.body.description,
+            setAsBanner: banner,
             setAsRubix: rubix,
             status: req.body.status,
             sponsor1: `/uploads/${sponsor1name}`,
@@ -147,8 +148,7 @@ module.exports = {
                 req.body.sponsor2 = post.sponsor2;
             });
         }
-        // req.body.setAsRubix = convertToBool(post.setAsRubix);
-        console.log(req.body.setAsRubix);
+        req.body.setAsBanner = convertToBool(req.body.setAsBanner);
         req.body.setAsRubix = convertToBool(req.body.setAsRubix);
 
         Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
@@ -330,8 +330,13 @@ module.exports = {
         });
     },
     getRubix: (req, res) => {
-        Post.find({setAsRubix:true}).then(posts => {
+        Post.find({setAsRubix:true}).populate('category').then(posts => {
             res.render('admin/rubix/index', {posts:posts});
+        });
+    },
+    getBanner: (req, res) => {
+        Post.find({setAsBanner:true}).populate('category').then(posts => {
+            res.render('admin/banner/index', {posts:posts});
         });
     },
 
