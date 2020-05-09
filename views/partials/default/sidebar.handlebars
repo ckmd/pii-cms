@@ -1,12 +1,33 @@
     <div class="col-md-4 box" style="background-color: whitesmoke">
-        <div class="card card-link rounded-0 border-0 img-hover-zoom" style="height: 380px">
-            <img class="card-img img-fluid" style="object-fit: cover; filter: brightness(0.15);height: 100%;" src="/assets/img/Registrasi-STRI.jpg" alt="Bologna">
+    <div id="carouselExampleIndicators" class="carousel slide col-md-12 box" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {{#each sidebarBanner}}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+            {{#each sidebarBanner}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <div class="card card-link rounded-0 border-0 img-hover-zoom" style="height: 380px">
+            <img class="card-img img-fluid" style="object-fit: cover; filter: brightness(0.15);height: 100%;" src="{{this.file}}" alt="Bologna">
             <div class="card-img-overlay text-white d-flex flex-column justify-content-center overlayhovers">
-                <h3 class="card-title banner">Registrasi STRI</h3>
-                <p class="card-text banner">Cara Insinyur Profesional untuk registrasi STRI</p><br>
-                <a class="text-white" href="/info/5ea070ff8ffe08448b1c79d1"><i>Klik disini</i></a>
+                <h3 class="card-title banner">{{this.title}}</h3>
+                <p class="card-text banner">{{this.introText}}</p><br>
+                <a class="text-white" href="/{{this.status}}/{{this.slug}}"><i>Klik disini</i></a>
             </div>
         </div>
+        </div>
+            {{/each}}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
         {{#each sidebarposts}}
         <a href="/{{status}}/{{this.slug}}">
             <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">

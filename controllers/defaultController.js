@@ -27,10 +27,11 @@ module.exports = {
         } else{
             sidebarposts = popular;
         }
+        const banner = await Post.find({setAsBanner:true});
         // update views
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/info', {post : post, sidebarposts:sidebarposts});
+                res.render('default/info', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -51,9 +52,10 @@ module.exports = {
         } else{
             sidebarposts = popular;
         }
+        const banner = await Post.find({setAsBanner:true});
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/artikel', {post : post, sidebarposts:sidebarposts});
+                res.render('default/artikel', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -74,9 +76,10 @@ module.exports = {
         } else{
             sidebarposts = popular;
         }
+        const banner = await Post.find({setAsBanner:true});
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/news', {post : post, sidebarposts:sidebarposts});
+                res.render('default/news', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
             }else{
                 console.log('error during record update : '+err);
             }
@@ -97,9 +100,10 @@ module.exports = {
         } else{
             sidebarposts = popular;
         }
+        const banner = await Post.find({setAsBanner:true});
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/video', {post : post, sidebarposts:sidebarposts});
+                res.render('default/video', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
             }else{
                 console.log('error during record update : '+err);
             }
