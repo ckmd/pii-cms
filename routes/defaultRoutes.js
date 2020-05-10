@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const defaultController = require('../controllers/defaultController');
+const navbarController = require('../controllers/navbarController');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
@@ -13,6 +14,15 @@ router.all('/*', (req, res, next) => {
 
 router.route('/')
     .get(defaultController.index);
+// Navbar routing
+router.route('/keanggotaan/:slug')
+    .get(navbarController.keanggotaan);
+
+router.route('/registrasi/:slug')
+    .get(navbarController.registrasi);
+
+router.route('/sertifikasi/:slug')
+    .get(navbarController.sertifikasi);
 
 router.route('/info')
     .get(defaultController.infoall);
