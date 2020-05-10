@@ -1,0 +1,30 @@
+<div class="row">
+
+    <!-- Blog Entries Column -->
+    <div class="col-md-8 box" style="background-color: #fff;">
+            <img width="100%" src="{{post.file}}" alt="Card image cap">
+            <div class="card mb-4">
+                <div id="labelbox">
+                    <p class="card-text">{{post.status}}</p>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title Info">{{post.title}}</h1>
+                        <div class="col-md-3">
+                        {{#ifCond post.sponsor1 '!=' ''}}
+                            {{#ifCond post.sponsor2 '!=' ''}}
+                                <center><p class="text-card-content">Brought to you by</p></center>
+                                <div class="row">
+                                    <center><img id="sponsor" src="{{post.sponsor1}}" alt="">
+                                    <img id="sponsor" src="{{post.sponsor2}}" alt=""></center>
+                                </div>
+                            {{/ifCond}}
+                        {{/ifCond}}
+                        </div>
+                    <p class="card-text">
+                        {{{post.description}}}
+                    </p>
+                </div>
+            </div>
+    </div>
+    {{> 'default/sidebar'}}
+</div>

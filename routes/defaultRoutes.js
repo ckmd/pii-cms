@@ -24,6 +24,50 @@ router.route('/registrasi/:slug')
 router.route('/sertifikasi/:slug')
     .get(navbarController.sertifikasi);
 
+// Navbar 2 routing
+router.route('/Annual-Report')
+    .get(navbarController.getAnnualReport);
+
+router.route('/Annual-Report/:slug')
+    .get(navbarController.getEachAnnualReport);
+
+router.route('/Additional-Report')
+    .get(navbarController.getAdditionalReport);
+
+router.route('/Additional-Report/:slug')
+    .get(navbarController.getEachAdditionalReport);
+
+router.route('/Jurnal')
+    .get(navbarController.getJurnal);
+
+router.route('/Jurnal/:slug')
+    .get(navbarController.getEachJurnal);
+
+// router.route('/Bursa-Kerja/')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Bursa-Kerja/:slug')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Project-&-Service')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Project-&-Service/:slug')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Gallery')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Gallery/:slug')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Events')
+//     .get(navbarController.sertifikasi);
+
+// router.route('/Events/:slug')
+//     .get(navbarController.sertifikasi);
+
+    // default routing
 router.route('/info')
     .get(defaultController.infoall);
 

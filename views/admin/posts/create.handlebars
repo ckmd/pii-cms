@@ -23,16 +23,16 @@
                 <div class="row">
                     <div class="form-group col md-5">
                         <label for="sponsor1">Sponsor 1</label>
-                        <input type="file" class="form-control" id="sponsor1" name="sponsor1" required>
+                        <input type="file" class="form-control" id="sponsor1" name="sponsor1">
                     </div>
                     <div class="form-group col md-5">
                         <label for="sponsor2">Sponsor 2</label>
-                        <input type="file" class="form-control" id="sponsor2" name="sponsor2" required>
+                        <input type="file" class="form-control" id="sponsor2" name="sponsor2">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="status">Post Position</label>
-                    <select name="status" id="status" class="form-control">
+                    <select name="status" id="status" class="form-control" required>
                         <option selected>Choose Post Position...</option>
                         <optgroup label="Publikasi">
                             <option value="Annual-Report">Annual Report</option>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label for="category">Post Category</label>
-                    <select name="category" id="category" class="form-control">
+                    <select name="category" id="category" class="form-control" required>
                         <option selected>Choose Post Category...</option>
                         {{#each categories}}
                             <option value="{{_id}}">{{title}}</option>    
