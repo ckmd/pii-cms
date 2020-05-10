@@ -69,6 +69,7 @@ module.exports = {
             title: req.body.title,
             introText: req.body.introText,
             description: req.body.description,
+            author: req.body.author,
             setAsBanner: banner,
             setAsRubix: rubix,
             status: req.body.status,
