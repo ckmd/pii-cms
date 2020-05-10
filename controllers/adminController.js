@@ -299,7 +299,7 @@ module.exports = {
         Post.find({}).sort({views:'descending'}).limit(sidebarlimit).then(popular => {
             Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
                 if(tipesidebarpost == 'recent'){
-                    res.render('admin/sidebar/index', {posts:recent, lim:sidebarlimit, tipe:tipesidebarpost});
+                    res.render('admin/sidebar/index', {posts:recent, lim:sidebarlimit, tipe:'baru'});
                 } else{
                     res.render('admin/sidebar/index', {posts:popular, lim:sidebarlimit, tipe:tipesidebarpost});
                 }
