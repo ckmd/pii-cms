@@ -151,6 +151,7 @@ module.exports = {
         }
         req.body.setAsBanner = convertToBool(req.body.setAsBanner);
         req.body.setAsRubix = convertToBool(req.body.setAsRubix);
+        req.body.slug = req.body.title.replace(/\s+/g, '-').toLowerCase();
 
         Post.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
