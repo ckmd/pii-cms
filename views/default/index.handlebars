@@ -10,8 +10,8 @@
     <div class="col-md box">
         <div class="card card-link rounded-0 border-0 img-hover-zoom" style="height: 380px">
             <img class="card-img img-fluid" style="filter: brightness(0.15);object-fit: cover; height: 100%;" src="{{this.file}}" alt="Bologna">
-            <div class="card-img-overlay text-white d-flex flex-column justify-content-center overlayhovers">
-                <h3 class="card-title banner">{{this.title}}</h3>
+            <div class="card-img-overlay text-white d-flex flex-column justify-content-center overlayhovers{{#ifCond @index '==' 1}}-middle{{/ifCond}}">
+                <h3 class="card-title banner{{#ifCond @index '==' 1}}-middle{{/ifCond}}">{{this.title}}</h3>
                 <p class="card-text banner">{{this.introText}}</p><br>
                 <a class="text-white" href="/{{this.status}}/{{this.slug}}"><i>Klik disini</i></a>
             </div>
@@ -87,15 +87,25 @@
                             justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
                     <div class="container ml-1">
                         <div class="labeltag-{{this.status}}">
-                            <div id="{{this.status}}" ><span class="ml-2 text-white"> {{this.status}} </span></div>
+                            <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                {{#ifCond this.category.title '!=' 'Tips'}}
+                                    {{this.status}} 
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    {{this.category.title}}
+                                {{/ifCond}}
+                                 </span></div>
                             {{#ifCond this.category.title '==' 'Video Inovasi'}}
                                 <span>Inovasi by {{this.author}}</span>
                             {{/ifCond}}
                             {{#ifCond this.category.title '==' 'Video Engineering'}}
                                 <span>Engineering For Kids</span>
                             {{/ifCond}}
+                            {{#ifCond this.category.title '==' 'Tips'}}
+                                <span> By {{this.author}}</span>
+                            {{/ifCond}}
                         </div>
-                        <h6 class="card-title Video">{{this.title}}</h6>
+                        <h6 class="card-title {{this.status}}">{{this.title}}</h6>
                         {{#ifCond this.sponsor1 '!=' ''}}
                             {{#ifCond this.sponsor2 '!=' ''}}
                                 <center><p class="text-card-content">Brought to you by</p></center>
