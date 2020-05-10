@@ -25,6 +25,12 @@ router.route('/sertifikasi/:slug')
     .get(navbarController.sertifikasi);
 
 // Navbar 2 routing
+router.route('/pii/:slug')
+    .get(navbarController.getPII);
+
+router.route('/program-profesi-insinyur/:slug')
+    .get(navbarController.getPPI);
+
 router.route('/Annual-Report')
     .get(navbarController.getAnnualReport);
 

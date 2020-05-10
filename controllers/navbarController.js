@@ -1,12 +1,8 @@
 const Post = require('../models/postModel').Post;
 
 module.exports = {
-    infoall : async(req,res) => {
-        const posts = await Post.find({status:'Info'});
-        res.render('default/infoall', {posts: posts});
-    },
     keanggotaan : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'Keanggotaan',slug:req.params.slug});
         post.views = post.views + 1;
         // create navbar post
         const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
@@ -28,7 +24,7 @@ module.exports = {
         });
     },
     registrasi : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'Registrasi',slug:req.params.slug});
         post.views = post.views + 1;
         // create navbar post
         const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
@@ -50,7 +46,7 @@ module.exports = {
         });
     },
     sertifikasi : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'Sertifikasi',slug:req.params.slug});
         post.views = post.views + 1;
         // create navbar post
         const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
@@ -66,6 +62,50 @@ module.exports = {
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
                 res.render('default/sertifikasi', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    getPII : async(req,res) => {
+        const post = await Post.findOne({status:'PII',slug:req.params.slug});
+        post.views = post.views + 1;
+        // create navbar post
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        const banner = await Post.find({setAsBanner:true});
+        // update views
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/pii', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    getPPI : async(req,res) => {
+        const post = await Post.findOne({status:'Program-Profesi-Insinyur',slug:req.params.slug});
+        post.views = post.views + 1;
+        // create navbar post
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        const banner = await Post.find({setAsBanner:true});
+        // update views
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/ppi', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
             }else{
                 console.log('error during record update : '+err);
             }
