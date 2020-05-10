@@ -32,19 +32,30 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="status">Status</label>
+                    <label for="status">Post Position</label>
                     <select name="status" id="status" class="form-control">
-                        <option value="{{post.status}}">{{post.status}}</option>
-                        <option value="Public">Public</option>
-                        <option value="Private">Private</option>
-                        <option value="Draft">Draft</option>
+                        <option selected>{{post.status}}</option>
+                        <optgroup label="Publikasi">
+                            <option value="Annual-Report">Annual Report</option>
+                            <option value="Additional-Report">Additional Report</option>
+                            <option value="Jurnal">Jurnal</option>
+                        </optgroup>
+                        <option value="Bursa-Kerja">Bursa Kerja</option>
+                        <option value="Project-&-Service">Project & Service</option>
+                        <option value="Gallery">Gallery</option>
+                        <option value="Events">Events</option>
+                        <optgroup label="PII Daily">
+                            <option value="Info">Info</option>
+                            <option value="News">News</option>
+                            <option value="Video">Video</option>
+                            <option value="Artikel">Artikel</option>
+                        </optgroup>
                     </select>
                 </div>
-
-
                 <div class="form-group">
-                    <label for="category">Category</label>
+                    <label for="category">Post Category</label>
                     <select name="category" id="category" class="form-control">
+                        <option selected>Choose Post Category...</option>
                         {{#select post.category}}
                             {{#each categories}}
                                 <option value="{{_id}}">{{title}}</option>

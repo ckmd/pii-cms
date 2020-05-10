@@ -44,14 +44,14 @@
     <div id="carouselExampleIndicators" class="carousel slide col-md-12 box" data-ride="carousel">
         <ol class="carousel-indicators">
             {{#each sliders}}
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{this.slideke}}"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{@index}}"></li>
             {{!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --}}
             {{/each}}
         </ol>
         <div class="carousel-inner">
             {{#each sliders}}
-            <div class="carousel-item {{#ifCond this.slideke '==' 0}} active {{/ifCond}} ">
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
                 <img class="d-block w-100" src="{{this.file}}" alt="{{this.title}}">
             </div>
             {{/each}}

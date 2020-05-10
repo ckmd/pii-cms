@@ -222,7 +222,7 @@ module.exports = {
 
     // Slider Controller
     getSlider: (req, res) => {
-        Slider.find().then(sliders => {
+        Slider.find().sort({slideke:'ascending'}).then(sliders => {
             res.render('admin/slider/index', {sliders:sliders});
         });
     },
