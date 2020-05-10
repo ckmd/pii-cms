@@ -43,29 +43,29 @@ router.route('/Jurnal')
 router.route('/Jurnal/:slug')
     .get(navbarController.getEachJurnal);
 
-// router.route('/Bursa-Kerja/')
-//     .get(navbarController.sertifikasi);
+router.route('/Bursa-Kerja/')
+    .get(navbarController.getBursaKerja);
 
-// router.route('/Bursa-Kerja/:slug')
-//     .get(navbarController.sertifikasi);
+router.route('/Bursa-Kerja/:slug')
+    .get(navbarController.getEachBursaKerja);
 
-// router.route('/Project-&-Service')
-//     .get(navbarController.sertifikasi);
+router.route('/Project-&-Service')
+    .get(navbarController.getProjectService);
 
-// router.route('/Project-&-Service/:slug')
-//     .get(navbarController.sertifikasi);
+router.route('/Project-&-Service/:slug')
+    .get(navbarController.getEachProjectService);
 
-// router.route('/Gallery')
-//     .get(navbarController.sertifikasi);
+router.route('/Gallery')
+    .get(navbarController.getGallery);
 
-// router.route('/Gallery/:slug')
-//     .get(navbarController.sertifikasi);
+router.route('/Gallery/:slug')
+    .get(navbarController.getEachGallery);
 
-// router.route('/Events')
-//     .get(navbarController.sertifikasi);
+router.route('/Events')
+    .get(navbarController.getEvents);
 
-// router.route('/Events/:slug')
-//     .get(navbarController.sertifikasi);
+router.route('/Events/:slug')
+    .get(navbarController.getEachEvents);
 
     // default routing
 router.route('/info')

@@ -1,0 +1,27 @@
+<div class="row" style="background-color: #fff;">
+    <!-- Blog Entries Column -->
+    <div id="labelall">
+        <p class="card-text">Events</p>
+    </div>
+    <div class="row" style="padding: 30px 60px">
+        <!-- Blog Post -->
+        {{#each posts}}
+            <div class="col-md-4 box">
+                <a href="{{this.status}}/{{this.slug}}">
+                    <div class="card rounded-0 border-0 img-hover-zoom" style="height: 300px">
+                        <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                        <div class="card-img-overlaysdown justify-content-end" style="background-color: rgba(255, 255, 255, 0.8);">
+                            <div class="container ml-1">
+                                <div class="labeltag-Info">
+                                    <div id="Info" ><span class="ml-2 text-white"> {{this.status}} </span></div>
+                                </div>
+                                <h6 class="card-title Info">{{this.title}}</h6>
+                                <p class="text-card-content">{{this.introText}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {{/each}}
+    </div>
+</div>

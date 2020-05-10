@@ -86,7 +86,7 @@ module.exports = {
         });
     },
     videoall : async(req,res) => {
-        const posts = await Post.find({status:'Video'});
+        const posts = await Post.find({status:'Video'}).populate('category');
         res.render('default/videoall', {posts: posts});
     },
     video : async(req,res) => {

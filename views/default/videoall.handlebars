@@ -14,8 +14,13 @@
                             <div class="container ml-1">
                                 <div class="labeltag-{{this.status}}">
                                     <div id="{{this.status}}" ><span class="ml-2 text-white"> Video </span></div>
-                                    <span>By {{this.author}}</span>
-                                </div>
+                                        {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                            <span>Inovasi by {{this.author}}</span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                            <span>Engineering For Kids</span>
+                                        {{/ifCond}}
+                                    </div>
                                 <h6 class="card-title {{this.status}}">{{this.title}}</h6>
                                 <p class="text-card-content">{{this.introText}}</p>
                             </div>
