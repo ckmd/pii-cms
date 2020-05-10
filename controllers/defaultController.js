@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 module.exports = {
     index : async(req,res) => {
         const banner = await Post.find({setAsBanner:true});
-        const rubix = await Post.find({setAsRubix:true});
+        const rubix = await Post.find({setAsRubix:true}).populate('category');
         Slider.find().then(sliders => {
             res.render('default/index', {sliders: sliders, rubix:rubix, banner:banner});
         });
