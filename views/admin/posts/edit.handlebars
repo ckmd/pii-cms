@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label for="status">Post Position</label>
                     <select name="status" id="status" class="form-control">
-                        <option selected>{{post.status}}</option>
+                        <option value="{{post.status}}">{{post.status}}</option>
                         <optgroup label="First Navbar">
                             <option value="Keanggotaan">Keanggotaan</option>
                             <option value="Registrasi">Registrasi</option>
@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label for="category">Post Category</label>
                     <select name="category" id="category" class="form-control">
-                        <option selected>Choose Post Category...</option>
+                        <option value="">Choose Post Category...</option>
                         {{#select post.category}}
                             {{#each categories}}
                                 <option value="{{_id}}">{{title}}</option>
@@ -92,7 +92,7 @@
 
                 <div class="form-group">
                     <label for="description">Content</label>
-                    <textarea name="description" id="description" class="form-control" placeholder="Enter your content here" rows="10">{{post.description}}</textarea>
+                    <textarea name="description" id="description" class="form-control">{{post.description}}</textarea>
                 </div>
                 <button class="btn btn-outline-success btn-lg" type="submit">Edit Post</button>
             </form>

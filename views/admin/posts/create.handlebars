@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="status">Post Position</label>
                     <select name="status" id="status" class="form-control" required>
-                        <option selected>Choose Post Position...</option>
+                        <option value="">Choose Post Position...</option>
                         <optgroup label="First Navbar">
                             <option value="Keanggotaan">Keanggotaan</option>
                             <option value="Registrasi">Registrasi</option>
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label for="category">Post Category</label>
                     <select name="category" id="category" class="form-control" required>
-                        <option selected>Choose Post Category...</option>
+                        <option value="">Choose Post Category...</option>
                         {{#each categories}}
                             <option value="{{_id}}">{{title}}</option>    
                         {{/each}}
@@ -89,7 +89,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Content</label>
-                    <textarea name="description" id="description" class="form-control" placeholder="Enter your content here" rows="10" required></textarea>
+                    <textarea name="description" id="description" class="form-control"></textarea>
                 </div>
                 
                 

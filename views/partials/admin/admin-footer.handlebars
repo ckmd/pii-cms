@@ -28,18 +28,16 @@
     </div>
 </div>
 {{!-- CKEditor --}}
-<script src="/ckeditor/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('description');
+    $("form").submit( function(e) {
+        var messageLength = CKEDITOR.instances['description'].getData().replace(/<[^>]*>/gi, '').length;
+        if( !messageLength ) {
+            alert( 'Please fill description' );
+            e.preventDefault();
+        }
+    });
 </script>
-<!-- Bootstrap core JavaScript-->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="/js/sb-admin.min.js"></script>
 
 
 <script>
