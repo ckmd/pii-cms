@@ -9,14 +9,14 @@
                     <p class="card-text">{{post.status}}</p>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title News">{{post.title}}</h1>
-                        <div class="col-md-3">
+                    <h1 class="card-title {{post.status}}">{{post.title}}</h1>
+                        {{!-- <div class="col-md-3">
                             <center><p class="text-card-content">Brought to you by</p></center>
                             <div class="row">
                                 <img id="sponsor" src="{{post.sponsor1}}" alt="">
                                 <img id="sponsor" src="{{post.sponsor2}}" alt="">
                             </div>
-                        </div>
+                        </div> --}}
                     <p class="card-text">
                         {{{post.description}}}
                     </p>
