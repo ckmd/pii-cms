@@ -3,7 +3,7 @@ const Category = require('../models/categoryModel').Category;
 const Slider = require('../models/sliderModel').Slider;
 const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
-global.tipesidebarpost = 'recent';
+global.tipesidebarpost = 'populer';
 
 function getId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
