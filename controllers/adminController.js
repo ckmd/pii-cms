@@ -32,6 +32,8 @@ module.exports = {
     },
     submitPosts: (req, res) => {
         let filename = '';
+        let tempsponsor1 = '';
+        let tempsponsor2 = '';
         if(!isEmpty(req.files.uploadedFile)){
             let file = req.files.uploadedFile;
             filename = file.name;
@@ -51,6 +53,7 @@ module.exports = {
                 if(err)
                     throw err;
             });
+            tempsponsor1 = `/uploads/${sponsor1name}`;
         }
         if(!isEmpty(req.files.sponsor2)){
             let sp2 = req.files.sponsor2;
@@ -61,6 +64,7 @@ module.exports = {
                 if(err)
                     throw err;
             });
+            tempsponsor2 = `/uploads/${sponsor2name}`;
         }
         const videoId = getId(req.body.videoLink);
         const banner = convertToBool(req.body.setAsBanner);
@@ -73,8 +77,8 @@ module.exports = {
             setAsBanner: banner,
             setAsRubix: rubix,
             status: req.body.status,
-            sponsor1: `/uploads/${sponsor1name}`,
-            sponsor2: `/uploads/${sponsor2name}`,
+            sponsor1: tempsponsor1,
+            sponsor2: tempsponsor2,
             videoLink: 'https://www.youtube.com/embed/' + videoId,
             file: `/uploads/${filename}`,
             category: req.body.category
