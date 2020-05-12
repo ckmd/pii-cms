@@ -16,11 +16,11 @@ module.exports = {
         res.render('default/infoall', {posts: posts});
     },
     info : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'Info',slug:req.params.slug});
         post.views = post.views + 1;
         // create navbar post
-        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
-        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        const popular = await Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).populate('category').sort({creationDate:'descending'}).limit(sidebarlimit);
         var sidebarposts = '';
         if(tipesidebarpost == 'recent'){
             sidebarposts = recent;
@@ -42,10 +42,10 @@ module.exports = {
         res.render('default/artikelall', {posts: posts});
     },
     artikel : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'Artikel',slug:req.params.slug});
         post.views = post.views + 1;
-        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
-        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        const popular = await Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).populate('category').sort({creationDate:'descending'}).limit(sidebarlimit);
         var sidebarposts = '';
         if(tipesidebarpost == 'recent'){
             sidebarposts = recent;
@@ -66,10 +66,10 @@ module.exports = {
         res.render('default/newsall', {posts: posts});
     },
     news : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'News',slug:req.params.slug});
         post.views = post.views + 1;
-        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
-        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        const popular = await Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).populate('category').sort({creationDate:'descending'}).limit(sidebarlimit);
         var sidebarposts = '';
         if(tipesidebarpost == 'recent'){
             sidebarposts = recent;
@@ -90,10 +90,10 @@ module.exports = {
         res.render('default/videoall', {posts: posts});
     },
     video : async(req,res) => {
-        const post = await Post.findOne({slug:req.params.slug});
+        const post = await Post.findOne({status:'Video',slug:req.params.slug});
         post.views = post.views + 1;
-        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
-        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        const popular = await Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).populate('category').sort({creationDate:'descending'}).limit(sidebarlimit);
         var sidebarposts = '';
         if(tipesidebarpost == 'recent'){
             sidebarposts = recent;

@@ -41,20 +41,34 @@
                                 <span class="ml-2 text-white"> {{this.status}} </span>
                             </div>
                             {{#ifCond this.status '==' 'Video'}}
-                            <span>Engineering for Kids</span>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering for Kids</span>
+                                {{/ifCond}}
                             {{/ifCond}}
                         </div>
                         <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                        {{#ifCond this.status '==' 'Artikel'}}
+                            {{#ifCond this.sponsor1 '!=' ''}}
+                                {{#ifCond this.sponsor2 '!=' ''}}
+                                    <center><p class="text-card-content">Brought to you by</p></center>
+                                    <div class="row">
+                                        <center><img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                        <img id="sponsor" src="{{this.sponsor2}}" alt=""></center>
+                                    </div>
+                                {{/ifCond}}
+                            {{/ifCond}}
+                        {{/ifCond}}
                         {{#ifCond this.status '==' 'Video'}}
-                            {{#ifCond this.status '==' 'Artikel'}}
-                                {{#ifCond this.sponsor1 '!=' ''}}
-                                    {{#ifCond this.sponsor2 '!=' ''}}
-                                        <center><p class="text-card-content">Brought to you by</p></center>
-                                        <div class="row">
-                                            <center><img id="sponsor" src="{{this.sponsor1}}" alt="">
-                                            <img id="sponsor" src="{{this.sponsor2}}" alt=""></center>
-                                        </div>
-                                    {{/ifCond}}
+                            {{#ifCond this.sponsor1 '!=' ''}}
+                                {{#ifCond this.sponsor2 '!=' ''}}
+                                    <center><p class="text-card-content">Brought to you by</p></center>
+                                    <div class="row">
+                                        <center><img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                        <img id="sponsor" src="{{this.sponsor2}}" alt=""></center>
+                                    </div>
                                 {{/ifCond}}
                             {{/ifCond}}
                         {{/ifCond}}
