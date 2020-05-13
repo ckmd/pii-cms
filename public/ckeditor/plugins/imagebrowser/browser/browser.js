@@ -104,6 +104,7 @@ CkEditorImageBrowser.renderImagesForFolder = function (folderName) {
 		var html = templateHtml;
 		html = html.replace('%imageUrl%', imageData.imageUrl);
 		html = html.replace('%thumbUrl%', imageData.thumbUrl);
+		html = html.replace('%imagename%', imageData.imageUrl.replace('/uploads/',''));
 		html = html.replace('%thumbImage%', imageData.thumbUrl);
 
 		var $item = $($.parseHTML(html));

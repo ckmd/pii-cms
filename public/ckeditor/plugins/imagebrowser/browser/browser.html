@@ -11,20 +11,22 @@
 	<body>
 		<div class="container_upload" ng-controller="upload_token">
 			<div id="show_upload_images">
-				<img id="blah" src="#" />
+				<h2>your uploaded assets</h2>
+				<!-- <img id="blah" src="#" /> -->
 			</div>
-			<form onsubmit="return Validate(this);" method="post" action="/upload" enctype='multipart/form-data'>
+			<!-- <form onsubmit="return Validate(this);" method="post" action="/upload" enctype='multipart/form-data'>
 				<input type="file" id="flFileUpload" name="flFileUpload"/>
 				<button id="btnUpload" class="button_template"><i class="fa fa-upload" aria-hidden="true"></i></button>
-			</form>
+			</form> -->
 		</div>
 
 		<script type="text/x-template-html" id="js-template-image">
 			<div class="show_image_list">
-				<span data-image="%thumbImage%"><i class="fa fa-times" aria-hidden="true"></i></span>
+				<!-- <span data-image="%thumbImage%"><i class="fa fa-times" aria-hidden="true"></i></span> -->
 				<a href="javascript://" class="thumbnail js-image-link" data-url="%imageUrl%">
 					<img src="%thumbUrl%" class="images_list">
 				</a>
+				%imagename%
 			</div>
 		</script>
 
