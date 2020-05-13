@@ -29,7 +29,11 @@
 </div>
 {{!-- CKEditor --}}
 <script>
-    CKEDITOR.replace('description');
+    CKEDITOR.replace(
+        'description',{
+            'extraPlugins' : 'imagebrowser',
+            'imageBrowser_listUrl' : '/admin/files'
+        });
     $("form").submit( function(e) {
         var messageLength = CKEDITOR.instances['description'].getData().replace(/<[^>]*>/gi, '').length;
         if( !messageLength ) {

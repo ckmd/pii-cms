@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
 const {isUserAuthenticated} = require('../config/customFunction');
+const fileManagerController = require('../controllers/fileManagerController');
 
 router.all('/*', isUserAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'admin';
@@ -64,5 +65,8 @@ router.route('/rubix')
 
 router.route('/banner')
     .get(adminController.getBanner);
+
+router.route('/files')
+    .get(fileManagerController.upload);
 
 module.exports = router;
