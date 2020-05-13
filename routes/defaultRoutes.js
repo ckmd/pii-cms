@@ -55,10 +55,10 @@ router.route('/Bursa-Kerja/')
 router.route('/Bursa-Kerja/:slug')
     .get(navbarController.getEachBursaKerja);
 
-router.route('/Project-&-Service')
+router.route('/Project-and-Service')
     .get(navbarController.getProjectService);
 
-router.route('/Project-&-Service/:slug')
+router.route('/Project-and-Service/:slug')
     .get(navbarController.getEachProjectService);
 
 router.route('/Gallery')

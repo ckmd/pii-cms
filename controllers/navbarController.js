@@ -216,11 +216,11 @@ module.exports = {
         });
     },
     getProjectService : async(req,res) => {
-        const posts = await Post.find({status:'Project-&-Service'});
+        const posts = await Post.find({status:'Project-and-Service'});
         res.render('default/publikasi/project-service-all', {posts: posts});
     },
     getEachProjectService : async(req,res) => {
-        const post = await Post.findOne({status:'Project-&-Service',slug:req.params.slug});
+        const post = await Post.findOne({status:'Project-and-Service',slug:req.params.slug});
         post.views = post.views + 1;
         // create navbar post
         const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
