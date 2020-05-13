@@ -5,10 +5,11 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     index : async(req,res) => {
+        const dirlink = ["program-profesi-insinyur/info", "sertifikasi/mengapa-perlu-sertifikasi","registrasi/mengapa-perlu-stri"];
         const banner = await Post.find({setAsBanner:true});
         const rubix = await Post.find({setAsRubix:true}).populate('category');
         Slider.find().sort({slideke:'ascending'}).then(sliders => {
-            res.render('default/index', {sliders: sliders, rubix:rubix, banner:banner});
+            res.render('default/index', {sliders: sliders, rubix:rubix, banner:banner, dirlink:dirlink});
         });
     },
     infoall : async(req,res) => {

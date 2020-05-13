@@ -5,7 +5,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row">    
     {{#each banner}}
     <div class="col-md box">
         <div class="card card-link rounded-0 border-0 img-hover-zoom" style="height: 380px">
@@ -13,7 +13,8 @@
             <div class="card-img-overlay text-white d-flex flex-column justify-content-center overlayhovers{{#ifCond @index '==' 1}}-middle{{/ifCond}}">
                 <h3 class="card-title banner{{#ifCond @index '==' 1}}-middle{{/ifCond}}">{{this.title}}</h3>
                 <p class="card-text banner">{{this.introText}}</p><br>
-                <a class="text-white" href="/{{this.status}}/{{this.slug}}"><i>Klik disini</i></a>
+                {{!-- <a class="text-white" href="/{{this.status}}/{{this.slug}}"><i>Klik disini</i></a> --}}
+                <a class="text-white" href="/{{lookup ../dirlink @index}}"><i>Klik disini</i></a>
             </div>
         </div>
     </div>
