@@ -31,8 +31,8 @@
 <script>
     CKEDITOR.replace(
         'description',{
-            'extraPlugins' : 'imagebrowser',
-            'imageBrowser_listUrl' : '/admin/files'
+            "extraPlugins" : 'imagebrowser',
+            "imageBrowser_listUrl" : "/admin/files"
         });
     $("form").submit( function(e) {
         var messageLength = CKEDITOR.instances['description'].getData().replace(/<[^>]*>/gi, '').length;
