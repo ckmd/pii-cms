@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Post = require('../models/postModel').Post;
 const Slider = require('../models/sliderModel').Slider;
+const {isEmpty} = require('../config/customFunction');
 
 module.exports = {
     upload : (req,res) => {
@@ -19,6 +20,20 @@ module.exports = {
             }
         }
         res.send(sorted);    
+    },
+    newUpload: (req, res) => {
+        let filename = '';
+        if(!isEmpty(req.files.uploadedFile)){
+            let file = req.files.uploadedFile;
+            filename = file.name;
+            let uploadDir = './public/uploads/';
+            
+            file.mv(uploadDir + filename, (err) =>{
+                if(err) throw err;
+            });
+            req.flash('success-message', filename+' uploaded successfully.');
+        }
+        res.redirect('/admin/fileManager');
     },
     loadFiles : (req,res) => {
         const images = fs.readdirSync('public/uploads')

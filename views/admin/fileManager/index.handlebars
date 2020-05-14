@@ -2,6 +2,19 @@
     <div class="alert-secondary text-center">
         <h1>File Manager</h1>
     </div>
+    <form action="/admin/fileManager/upload" method="post" enctype="multipart/form-data">
+        <label for="file">File Upload</label>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="file" class="form-control" id="file" name="uploadedFile" required>
+                </div>
+            </div>
+            <div class="col-md-2">            
+                <button class="btn btn-outline-primary btn-md" type="submit">Add New Image</button>
+            </div>
+        </div>
+    </form>
 
     <table class="table table-bordered table-responsive">
         <thead class="bg-dark text-center">
@@ -23,17 +36,4 @@
             {{/each}}
         </tbody>
     </table>
-    <form action="/admin/posts/create" method="post" enctype="multipart/form-data">
-        <label for="file">File Upload</label>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="form-group">
-                    <input type="file" class="form-control" id="file" name="uploadedFile" required>
-                </div>
-            </div>
-            <div class="col-md-4">            
-                <button class="btn btn-outline-primary btn-md" type="submit">Add New Image</button>
-            </div>
-        </div>
-    </form>
 </div>

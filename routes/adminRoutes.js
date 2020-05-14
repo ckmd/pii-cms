@@ -69,6 +69,9 @@ router.route('/banner')
 router.route('/files')
     .get(fileManagerController.upload);
 
+router.route('/fileManager/upload')
+    .post(fileManagerController.newUpload);
+
 router.route('/fileManager')
     .get(fileManagerController.loadFiles);
 
