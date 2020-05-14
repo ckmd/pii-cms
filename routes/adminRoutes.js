@@ -69,4 +69,10 @@ router.route('/banner')
 router.route('/files')
     .get(fileManagerController.upload);
 
+router.route('/fileManager')
+    .get(fileManagerController.loadFiles);
+
+router.route('/delete-fileManager/:name')
+    .get(fileManagerController.deleteFile);
+
 module.exports = router;

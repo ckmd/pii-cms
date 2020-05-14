@@ -1,4 +1,6 @@
 const fs = require('fs');
+const Post = require('../models/postModel').Post;
+const Slider = require('../models/sliderModel').Slider;
 
 module.exports = {
     upload : (req,res) => {
@@ -17,5 +19,21 @@ module.exports = {
             }
         }
         res.send(sorted);    
+    },
+    loadFiles : (req,res) => {
+        const images = fs.readdirSync('public/uploads')
+        res.render('admin/fileManager/index',{images:images});
+    },
+    deleteFile : async(req,res) => {
+        const postImage = '/uploads/'+ req.params.name;
+        const post = await Post.find({file:postImage});
+        const slider = await Slider.find({file:postImage});
+        console.log(post.length + slider.length);
+        if(post.length+slider.length == 0){
+            req.flash('success-message', 'Image Deleted successfully.');
+        }else{
+            req.flash('error-message', "Can't delete image, because Still Used in Post / Slider");
+        }
+        res.redirect('/admin/fileManager')
     },
 }
