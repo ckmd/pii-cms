@@ -27,12 +27,16 @@ module.exports = {
     deleteFile : async(req,res) => {
         const postImage = '/uploads/'+ req.params.name;
         const post = await Post.find({file:postImage});
+        const sponsor1 = await Post.find({sponsor1:postImage});
+        const sponsor2 = await Post.find({sponsor2:postImage});
         const slider = await Slider.find({file:postImage});
-        console.log(post.length + slider.length);
-        if(post.length+slider.length == 0){
+        if((post.length + slider.length + sponsor1.length + sponsor2.length) == 0){
+            fs.unlink('./public'+postImage, function (err) {
+                if (err) throw err;
+            });
             req.flash('success-message', 'Image Deleted successfully.');
         }else{
-            req.flash('error-message', "Can't delete image, because Still Used in Post / Slider");
+            req.flash('error-message', "Can't delete image, because Still Used in Post / Sponsor / Slider");
         }
         res.redirect('/admin/fileManager')
     },
