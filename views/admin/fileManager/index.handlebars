@@ -1,39 +1,49 @@
-<div class="container">
-    <div class="alert-secondary text-center">
-        <h1>File Manager</h1>
-    </div>
-    <form action="/admin/fileManager/upload" method="post" enctype="multipart/form-data">
-        <label for="file">File Upload</label>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <input type="file" class="form-control" id="file" name="uploadedFile" required>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">File Manager</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatab" class="table display">
+                        <thead class="text-primary">
+                            <tr class="text-center" style="white-space:nowrap">
+                                <th>Display Image</th>
+                                <th>Image Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            {{#each images}}
+                            <tr>
+                                <td style="width: 125px; height:150px"><img style="" src="/uploads/{{this}}" alt=""></td>
+                                <td class="text-left">{{this}}</td>
+                                <td>
+                                    <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="col-md-2">            
-                <button class="btn btn-outline-primary btn-md" type="submit">Add New Image</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Upload New Image</h4>
+            </div>
+            <div class="card-body">
+                <form action="/admin/fileManager/upload" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label for="file">New Image Name</label>
+                        <input type="file" class="form-control" id="file" name="uploadedFile" required>
+                    </div>
+                    <button class="btn btn-primary btn-md" type="submit">Add New Image</button>
+                </form>
             </div>
         </div>
-    </form>
-
-    <table class="table table-bordered table-responsive">
-        <thead class="bg-dark text-center">
-            <tr class="text-white" style="white-space:nowrap">
-                <th>Display Images</th>
-                <th>Images Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {{#each images}}
-            <tr>
-                <td><img height="100" src="/uploads/{{this}}" alt=""></td>
-                <td>{{this}}</td>
-                <td>
-                    <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    </div>
 </div>

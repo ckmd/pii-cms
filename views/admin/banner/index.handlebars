@@ -1,38 +1,39 @@
-<div class="container">
-    <div class="alert-secondary text-center">
-        <h1>Costumize Banner</h1>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Preview Tampilan Post pada Banner</h4>
     </div>
-
-    <table class="table table-bordered">
-        <thead class="bg-dark text-center">
-            <tr class="text-white">
-                <th>Link</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Category</th>
-                <th>Views</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {{#each posts}}
-            <tr>
-                <td>{{this.slug}}</td>
-                <td>{{this.title}}</td>
-                <td>{{{this.description}}}</td>
-                <td>{{this.status}}</td>
-                <td>{{this.category.title}}</td>
-                <td>{{this.views}}</td>
-                <td><img src="{{this.file}}" width="100px" alt=""></td>
-                <td>
-                    <a href="/admin/posts/edit/{{this._id}}" class="btn btn-warning">Edit</a>
-                    {{!-- <a href="/admin/posts/delete/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post ?');">Delete</a> --}}
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    <a href="/admin/posts" class="btn btn-primary"> add more Banner</a>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="datatab" class="table display">
+                <thead class="text-primary">
+                    <tr class="text-center">
+                        <th>Title</th>
+                        {{!-- <th>Description</th> --}}
+                        <th>Position</th>
+                        <th>Category</th>
+                        <th>Views</th>
+                        {{!-- <th>Image</th> --}}
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {{#each posts}}
+                    <tr>
+                        <td class="text-left">{{this.title}}</td>
+                        {{!-- <td>{{{this.description}}}</td> --}}
+                        <td class="text-left">{{this.status}}</td>
+                        <td class="text-left">{{this.category.title}}</td>
+                        <td>{{this.views}}</td>
+                        {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
+                        <td>
+                            <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
+                            <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <a href="/admin/posts" class="btn btn-primary"> add more Banner</a>
+    </div>
 </div>

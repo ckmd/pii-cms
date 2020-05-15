@@ -1,29 +1,33 @@
-<div class="container">
-    <div class="alert-secondary text-center">
-        <h1>All Slider</h1>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Customize Slider Image</h4>
     </div>
-    <table class="table table-bordered">
-        <thead class="bg-dark text-center">
-            <tr class="text-white">
-                <th>Slide Ke</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {{#each sliders}}
-            <tr>
-                <td>{{this.slideke}}</td>
-                <td>{{this.title}}</td>
-                <td><img src="{{this.file}}" width="500px" alt=""></td>
-                <td>
-                    <a href="/admin/slider/edit/{{this._id}}" class="btn btn-warning">Edit</a>
-                    <a href="/admin/slider/delete/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this Slide ?');">Delete</a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    <a href="/admin/slider/create" class="btn btn-primary">Add New Slider</a>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="datatab" class="table display">
+                <thead class="text-primary">
+                    <tr class="text-center" style="white-space:nowrap">
+                        <th>Slide Ke</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {{#each sliders}}
+                    <tr>
+                        <td>{{this.slideke}}</td>
+                        <td>{{this.title}}</td>
+                        <td><img src="{{this.file}}" width="500px" alt=""></td>
+                        <td>
+                            <a href="/admin/slider/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                            <a href="/admin/slider/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to Remove this Image from Slider ?');"></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <a href="/admin/slider/create" class="btn btn-primary">Add New Slider</a>
+        </div>
+    </div>
 </div>

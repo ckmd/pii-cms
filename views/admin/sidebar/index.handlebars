@@ -1,54 +1,69 @@
-<div class="container">
-    <div class="alert-secondary text-center">
-        <h1>Customize Sidebar Post</h1>
+<div class="row">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Preview Tampilan Post pada Sidebar berdasarkan Ter{{tipe}}</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatab" class="table display">
+                        <thead class="text-primary">
+                            <tr class="text-center">
+                                {{!-- <th>Link</th> --}}
+                                <th>Title</th>
+                                <th>Position</th>
+                                <th>Category</th>
+                                <th>Views</th>
+                                <th>Creation Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            {{#each posts}}
+                            <tr>
+                                {{!-- <td class="text-left">{{this.slug}}</td> --}}
+                                <td class="text-left">{{this.title}}</td>
+                                <td class="text-left">{{this.status}}</td>
+                                <td class="text-left">{{this.category.title}}</td>
+                                <td>{{this.views}}</td>
+                                <td>{{this.creationDate}}</td>
+                                {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
+                                <td>
+                                    <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
+                                    <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <form action="" method="post">
-        <div class="form-group">
-            <label for="banyakSidebar">Jumlah Sidebar Tampil</label>
-            <input type="number" class="form-control" name="banyakSidebar" id="banyakSidebar" placeholder="{{lim}}" required>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Customize Sidebar Posts</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="banyakSidebar">Jumlah Post yang ditampilkan pada Sidebar</label>
+                        <input type="number" class="form-control" name="banyakSidebar" id="banyakSidebar" placeholder="{{lim}}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set</button>
+                </form>
+                <form action="">
+                    <div class="form-group">
+                        <label for="tipepostsidebar">Tampilkan Post Di Sidebar Berdasarkan</label>
+                        <select name="status" id="tipepostsidebar" class="form-control">
+                            <option value="" selected disabled>-- Pilih Kategori --</option>
+                            <option value="recent">Paling Baru</option>
+                            <option value="populer">Paling Populer</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Set</button>
-    </form>
-    <form action="">
-        <div class="form-group">
-            <label for="tipepostsidebar">Tampilkan Post Di Sidebar Berdasarkan</label>
-            <select name="status" id="tipepostsidebar" class="form-control">
-                <option value="" selected disabled>-- Pilih Kategori --</option>
-                <option value="recent">Paling Baru</option>
-                <option value="populer">Paling Populer</option>
-            </select>
-        </div>
-    </form>
-    <h3>Preview Post yang akan Ditampilkan berdasarkan Paling Ter{{tipe}}</h3>
-    <table class="table table-bordered table-responsive">
-        <thead class="bg-dark text-center">
-            <tr class="text-white">
-                <th>Link</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Category</th>
-                <th>Views</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {{#each posts}}
-            <tr>
-                <td>{{this.slug}}</td>
-                <td>{{this.title}}</td>
-                <td>{{{this.description}}}</td>
-                <td>{{this.status}}</td>
-                <td>{{this.category.title}}</td>
-                <td>{{this.views}}</td>
-                <td><img src="{{this.file}}" width="100px" alt=""></td>
-                <td>
-                    <a href="/admin/posts/edit/{{this._id}}" class="btn btn-warning">Edit Post</a>
-                    <a href="/admin/posts/delete/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete this post ?');">Delete Post</a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    </div>
 </div>

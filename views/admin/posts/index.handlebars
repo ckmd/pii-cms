@@ -7,7 +7,7 @@
             <table id="datatab" class="table display">
                 <thead class=" text-primary">
                     <tr class="text-center" style="white-space:nowrap">
-                        <th>Link</th>
+                        {{!-- <th>Link</th> --}}
                         <th>Title</th>
                         {{!-- <th>Description</th> --}}
                         <th>Position</th>
@@ -22,7 +22,7 @@
                 <tbody class="text-center">
                     {{#each posts}}
                     <tr>
-                        <td class="text-left">{{this.slug}}</td>
+                        {{!-- <td class="text-left">{{this.slug}}</td> --}}
                         <td class="text-left">{{this.title}}</td>
                         {{!-- <td>{{{this.description}}}</td> --}}
                         <td class="text-left">{{this.status}}</td>
@@ -32,6 +32,7 @@
                         <td>{{this.setAsBanner}}</td>
                         <td>{{this.setAsRubix}}</td>
                         <td>
+                            <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
                             <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
                             <a href="/admin/posts/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this post ?');"></a>
                         </td>

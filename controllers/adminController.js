@@ -300,8 +300,8 @@ module.exports = {
     },
 // Sidebar Customizer
     getSidebar: (req, res) => {
-        Post.find({}).sort({views:'descending'}).limit(sidebarlimit).then(popular => {
-            Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
+        Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit).then(popular => {
+            Post.find({}).populate('category').sort({creationDate:'descending'}).limit(sidebarlimit).then(recent =>{
                 if(tipesidebarpost == 'recent'){
                     res.render('admin/sidebar/index', {posts:recent, lim:sidebarlimit, tipe:'baru'});
                 } else{
