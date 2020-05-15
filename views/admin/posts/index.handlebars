@@ -29,8 +29,15 @@
                         <td class="text-left">{{this.category.title}}</td>
                         <td>{{this.views}}</td>
                         {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
-                        <td>{{this.setAsBanner}}</td>
-                        <td>{{this.setAsRubix}}</td>
+                        <td>
+                            {{#ifCond this.setAsBanner '==' true}} <i class="fa fa-check"></i>{{/ifCond}}
+                            {{#ifCond this.setAsBanner '==' false}} <i class="fa fa-minus"></i>{{/ifCond}}
+                        </td>
+                        <td>
+                            {{#ifCond this.setAsRubix '==' true}} <i class="fa fa-check"></i>{{/ifCond}}
+                            {{#ifCond this.setAsRubix '==' false}} <i class="fa fa-minus"></i>{{/ifCond}}
+                        </td>
+
                         <td>
                             <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
                             <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
