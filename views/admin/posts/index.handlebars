@@ -1,41 +1,44 @@
-<div class="container">
-    <div class="alert-secondary text-center">
-        <h1>All Posts</h1>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">All Posts</h4>
     </div>
-
-    <table class="table table-bordered table-responsive">
-        <thead class="bg-dark text-center">
-            <tr class="text-white" style="white-space:nowrap">
-                <th>Link</th>
-                <th>Title</th>
-                {{!-- <th>Description</th> --}}
-                <th>Position</th>
-                <th>Category</th>
-                <th>Views</th>
-                {{!-- <th>Image</th> --}}
-                <th>Post as Banner</th>
-                <th>Post as Rubix</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-            {{#each posts}}
-            <tr>
-                <td>{{this.slug}}</td>
-                <td>{{this.title}}</td>
-                {{!-- <td>{{{this.description}}}</td> --}}
-                <td>{{this.status}}</td>
-                <td>{{this.category.title}}</td>
-                <td>{{this.views}}</td>
-                {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
-                <td>{{this.setAsBanner}}</td>
-                <td>{{this.setAsRubix}}</td>
-                <td>
-                    <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
-                    <a href="/admin/posts/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this post ?');"></a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="datatab" class="table display">
+                <thead class=" text-primary">
+                    <tr class="text-center" style="white-space:nowrap">
+                        <th>Link</th>
+                        <th>Title</th>
+                        {{!-- <th>Description</th> --}}
+                        <th>Position</th>
+                        <th>Category</th>
+                        <th>Views</th>
+                        {{!-- <th>Image</th> --}}
+                        <th>Post as Banner</th>
+                        <th>Post as Rubix</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {{#each posts}}
+                    <tr>
+                        <td class="text-left">{{this.slug}}</td>
+                        <td class="text-left">{{this.title}}</td>
+                        {{!-- <td>{{{this.description}}}</td> --}}
+                        <td class="text-left">{{this.status}}</td>
+                        <td class="text-left">{{this.category.title}}</td>
+                        <td>{{this.views}}</td>
+                        {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
+                        <td>{{this.setAsBanner}}</td>
+                        <td>{{this.setAsRubix}}</td>
+                        <td>
+                            <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                            <a href="/admin/posts/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this post ?');"></a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
