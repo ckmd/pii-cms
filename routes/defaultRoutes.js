@@ -98,8 +98,8 @@ router.route('/video')
 router.route('/video/:slug')
     .get(defaultController.video);
 
-router.route('/search/:keyword')
-    .get(defaultController.search);
+router.route('/search')
+    .post(defaultController.search);
 
 passport.use(new LocalStrategy({
     usernameField: 'email',

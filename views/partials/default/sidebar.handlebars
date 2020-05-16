@@ -41,6 +41,9 @@
                                 <span class="ml-2 text-white"> {{this.status}} </span>
                             </div>
                             {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span>Tips Harian</span>
+                                {{/ifCond}}
                                 {{#ifCond this.category.title '==' 'Video Inovasi'}}
                                     <span>Inovasi by {{this.author}}</span>
                                 {{/ifCond}}

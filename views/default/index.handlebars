@@ -107,16 +107,22 @@
                             {{/ifCond}}
                         </div>
                         <h6 class="card-title {{this.status}}">{{this.title}}</h6>
-                        {{!-- {{#ifCond this.sponsor1 '!=' ''}}
-                            {{#ifCond this.sponsor2 '!=' ''}}
-                                <center><p class="text-card-content">Brought to you by</p></center>
-                                <div class="row">
-                                    <center><img id="sponsor" src="{{this.sponsor1}}" alt="">
-                                    <img id="sponsor" src="{{this.sponsor2}}" alt=""></center>
-                                </div>
+                        {{#ifCond this.status '==' 'Video'}}
+                            {{#ifCond this.sponsor1 '!=' ''}}
+                                {{#ifCond this.sponsor2 '!=' ''}}
+                                    <center><p class="text-card-content">Brought to you by</p></center>
+                                    <div class="row">
+                                        <center>
+                                            <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                            <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                        </center>
+                                    </div>
+                                {{/ifCond}}
                             {{/ifCond}}
-                        {{/ifCond}} --}}
-                        <p class="text-card-content">{{this.introText}}</p>
+                        {{/ifCond}}
+                        {{#ifCond this.status '!=' 'Video'}}
+                            <p class="text-card-content">{{this.introText}}</p>
+                        {{/ifCond}}
                     </div>
                 </div>
             </div>

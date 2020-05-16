@@ -1,7 +1,7 @@
 <div class="row" style="background-color: #fff;">
     <!-- Blog Entries Column -->
-    <div id="labelall-artikel">
-        <p class="card-text">Search Result : {{que}}</p>
+    <div id="labelall">
+        <p class="card-text">Search Result For : {{que}}</p>
     </div>
     <div class="row" style="padding: 30px 60px">
         <!-- Blog Post -->
@@ -12,12 +12,50 @@
                         <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
                         <div class="card-img-overlaysdown justify-content-end" style="background-color: rgba(255, 255, 255, 0.8);">
                             <div class="container ml-1">
-                                <div class="labeltag-Artikel">
-                                    <div id="Artikel" ><span class="ml-2 text-white"> Artikel </span></div>
-                                    <span>Tips Harian</span>
+                                <div class="labeltag-{{this.status}}">
+                                    <div id="{{this.status}}" ><span class="ml-2 text-white"> {{this.status}} </span></div>
+                                    {{#ifCond this.status '==' 'Video'}}
+                                        {{#ifCond this.category.title '==' 'Tips'}}
+                                            <span>Tips Harian</span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                            <span>Inovasi by {{this.author}}</span>
+                                        {{/ifCond}}
+                                        {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                            <span>Engineering for Kids</span>
+                                        {{/ifCond}}
+                                    {{/ifCond}}
                                 </div>
-                                <h6 class="card-title Artikel">{{this.title}}</h6>
-                                <p class="text-card-content">{{this.introText}}</p>
+                                <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                                {{#ifCond this.status '==' 'Artikel'}}
+                                    {{#ifCond this.sponsor1 '!=' ''}}
+                                        {{#ifCond this.sponsor2 '!=' ''}}
+                                            <center><p class="text-card-content">Brought to you by</p></center>
+                                            <div class="row">
+                                                <center><img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt=""></center>
+                                            </div>
+                                        {{/ifCond}}
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                                {{#ifCond this.status '==' 'Video'}}
+                                    {{#ifCond this.sponsor1 '!=' ''}}
+                                        {{#ifCond this.sponsor2 '!=' ''}}
+                                            <center><p class="text-card-content">Brought to you by</p></center>
+                                            <div class="row">
+                                                <center>
+                                                    <img id="sponsor-rubix" src="{{this.sponsor1}}" alt="">
+                                                    <img id="sponsor-rubix" src="{{this.sponsor2}}" alt="">
+                                                </center>
+                                            </div>
+                                        {{/ifCond}}
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                                {{#ifCond this.status '!=' 'Video'}}
+                                    {{#ifCond this.status '!=' 'Artikel'}}
+                                        <p class="text-card-content">{{this.introText}}</p>
+                                    {{/ifCond}}
+                                {{/ifCond}}
                             </div>
                         </div>
                     </div>
