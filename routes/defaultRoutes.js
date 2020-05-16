@@ -98,7 +98,10 @@ router.route('/video')
 router.route('/video/:slug')
     .get(defaultController.video);
 
-    passport.use(new LocalStrategy({
+router.route('/search/:keyword')
+    .get(defaultController.search);
+
+passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true
 }, (req, email, password, done) => {

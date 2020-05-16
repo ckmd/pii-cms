@@ -110,6 +110,15 @@ module.exports = {
             }
         });
     },
+    search : async(req,res) => {
+        const searchQue = req.params.keyword.split(" ");
+        const qq = [];
+        for(let i = 0; i < searchQue.length; i++){
+            qq[i] = {title: { $regex: '.*' + searchQue[i] + '.*', $options:'i' }};
+        }
+        const searchRes = await Post.find({ $or:qq});
+        res.render('default/searchresult', {posts: searchRes, que:req.params.keyword});
+    },
     loginGet: (req, res) => {
         res.render('default/login');
     },
