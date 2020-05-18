@@ -1,10 +1,12 @@
 const Post = require('../models/postModel').Post;
 const User = require('../models/userModel').User;
 const Slider = require('../models/sliderModel').Slider;
+const Popup = require('../models/popupModel').Popup;
 const bcrypt = require('bcryptjs');
 
 module.exports = {
     index : async(req,res) => {
+        const popp = await Popup.findOne();
         const banner = await Post.find({setAsBanner:true});
         const dirlink = ["program-profesi-insinyur/info", "sertifikasi/mengapa-perlu-sertifikasi","registrasi/mengapa-perlu-stri"];
         const rubix = await Post.find({setAsRubix:true}).populate('category');
@@ -23,7 +25,8 @@ module.exports = {
                 cars_indicator:cars_indicator,
                 col:colban,
                 colmin1:colban-1,
-                maxban:maxban
+                maxban:maxban,
+                popp:popp
             });
         });
     },
