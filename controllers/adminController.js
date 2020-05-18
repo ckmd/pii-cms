@@ -1,6 +1,7 @@
 const Post = require('../models/postModel').Post;
 const Category = require('../models/categoryModel').Category;
 const Slider = require('../models/sliderModel').Slider;
+const Popup = require('../models/popupModel').Popup;
 const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
 global.tipesidebarpost = 'populer';
@@ -349,5 +350,52 @@ module.exports = {
     postBanner:(req, res)=>{
         colban = parseInt(req.body.banyakColumn);
         res.redirect('/admin/banner');
+    },
+    getPopup: async (req, res) => {
+        await Popup.find().then(popups => {
+            res.render('admin/popup/index', {popups:popups});
+        });
+    },
+    postPopup: async (req, res)=>{
+        const popup = await Popup.find();
+        if(popup.length < 1){
+            var filename = '';
+            if(!isEmpty(req.files.popupFile)){
+                let file = req.files.popupFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/';
+                
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                    throw err;
+                });
+            }
+            const newPopup = new Popup({
+                title: filename,
+                file: `/uploads/${filename}`
+            });
+            newPopup.save().then(post => {
+                req.flash('success-message', 'Popup Added successfully.');
+            });
+        } else{
+            var filename = '';
+            if(!isEmpty(req.files.popupFile)){
+                let file = req.files.popupFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/';
+            
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                const popp = await Popup.findOne();
+                popp.overwrite({ title: filename, file: `/uploads/${filename}` });
+                await popp.save();
+                req.flash('success-message', 'Popup Updated successfully.');
+            }
+        }
+        res.redirect('/admin/popup');
+        // colban = parseInt(req.body.banyakColumn);
+            // res.redirect('/admin/banner');
     },
 }

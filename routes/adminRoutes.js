@@ -67,6 +67,10 @@ router.route('/banner')
     .get(adminController.getBanner)
     .post(adminController.postBanner);
 
+router.route('/popup')
+    .get(adminController.getPopup)
+    .post(adminController.postPopup);
+
 router.route('/files')
     .get(fileManagerController.upload);
 

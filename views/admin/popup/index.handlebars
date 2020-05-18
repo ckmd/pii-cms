@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Customize Popup Window</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    {{#each popups}}
+                        <h6 class="card-category" >File Name : {{this.title}}</h6>
+                        <img src="{{this.file}}" alt="">
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Update Popup Image</h4>
+            </div>
+            <div class="card-body">
+                <form action="/admin/popup" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label for="file">Upload Popup Image</label>
+                        <input type="file" class="form-control" id="file" name="popupFile" required>
+                    </div>
+                    <button class="btn btn-primary btn-md" type="submit">Set as Popup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
