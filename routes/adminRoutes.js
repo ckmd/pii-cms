@@ -64,7 +64,8 @@ router.route('/rubix')
     .get(adminController.getRubix);
 
 router.route('/banner')
-    .get(adminController.getBanner);
+    .get(adminController.getBanner)
+    .post(adminController.postBanner);
 
 router.route('/files')
     .get(fileManagerController.upload);

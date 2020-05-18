@@ -4,6 +4,7 @@ const Slider = require('../models/sliderModel').Slider;
 const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
 global.tipesidebarpost = 'populer';
+global.colban = 3;
 
 function getId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -342,8 +343,11 @@ module.exports = {
     },
     getBanner: (req, res) => {
         Post.find({setAsBanner:true}).populate('category').then(posts => {
-            res.render('admin/banner/index', {posts:posts});
+            res.render('admin/banner/index', {posts:posts, colban:colban});
         });
     },
-
+    postBanner:(req, res)=>{
+        colban = parseInt(req.body.banyakColumn);
+        res.redirect('/admin/banner');
+    },
 }

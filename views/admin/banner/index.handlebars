@@ -1,39 +1,59 @@
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Preview Tampilan Post pada Banner</h4>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table id="datatab" class="table display">
-                <thead class="text-primary">
-                    <tr class="text-center">
-                        <th>Title</th>
-                        {{!-- <th>Description</th> --}}
-                        <th>Position</th>
-                        <th>Category</th>
-                        <th>Views</th>
-                        {{!-- <th>Image</th> --}}
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    {{#each posts}}
-                    <tr>
-                        <td class="text-left">{{this.title}}</td>
-                        {{!-- <td>{{{this.description}}}</td> --}}
-                        <td class="text-left">{{this.status}}</td>
-                        <td class="text-left">{{this.category.title}}</td>
-                        <td>{{this.views}}</td>
-                        {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
-                        <td>
-                            <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
-                            <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+<div class="row">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Preview Tampilan Post pada Banner</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatab" class="table display">
+                        <thead class="text-primary">
+                            <tr class="text-center">
+                                <th>Title</th>
+                                {{!-- <th>Description</th> --}}
+                                <th>Position</th>
+                                <th>Category</th>
+                                <th>Views</th>
+                                {{!-- <th>Image</th> --}}
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            {{#each posts}}
+                            <tr>
+                                <td class="text-left">{{this.title}}</td>
+                                {{!-- <td>{{{this.description}}}</td> --}}
+                                <td class="text-left">{{this.status}}</td>
+                                <td class="text-left">{{this.category.title}}</td>
+                                <td>{{this.views}}</td>
+                                {{!-- <td><img src="{{this.file}}" width="100px" alt=""></td> --}}
+                                <td>
+                                    <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
+                                    <a href="/admin/posts/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="/admin/posts" class="btn btn-primary"> add more Banner</a>
+            </div>
         </div>
-        <a href="/admin/posts" class="btn btn-primary"> add more Banner</a>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Customize Banner Column</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="banyakColumn">Jumlah Column yang ditampilkan pada Banner</label>
+                        <input type="number" class="form-control" name="banyakColumn" id="banyakColumn" placeholder="{{colban}}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Set</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
