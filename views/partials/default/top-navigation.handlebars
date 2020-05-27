@@ -8,6 +8,16 @@
             {{!-- <li class="nav-item nav-link py-1">
                 engineer bring people to the better life &ensp;
             </li> --}}
+            <li class="nav-item py-1">
+                <a href="#in" id="indo" onclick="window.location.href='#in';location.reload()" style="text-decoration: none;">
+                    INDONESIA &nbsp;| &nbsp;
+                </a>
+            </li>
+            <li class="nav-item py-1">
+                <a href="#en" id="engl" onclick="window.location.href='#en';location.reload()" style="text-decoration: none;">
+                    ENGLISH &ensp;
+                </a>
+            </li>
             <li class="nav-item nav-link py-1">
               <a href="" data-toggle="modal" data-target="#searchModal"><i class="fa fa-2x fa-search"></i></a>
             </li>
@@ -38,7 +48,9 @@
         <ul class="navbar-nav ml-auto large mb-2 mb-md-0 row" style="font-size:24pt; font-family:Impact, Charcoal, sans-serif">
             <li class="nav-item">
                 <div class="dropdown">
-                <a class="nav-link py-1 dropdown disabled" data-toggle="dropdown" href="#">KEANGGOTAAN
+                <a class="nav-link py-1 dropdown disabled" data-toggle="dropdown" href="#"><span id="keanggotaan">
+                        KEANGGOTAAN
+                    </span> 
                     {{> 'default/flip-image'}}
                 </a>
                   {{!-- <a class="nav-link py-1 dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">KEANGGOTAAN</a> --}}

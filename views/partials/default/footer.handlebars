@@ -60,5 +60,42 @@
             $('#initModal').modal('show');
         });
     </script>
+    {{!-- language section --}}
+    <script>
+      // lenguage translation
+      var language = {
+        in: {
+          keanggotaan: "KEANGGOTAAN"
+        },
+        en: {
+          keanggotaan: "MEMBERSHIP"
+        }
+      };
+
+      if(localStorage.getItem('lang') === '#en'){
+          document.getElementById("indo").style.color = "#1c1d1b";
+          keanggotaan.textContent = language.en.keanggotaan;
+      } else if(localStorage.getItem('lang') === '#in'){
+          document.getElementById("engl").style.color = "#1c1d1b";
+          keanggotaan.textContent = language.in.keanggotaan;
+      }
+      //define language via windows hash
+      if(window.location.hash){
+        if(window.location.hash === "#en"){
+          localStorage.setItem('lang','#en');
+          document.getElementById("indo").style.color = "#1c1d1b";
+          document.getElementById("engl").style.color = "#eb6c24";
+          keanggotaan.textContent = language.en.keanggotaan;
+        }
+        else if(window.location.hash === "#in"){
+          localStorage.setItem('lang','#in');
+          document.getElementById("engl").style.color = "#1c1d1b";
+          document.getElementById("indo").style.color = "#eb6c24";
+          keanggotaan.textContent = language.in.keanggotaan;
+        }
+      };
+      const lang = localStorage.getItem('lang');
+      console.log(lang);
+    </script>
   </body>
 </html>
