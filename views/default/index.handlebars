@@ -8,8 +8,7 @@
     <div id="multi-item-example" class="row carousel slide carousel-multi-item" data-ride="carousel" data-interval="2250">
 
       <!--Indicators-->
-      <ol class="carousel-indicators">
-          {{!-- Ditambahkan kondisi --}}
+      {{!-- <ol class="carousel-indicators">
         {{#each banner}}
             {{#ifCond @index '==' 0}}
                 <li data-target="#multi-item-example" data-slide-to="{{@index}}" class="active"></li>
@@ -20,7 +19,7 @@
             {{/moduloIf}}
             {{/ifCond}}
         {{/each}}
-      </ol>
+      </ol> --}}
       <!--/.Indicators-->
 
       <!--Slides-->
@@ -32,10 +31,10 @@
           <div class="row">
                 {{#each banner}}
                 <div class="col-md box">
-                    <div class="card card-link rounded-0 border-0 img-hover-zoom" style="height: 380px">
+                    <div class="card card-link rounded-0 border-0 img-hover-zoom" style="height: 300px">
                         <img class="card-img rounded-0 img-fluid" style="filter: brightness(0.15);object-fit: cover; height: 100%;" src="{{this.file}}" alt="Bologna">
-                        <div style="padding:45px" class="card-img-overlay text-white d-flex flex-column justify-content-center overlayhovers{{#moduloIf @index 2 1}}-middle{{/moduloIf}}">
-                            <h3 class="card-title banner{{#moduloIf @index 2 1}}-middle{{/moduloIf}}">{{this.title}}</h3>
+                        <div style="padding:45px" class="card-img-overlay text-white d-flex flex-column justify-content-center overlayhovers{{#moduloIf @index 2 0}}-middle{{/moduloIf}}">
+                            <h5 class="card-title banner{{#moduloIf @index 2 0}}-middle{{/moduloIf}}">{{this.title}}</h5>
                             <p class="card-text banner">{{this.introText}}</p><br>
                             <a class="text-white" href="/{{this.status}}/{{this.slug}}"><i>Klik disini</i></a>
                             {{!-- <a class="text-white" href="/{{lookup ../dirlink @index}}"><i>Klik disini</i></a> --}}

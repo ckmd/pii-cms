@@ -5,7 +5,7 @@ const Popup = require('../models/popupModel').Popup;
 const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
 global.tipesidebarpost = 'populer';
-global.colban = 3;
+global.colban = 4;
 
 function getId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
