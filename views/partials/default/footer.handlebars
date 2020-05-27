@@ -4,12 +4,12 @@
             <img style="width:100%; height:100%" src="/assets/img/Logo-PII-footer.png"></img>
           </div>
 
-          <div class="col-md-10 box" style="background-color: #eb6c24; padding:60px 60px 5px 60px">
+          <div class="col-md-6 box" style="background-color: #eb6c24; padding:60px 40px 5px 60px">
             <div class="row">
               {{!-- <div class="col-md-2 box rounded">
                 <p id="footerPII">Persatuan <br> Insinyur <br> Indonesia</p>
               </div> --}}
-              <div class="col-md-4 box rounded">
+              <div class="col-md-6 box rounded">
                 <p id="footerContent"><span id="footerTitle">Sekretariat / <i>Secretariat</i></span><br>
                 Gedung Ps Admail Lt.2 <br> 
                 Jl. Percetakan Negara No.19 <br> 
@@ -25,6 +25,13 @@
                 &emsp; birokeanggotaanpii@gmail.com</span></p>
               </div>
           </div>
+        </div>
+        <div class="col-md-4 box" style="background-color: #eb6c24; padding:60px 60px 5px 30px">
+              <p id="footerContent"><br>
+              <a href="https://www.instagram.com/pii_pusat/"><i class="fa fa-instagram fa-lg"></i> @PII_Pusat </a><br> 
+              <a href="https://twitter.com/PII_Pusat"><i class="fa fa-twitter fa-lg"></i> @PII_Pusat </a><br> 
+              <a href="https://www.facebook.com/persatuaninsinyurindonesia/?modal=admin_todo_tour"><i class="fa fa-facebook-square fa-lg"></i> Persatuan Insinyur Indonesia</a>
+              </p>
         </div>
       </div>
       <div class="row">
@@ -65,19 +72,32 @@
       // lenguage translation
       var language = {
         in: {
-          keanggotaan: "KEANGGOTAAN"
+          cariPost: "Cari Post",
+          keanggotaan: "KEANGGOTAAN",
+          sertifikasi: "SERTIFIKASI",
+          registrasi: "REGISTRASI"
         },
         en: {
-          keanggotaan: "MEMBERSHIP"
+          cariPost: "Search Post",
+          keanggotaan: "MEMBERSHIP",
+          sertifikasi: "CERTIFICATION",
+          registrasi: "REGISTRATION"
         }
       };
 
+      //define language via localstorage
       if(localStorage.getItem('lang') === '#en'){
           document.getElementById("indo").style.color = "#1c1d1b";
           keanggotaan.textContent = language.en.keanggotaan;
+          sertifikasi.textContent = language.en.sertifikasi;
+          registrasi.textContent = language.en.registrasi;
+          cariPost.textContent = language.en.cariPost;
       } else if(localStorage.getItem('lang') === '#in'){
           document.getElementById("engl").style.color = "#1c1d1b";
           keanggotaan.textContent = language.in.keanggotaan;
+          sertifikasi.textContent = language.in.sertifikasi;
+          registrasi.textContent = language.in.registrasi;
+          cariPost.textContent = language.in.cariPost;
       }
       //define language via windows hash
       if(window.location.hash){
@@ -86,16 +106,20 @@
           document.getElementById("indo").style.color = "#1c1d1b";
           document.getElementById("engl").style.color = "#eb6c24";
           keanggotaan.textContent = language.en.keanggotaan;
+          sertifikasi.textContent = language.en.sertifikasi;
+          registrasi.textContent = language.en.registrasi;
+          cariPost.textContent = language.en.cariPost;
         }
         else if(window.location.hash === "#in"){
           localStorage.setItem('lang','#in');
           document.getElementById("engl").style.color = "#1c1d1b";
           document.getElementById("indo").style.color = "#eb6c24";
           keanggotaan.textContent = language.in.keanggotaan;
+          sertifikasi.textContent = language.in.sertifikasi;
+          registrasi.textContent = language.in.registrasi;
+          cariPost.textContent = language.in.cariPost;
         }
       };
-      const lang = localStorage.getItem('lang');
-      console.log(lang);
     </script>
   </body>
 </html>
