@@ -10,7 +10,7 @@
                         <thead class="text-primary">
                             <tr class="text-center">
                                 <th>Title</th>
-                                {{!-- <th>Description</th> --}}
+                                <th>Urutan banner</th>
                                 <th>Position</th>
                                 <th>Category</th>
                                 <th>Views</th>
@@ -22,7 +22,7 @@
                             {{#each posts}}
                             <tr>
                                 <td class="text-left">{{this.title}}</td>
-                                {{!-- <td>{{{this.description}}}</td> --}}
+                                <td>{{{this.bannerPosition}}}</td>
                                 <td class="text-left">{{this.status}}</td>
                                 <td class="text-left">{{this.category.title}}</td>
                                 <td>{{this.views}}</td>

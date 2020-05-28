@@ -56,6 +56,10 @@ const PostSchema = new Schema({
         type: Boolean,
         default: false
     },
+    bannerPosition: {
+        type: Number,
+        default: 0
+    },
     slug: { 
         type: String,
         slug: "title" 

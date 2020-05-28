@@ -77,6 +77,7 @@ module.exports = {
             description: req.body.description,
             author: req.body.author,
             setAsBanner: banner,
+            bannerPosition:req.body.bannerPosition,
             setAsRubix: rubix,
             status: req.body.status,
             sponsor1: tempsponsor1,
@@ -343,7 +344,7 @@ module.exports = {
         });
     },
     getBanner: (req, res) => {
-        Post.find({setAsBanner:true}).populate('category').then(posts => {
+        Post.find({setAsBanner:true}).sort({bannerPosition:'ascending'}).populate('category').then(posts => {
             res.render('admin/banner/index', {posts:posts, colban:colban});
         });
     },
