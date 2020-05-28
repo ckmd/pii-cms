@@ -149,12 +149,12 @@ module.exports = {
                         throw err;
                 });
                 req.body.sponsor2 = `/uploads/${sponsor2name}`;
+            }else{
+                const id = req.params.id;
+                Post.findById(id).then( post => {
+                    req.body.sponsor2 = post.sponsor2;
+                });
             }
-        }else{
-            const id = req.params.id;
-            Post.findById(id).then( post => {
-                req.body.sponsor2 = post.sponsor2;
-            });
         }
         req.body.setAsBanner = convertToBool(req.body.setAsBanner);
         req.body.setAsRubix = convertToBool(req.body.setAsRubix);

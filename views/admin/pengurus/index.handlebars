@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">All Pengurus</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="datatab" class="table display">
+                <thead class=" text-primary">
+                    <tr class="text-center" style="white-space:nowrap">
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Urutan</th>
+                        <th>File Foto</th>
+                        <th>Deskripsi</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {{#each pengurus}}
+                    <tr>
+                        <td class="text-left">{{this.nama}}</td>
+                        <td class="text-left">{{this.jabatan}}</td>
+                        <td class="text-left">{{this.urutanPengurus}}</td>
+                        {{!-- <td class="text-left">{{this.category.title}}</td> --}}
+                        <td><img src="{{this.file}}" width="100px" alt=""></td>
+                        <td>{{{this.deskripsi}}}</td>
+
+                        <td>
+                            <a href="/{{this.status}}/{{this.slug}}" target="_blank" class="fa fa-lg fa-eye"></a>
+                            <a href="/admin/pengurus/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                            <a href="/admin/pengurus/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this pengurus ?');"></a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

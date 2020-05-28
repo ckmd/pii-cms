@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
+const pengurusController = require('../controllers/pengurusController');
 const {isUserAuthenticated} = require('../config/customFunction');
 const fileManagerController = require('../controllers/fileManagerController');
 
@@ -82,5 +83,20 @@ router.route('/fileManager')
 
 router.route('/delete-fileManager/:name')
     .get(fileManagerController.deleteFile);
+
+// Pengurus
+router.route('/pengurus')
+    .get(pengurusController.getPengurus);
+
+router.route('/pengurus/create')
+    .get(pengurusController.createPengurus)
+    .post(pengurusController.submitPengurus);
+
+router.route('/pengurus/edit/:id')
+    .get(pengurusController.editPengurus)
+    .post(pengurusController.submitEditPengurus);
+
+router.route('/pengurus/delete/:id')
+    .get(pengurusController.deletePengurus);
 
 module.exports = router;
