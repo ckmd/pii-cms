@@ -99,6 +99,9 @@
           registrasi.textContent = language.in.registrasi;
           cariPost.textContent = language.in.cariPost;
       }
+      if(localStorage.length == 0) {
+          document.getElementById("engl").style.color = "#1c1d1b";
+      }
       //define language via windows hash
       if(window.location.hash){
         if(window.location.hash === "#en"){
