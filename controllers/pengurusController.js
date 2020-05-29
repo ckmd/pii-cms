@@ -4,7 +4,7 @@ const {isEmpty} = require('../config/customFunction');
 
 module.exports = {
     getPengurus : (req, res) => {
-        Pengurus.find().then( pengurus => {
+        Pengurus.find().populate('jenisJabatan').sort({urutanPengurus:'ascending'}).then( pengurus => {
             res.render('admin/pengurus/index', {pengurus : pengurus});
         });
     },
@@ -25,6 +25,7 @@ module.exports = {
             deskripsi: req.body.deskripsi,
             jabatan: req.body.jabatan,
             urutanPengurus: req.body.urutanPengurus,
+            jenisJabatan: req.body.jenisJabatan,
             file: `/uploads/pengurus/${filename}`,
         });
         newPengurus.save().then(pengurus => {
@@ -33,16 +34,16 @@ module.exports = {
         });
     },
     createPengurus : (req, res) => {
-        // Category.find().then(cats => {
-            res.render('admin/pengurus/create');
-        // });
+        JenisJabatan.find().then(jabatans => {
+            res.render('admin/pengurus/create', {jabatans:jabatans});
+        });
     },
     editPengurus: (req, res) => {
         const id = req.params.id;
         Pengurus.findById(id).then( pengurus => {
-            // Category.find().then( cats => {
-                res.render('admin/pengurus/edit', {pengurus : pengurus});
-            // });
+            JenisJabatan.find().then( jabatans => {
+                res.render('admin/pengurus/edit', {pengurus : pengurus, jabatans:jabatans});
+            });
         });
     },
     submitEditPengurus: (req, res) => {
