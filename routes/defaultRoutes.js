@@ -101,6 +101,9 @@ router.route('/video/:slug')
 router.route('/search')
     .post(defaultController.search);
 
+router.route('/struktur-organisasi')
+    .get(defaultController.pengurusAll);
+
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true

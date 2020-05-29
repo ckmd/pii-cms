@@ -2,6 +2,7 @@ const Post = require('../models/postModel').Post;
 const User = require('../models/userModel').User;
 const Slider = require('../models/sliderModel').Slider;
 const Popup = require('../models/popupModel').Popup;
+const Pengurus = require('../models/pengurusModel').Pengurus;
 const bcrypt = require('bcryptjs');
 
 module.exports = {
@@ -136,6 +137,10 @@ module.exports = {
         }
         const searchRes = await Post.find({ $or:qq}).populate('category');
         res.render('default/searchresult', {posts: searchRes, que:req.body.query});
+    },
+    pengurusAll : async(req,res) => {
+        const pengurus = await Pengurus.find().sort({urutanPengurus:'ascending'}).populate('jenisJabatan');
+        res.render('default/struktur-organisasi', {pengurus: pengurus});
     },
     loginGet: (req, res) => {
         res.render('default/login');

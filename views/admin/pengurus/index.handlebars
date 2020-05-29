@@ -12,19 +12,19 @@
                         <th>Jabatan</th>
                         <th>Urutan</th>
                         <th>File Foto</th>
-                        <th>Deskripsi</th>
+                        {{!-- <th>Deskripsi</th> --}}
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     {{#each pengurus}}
                     <tr>
-                        <td class="text-left">{{this.nama}}</td>
-                        <td class="text-left">{{this.jenisJabatan.title}}</td>
-                        <td class="text-left">{{this.jabatan}}</td>
-                        <td class="text-left">{{this.urutanPengurus}}</td>
-                        <td><img src="{{this.file}}" width="100px" alt=""></td>
-                        <td>{{{this.deskripsi}}}</td>
+                        <td>{{this.nama}}</td>
+                        <td>{{this.jenisJabatan.title}}</td>
+                        <td>{{this.jabatan}}</td>
+                        <td>{{this.urutanPengurus}}</td>
+                        <td><img src="{{this.file}}" width="100px" alt="" style="border-radius: 50%;"></td>
+                        {{!-- <td>{{this.deskripsi}}</td> --}}
 
                         <td>
                             <a href="/admin/pengurus/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>

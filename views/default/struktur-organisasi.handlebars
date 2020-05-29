@@ -1,0 +1,32 @@
+<div class="row" style="background-color: #fff; font-family: 'Montserrat'; text-transform: capitalize;">
+    <!-- Blog Entries Column -->
+    <div id="labelall">
+        <p class="card-text">Struktur Organisasi</p>
+    </div>
+    <div class="row" style="padding: 30px 60px">
+        <!-- Blog Post -->
+        {{#each pengurus}}
+            {{#ifCond @index '==' 0}}
+            <div class="col-md-12 text-center">
+                <a  href="#" title='{{this.deskripsi}}'>
+                    <img src="{{this.file}}" width="20%" alt="" style="border-radius: 50%; margin-bottom:25px;">
+                </a>
+                <h1 style="font-family: 'Montserrat';">{{this.nama}}gggggggg</h1>
+                <p>{{this.jabatan}}</p>
+            </div>
+        </div>
+        <div class="row" style="padding: 30px 60px">
+            {{/ifCond}}
+            {{#ifCond @index '>' 0}}
+                <div class="col-md-3" style="word-break: break-word; text-align:center;">
+                    <a  href="#" title='{{this.deskripsi}}'>
+                        <img src="{{this.file}}" width="50%" alt="" style="border-radius: 50%; margin-bottom:20px;">
+                    </a>
+                    <h5 style="font-family: 'Montserrat';">{{this.nama}}</h5>
+                    <p>{{this.jabatan}}</p>
+                </div>
+            {{/ifCond}}
+
+        {{/each}}
+    </div>
+</div>
