@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">All Jenis Jabatan</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatab" class="table display">
+                        <thead class="text-primary">
+                            <tr class="text-center">
+                                <th>Nama Jenis Jabatan</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-hover jenisJabatan-list">
+                        {{#each jenisJabatans}}
+                            <tr>
+                                <td>{{this.title}}</td>
+                                <td class="d-flex justify-content-center">
+                                    <a href="/admin/jenis-jabatan/edit/{{this._id}}" class="btn btn-warning btn-sm mr-2">Edit</a>
+                                    <a href="/admin/jenis-jabatan/delete/{{this._id}}" class="btn btn-danger btn-sm mr-2" onclick="return confirm('Are you sure to delete this jenis jabatan ?');">Delete</a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Edit Jenis Jabatan</h4>
+            </div>
+            <div class="card-body">
+                <form action="/admin/jenis-jabatan/create" method="post">
+                    <div class="form-group">
+                        <label for="jenisJabatan-title">Jenis Jabatan</label>
+                        <input type="text" class="form-control" name="namaJabatan" id="jenisJabatan-title" value="{{selected.title}}" required>
+                        <input type="hidden" class="form-control" name="id" id="jenisJabatan-id" value="{{selected._id}}">
+                    </div>
+                    <button class="btn btn-primary btl-lg" id="update-jenisJabatan-button" type="submit">Saved Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

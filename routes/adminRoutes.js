@@ -98,5 +98,16 @@ router.route('/pengurus/edit/:id')
 
 router.route('/pengurus/delete/:id')
     .get(pengurusController.deletePengurus);
+// jabatan pengurus
+router.route('/jenis-jabatan')
+    .get(pengurusController.getJenisJabatan)
+    .post(pengurusController.createJenisJabatan);
+
+router.route('/jenis-jabatan/edit/:id')
+    .get(pengurusController.editJenisJabatanGetRoute)
+    .post(pengurusController.editJenisJabatanPostRoute);
+
+router.route('/jenis-jabatan/delete/:id')
+    .get(pengurusController.deleteJenisJabatan);
 
 module.exports = router;

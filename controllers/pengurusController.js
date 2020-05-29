@@ -1,4 +1,5 @@
 const Pengurus = require('../models/pengurusModel').Pengurus;
+const JenisJabatan = require('../models/jenisJabatanModel').JenisJabatan;
 const {isEmpty} = require('../config/customFunction');
 
 module.exports = {
@@ -78,6 +79,52 @@ module.exports = {
         Pengurus.findByIdAndRemove(req.params.id, (err, doc) => {
             if(!err){
                 res.redirect('/admin/pengurus');
+            }else{
+                console.log('error during delete record : '+ err);
+            }
+        });
+    },
+    // Janis Jabatan Pengurus
+    getJenisJabatan: (req, res) => {
+        JenisJabatan.find().then(jenisJabatans => {
+            res.render('admin/jenis-jabatan/index', {jenisJabatans:jenisJabatans});
+        });
+    },
+    createJenisJabatan:(req, res)=>{
+        var namaJabatan = req.body.namaJabatan;
+        console.log(namaJabatan)
+        if(namaJabatan){
+            const newJenisJabatan = new JenisJabatan({
+                title: namaJabatan
+            });
+            newJenisJabatan.save().then(jenisJabatan =>{
+                res.status(200).json(jenisJabatan);
+            });
+        }
+    },
+    editJenisJabatanGetRoute: async(req, res) => {
+        const jabId = req.params.id;
+        const jenisJabatans = await JenisJabatan.find();
+        JenisJabatan.findById(jabId).then( selected => {
+            res.render('admin/jenis-jabatan/edit', {selected:selected, jenisJabatans:jenisJabatans})
+        });
+    },
+    editJenisJabatanPostRoute: (req, res) => {
+        const jabId = req.params.id;
+        const newJabatan = req.body.jenisJabatan;
+        if(newJabatan){
+            JenisJabatan.findById(jabId).then(jenisJabatan => {
+                jenisJabatan.title = newJabatan;
+                jenisJabatan.save().then( updated => {
+                    res.status(200).json({url:'/admin/jenis-jabatan'});
+                });
+            });
+        }
+    },
+    deleteJenisJabatan: (req, res) => {
+        JenisJabatan.findByIdAndRemove(req.params.id, (err, doc) => {
+            if(!err){
+                res.redirect('/admin/jenis-jabatan');
             }else{
                 console.log('error during delete record : '+ err);
             }

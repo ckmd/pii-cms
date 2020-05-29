@@ -14,10 +14,10 @@ const PengurusSchema = new Schema({
         type: Number,
         default: 0
     },
-    // jenisJabatan:{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'jenisJabatan'
-    // },
+    jenisJabatan:{
+        type: Schema.Types.ObjectId,
+        ref: 'jenisJabatan'
+    },
     file:{
         type:String,
         default: ''

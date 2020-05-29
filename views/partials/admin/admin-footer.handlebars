@@ -145,5 +145,38 @@ $(document).ready(function() {
                 }
             });
         });
+        $("#create-jenisJabatan-button").on('click', function (e) {
+            e.preventDefault();
+            var data = $("#jenisJabatan-title").val();
+            $.ajax({
+                url: '/admin/jenis-jabatan',
+                type: 'POST',
+                data: {namaJabatan: data},
+                success: function (response) {
+                    var html = `<tr>
+                        <td>${response.title}</td>
+                        <td class="d-flex justify-content-center">
+                            <a href="/admin/jenis-jabatan/edit/${response._id}" class="btn btn-sm btn-warning mr-2">Edit</a>
+                            <a href="/admin/jenis-jabatan/delete/${response._id}" class="btn btn-danger btn-sm mr-2" onclick="return confirm('Are you sure to delete this jenis jabatan ?');">Delete</a>
+                        </td>
+                    </tr>`;
+                    $(".jenisJabatan-list").append(html);
+                }
+            });
+            $("#jenisJabatan-title").val('');
+        });
+        $("#update-jenisJabatan-button").on('click', function (e) {
+            e.preventDefault();
+            var data = $("#jenisJabatan-title").val();
+            var id = $("#jenisJabatan-id").val();
+            $.ajax({
+                url: `/admin/jenis-jabatan/edit/${id}`,
+                type: 'POST',
+                data: {jenisJabatan: data},
+                success: function (response) {
+                    window.location.href = response.url;
+                }
+            });
+        });
     });
 </script>
