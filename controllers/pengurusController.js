@@ -119,6 +119,7 @@ module.exports = {
         });
     },
     submitEditJenisJabatan: (req, res) => {
+        req.body.slug = req.body.title.replace(" ?","").replace(/\s+/g, '-').toLowerCase();
         JenisJabatan.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
                 req.flash('success-message', 'Jenis Jabatan edited successfully.');
