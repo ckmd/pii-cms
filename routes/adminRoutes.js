@@ -100,12 +100,15 @@ router.route('/pengurus/delete/:id')
     .get(pengurusController.deletePengurus);
 // jabatan pengurus
 router.route('/jenis-jabatan')
-    .get(pengurusController.getJenisJabatan)
-    .post(pengurusController.createJenisJabatan);
+    .get(pengurusController.getJenisJabatan);
+
+router.route('/jenis-jabatan/create')
+    .get(pengurusController.createJenisJabatan)
+    .post(pengurusController.submitJenisJabatan);
 
 router.route('/jenis-jabatan/edit/:id')
-    .get(pengurusController.editJenisJabatanGetRoute)
-    .post(pengurusController.editJenisJabatanPostRoute);
+    .get(pengurusController.editJenisJabatan)
+    .post(pengurusController.submitEditJenisJabatan);
 
 router.route('/jenis-jabatan/delete/:id')
     .get(pengurusController.deleteJenisJabatan);

@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Add New Jenis Jabatan</h4>
+    </div>
+    <div class="card-body">
+        <form action="/admin/jenis-jabatan/create" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Jenis Jabatan</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Enter The Jenis Jabatan" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Deskripsi Jenis Jabatan</label>
+                <textarea name="description" id="description" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-primary btl-lg" type="submit">Create Jenis Jabatan</button>
+        </form>
+    </div>
+</div>

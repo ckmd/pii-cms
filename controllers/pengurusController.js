@@ -99,36 +99,34 @@ module.exports = {
             res.render('admin/jenis-jabatan/index', {jenisJabatans:jenisJabatans});
         });
     },
-    createJenisJabatan:(req, res)=>{
-        var namaJabatan = req.body.namaJabatan;
-        console.log(namaJabatan)
-        if(namaJabatan){
-            const newJenisJabatan = new JenisJabatan({
-                title: namaJabatan
-            });
-            newJenisJabatan.save().then(jenisJabatan =>{
-                res.status(200).json(jenisJabatan);
-            });
-        }
+    createJenisJabatan : (req, res) => {
+        res.render('admin/jenis-jabatan/create');
     },
-    editJenisJabatanGetRoute: async(req, res) => {
-        const jabId = req.params.id;
-        const jenisJabatans = await JenisJabatan.find();
-        JenisJabatan.findById(jabId).then( selected => {
-            res.render('admin/jenis-jabatan/edit', {selected:selected, jenisJabatans:jenisJabatans})
+    submitJenisJabatan:(req, res)=>{
+        const newJenisJabatan = new JenisJabatan({
+            title: req.body.title,
+            description: req.body.description,
+        });
+        newJenisJabatan.save().then(jenisJabatan => {
+            req.flash('success-message', 'Jenis Jabatan added successfully.');
+            res.redirect('/admin/jenis-jabatan');
         });
     },
-    editJenisJabatanPostRoute: (req, res) => {
-        const jabId = req.params.id;
-        const newJabatan = req.body.jenisJabatan;
-        if(newJabatan){
-            JenisJabatan.findById(jabId).then(jenisJabatan => {
-                jenisJabatan.title = newJabatan;
-                jenisJabatan.save().then( updated => {
-                    res.status(200).json({url:'/admin/jenis-jabatan'});
-                });
-            });
-        }
+    editJenisJabatan: (req, res) => {
+        const id = req.params.id;
+        JenisJabatan.findById(id).then( jabatan => {
+            res.render('admin/jenis-jabatan/edit', {jabatan:jabatan});
+        });
+    },
+    submitEditJenisJabatan: (req, res) => {
+        JenisJabatan.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                req.flash('success-message', 'Jenis Jabatan edited successfully.');
+                res.redirect('/admin/jenis-jabatan')
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
     },
     deleteJenisJabatan: (req, res) => {
         JenisJabatan.findByIdAndRemove(req.params.id, (err, doc) => {

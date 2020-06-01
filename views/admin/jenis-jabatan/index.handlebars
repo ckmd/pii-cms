@@ -1,10 +1,9 @@
-<div class="row">
-    <div class="col-md-6">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">All Jenis Jabatan</h4>
             </div>
             <div class="card-body">
+            <a href="/admin/jenis-jabatan/create" class="btn btn-primary">Buat Jenis Jabatan Baru</a>
                 <div class="table-responsive">
                     <table id="datatab" class="table display">
                         <thead class="text-primary">
@@ -15,7 +14,7 @@
                         </thead>
                         <tbody class="table-hover jenisJabatan-list">
                         {{#each jenisJabatans}}
-                            <tr>
+                            <tr class="text-center">
                                 <td>{{this.title}}</td>
                                 <td class="d-flex justify-content-center">
                                     <a href="/admin/jenis-jabatan/edit/{{this._id}}" class="btn btn-warning btn-sm mr-2">Edit</a>
@@ -28,21 +27,3 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Add New Jenis Jabatan</h4>
-            </div>
-            <div class="card-body">
-                <form action="/admin/jenis-jabatan/create" method="post">
-                    <div class="form-group">
-                        <label for="jenisJabatan-title">Jenis Jabatan</label>
-                        <input type="text" class="form-control" name="namaJabatan" id="jenisJabatan-title" placeholder="Enter The Jenis Jabatan" required>
-                    </div>
-                    <button class="btn btn-primary btl-lg" id="create-jenisJabatan-button" type="submit">Create Jenis Jabatan</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
