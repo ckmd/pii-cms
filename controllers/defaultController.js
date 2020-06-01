@@ -143,7 +143,6 @@ module.exports = {
         const jenisJabatan = await JenisJabatan.findOne({slug:req.params.slug});
         const jenid = jenisJabatan.id;
         const pengurus = await Pengurus.find({jenisJabatan:jenid}).sort({urutanPengurus:'ascending'});
-        console.log(jenid, pengurus.length);
         res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan});
     },
     loginGet: (req, res) => {

@@ -1,31 +1,30 @@
 <div class="row" style="background-color: #fff; font-family: 'Montserrat'; text-transform: capitalize;">
     <!-- Blog Entries Column -->
     <div id="labelall">
-        <p class="card-text">Struktur Organisasi</p>
+        <p class="card-text">{{jenisJabatan.title}}</p>
     </div>
     <div class="row" style="padding: 30px 60px">
-        <h3>{{jenisJabatan.title}}</h3>
+        {{{jenisJabatan.description}}}
         <!-- Blog Post -->
         {{#each pengurus}}
             {{#ifCond @index '==' 0}}
             <div class="col-md-12 text-center">
                 <a  href="#" title='{{this.deskripsi}}'>
-                    <img src="{{this.file}}" width="12.5%" alt="" style="border-radius: 50%; margin-bottom:25px;">
+                    <img src="{{this.file}}" width="12.5%" alt="" style="border-radius: 50%; margin-bottom:15px;">
                 </a>
-                <h5 style="font-family: 'Montserrat';">{{this.nama}}</h5>
+                <strong><h5 style="font-family: 'Montserrat';">{{this.nama}}</h5></strong>
                 <p>{{this.jabatan}}</p>
             </div>
             {{/ifCond}}
             {{#ifCond @index '>' 0}}
-                <div class="col-md-3" style="word-break: break-word; text-align:center;">
+                <div class="member-pict">
                     <a  href="#" title='{{this.deskripsi}}'>
-                        <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:20px;">
+                        <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;">
                     </a>
-                    <h5 style="font-family: 'Montserrat';">{{this.nama}}</h5>
+                    <strong><p>{{this.nama}}</p></strong>
                     <p>{{this.jabatan}}</p>
                 </div>
             {{/ifCond}}
-
         {{/each}}
     </div>
 </div>
