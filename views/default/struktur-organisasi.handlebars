@@ -8,19 +8,17 @@
         <!-- Blog Post -->
         {{#each pengurus}}
             {{#ifCond @index '==' 0}}
-            <div class="col-md-12 text-center">
-                <a  href="#" title='{{this.deskripsi}}'>
-                    <img src="{{this.file}}" width="12.5%" alt="" style="border-radius: 50%; margin-bottom:15px;">
-                </a>
+            <div class="col-md-12 text-center leader-pict">
+                <img src="{{this.file}}" width="12.5%" alt="" style="border-radius: 50%; margin-bottom:15px;">
+                <span class="tooltiptext">{{this.deskripsi}}</span>
                 <strong><h5 style="font-family: 'Montserrat';">{{this.nama}}</h5></strong>
                 <p>{{this.jabatan}}</p>
             </div>
             {{/ifCond}}
             {{#ifCond @index '>' 0}}
                 <div class="member-pict">
-                    <a  href="#" title='{{this.deskripsi}}'>
-                        <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;">
-                    </a>
+                    <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;">
+                    <span class="tooltiptext">{{this.deskripsi}}</span>
                     <strong><p>{{this.nama}}</p></strong>
                     <p>{{this.jabatan}}</p>
                 </div>
