@@ -9,16 +9,16 @@
             {{#ifCond @index '==' 0}}
             <div class="col-md-12 text-center">
                 <a  href="#" title='{{this.deskripsi}}'>
-                    <img src="{{this.file}}" width="25%" alt="" style="border-radius: 50%; margin-bottom:25px;">
+                    <img src="{{this.file}}" width="12.5%" alt="" style="border-radius: 50%; margin-bottom:25px;">
                 </a>
-                <h1 style="font-family: 'Montserrat';">{{this.nama}}</h1>
+                <h5 style="font-family: 'Montserrat';">{{this.nama}}</h5>
                 <p>{{this.jabatan}}</p>
             </div>
             {{/ifCond}}
             {{#ifCond @index '>' 0}}
                 <div class="col-md-3" style="word-break: break-word; text-align:center;">
                     <a  href="#" title='{{this.deskripsi}}'>
-                        <img src="{{this.file}}" width="75%" alt="" style="border-radius: 50%; margin-bottom:20px;">
+                        <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:20px;">
                     </a>
                     <h5 style="font-family: 'Montserrat';">{{this.nama}}</h5>
                     <p>{{this.jabatan}}</p>

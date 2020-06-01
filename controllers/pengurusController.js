@@ -9,16 +9,24 @@ module.exports = {
         });
     },
     submitPengurus: (req, res) => {
+        let profilePicture;
         let filename = '';
-        if(!isEmpty(req.files.uploadedFile)){
-            let file = req.files.uploadedFile;
-            filename = file.name;
-            let uploadDir = './public/uploads/pengurus/';
-            
-            file.mv(uploadDir + filename, (err) =>{
-                if(err)
-                    throw err;
-            });
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/pengurus/';
+                
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                profilePicture = `/uploads/pengurus/${filename}`;
+            }
+        }
+        // if empty, use default profile picture
+        else{
+            profilePicture = '/uploads/default-profile-picture.png';
         }
         const newPengurus = new Pengurus({
             nama: req.body.nama,
@@ -26,7 +34,7 @@ module.exports = {
             jabatan: req.body.jabatan,
             urutanPengurus: req.body.urutanPengurus,
             jenisJabatan: req.body.jenisJabatan,
-            file: `/uploads/pengurus/${filename}`,
+            file: profilePicture,
         });
         newPengurus.save().then(pengurus => {
             req.flash('success-message', 'Pengurus added successfully.');
