@@ -7,7 +7,8 @@
             <div class="card-body">
                 <div class="table-responsive">
                     {{#each popups}}
-                        <h6 class="card-category" >File Name : {{this.title}}</h6>
+                        <h6 class="card-category" >File Name  : {{this.title}}</h6>
+                        <h6 class="card-category">Popup Redirect Link : <span style="text-transform:lowercase">{{this.link}}</span></h6>
                         <img src="{{this.file}}" alt="">
                     {{/each}}
                 </div>
@@ -24,7 +25,13 @@
                     <div>
                         <label for="file">Upload Popup Image</label>
                         <input type="file" class="form-control" id="file" name="popupFile" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="popupLink">Popup Redirect Link (opsional)</label>
+                        <label for="popupLink">Contoh : www.pii.or.id</label>
+                        <input type="text" class="form-control" name="popupLink" id="popupLink" placeholder="Enter The popup redirect Link">
                     </div>
+
                     <button class="btn btn-primary btn-md" type="submit">Set as Popup</button>
                 </form>
             </div>

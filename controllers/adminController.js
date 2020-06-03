@@ -373,6 +373,7 @@ module.exports = {
             }
             const newPopup = new Popup({
                 title: filename,
+                link: req.body.popupLink,
                 file: `/uploads/${filename}`
             });
             newPopup.save().then(post => {
@@ -390,7 +391,7 @@ module.exports = {
                         throw err;
                 });
                 const popp = await Popup.findOne();
-                popp.overwrite({ title: filename, file: `/uploads/${filename}` });
+                popp.overwrite({ title: filename, file: `/uploads/${filename}`, link : req.body.popupLink });
                 await popp.save();
                 req.flash('success-message', 'Popup Updated successfully.');
             }

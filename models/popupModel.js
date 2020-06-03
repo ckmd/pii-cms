@@ -10,6 +10,10 @@ const PopupSchema = new Schema({
         type:String,
         default: ''
     },
+    link:{
+        type:String,
+        default: ''
+    },
     creationDate: {
         type: Date,
         default: Date.now()
