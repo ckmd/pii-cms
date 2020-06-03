@@ -1,6 +1,5 @@
 const Post = require('../models/postModel').Post;
 const Category = require('../models/categoryModel').Category;
-const Slider = require('../models/sliderModel').Slider;
 const Popup = require('../models/popupModel').Popup;
 const {isEmpty} = require('../config/customFunction');
 global.sidebarlimit = 3;
@@ -228,79 +227,6 @@ module.exports = {
         });
     },
 
-    // Slider Controller
-    getSlider: (req, res) => {
-        Slider.find().sort({slideke:'ascending'}).then(sliders => {
-            res.render('admin/slider/index', {sliders:sliders});
-        });
-    },
-    createSlider : (req, res) => {
-        res.render('admin/slider/create');
-    },
-    submitSlider: (req, res) => {
-        let filename = '';
-        if(!isEmpty(req.files)){
-            let file = req.files.uploadedFile;
-            filename = file.name;
-            let uploadDir = './public/uploads/';
-            
-            file.mv(uploadDir + filename, (err) =>{
-                if(err)
-                    throw err;
-            });
-        }
-        const newSlider = new Slider({
-            slideke: req.body.slideke,
-            title: req.body.title,
-            file: `/uploads/${filename}`,
-        });
-        newSlider.save().then(post => {
-            req.flash('success-message', 'Slider created successfully.');
-            res.redirect('/admin/slider');
-        });
-    },
-    editSlider: (req, res) => {
-        const id = req.params.id;
-        Slider.findById(id).then( slider => {
-            res.render('admin/slider/edit', {slider : slider});
-        });
-    },
-    submitEditSlider: (req, res) => {
-        let filename = '';
-        if(!isEmpty(req.files)){
-            let file = req.files.uploadedFile;
-            filename = file.name;
-            let uploadDir = './public/uploads/';
-        
-            file.mv(uploadDir + filename, (err) =>{
-                if(err)
-                    throw err;
-            });
-            req.body.file = `/uploads/${filename}`;
-        }else{
-            const id = req.params.id;
-            Slider.findById(id).then( slider => {
-                req.body.file = slider.file;
-            });
-        }
-        Slider.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
-            if(!err){
-                req.flash('success-message', 'Slider edited successfully.');
-                res.redirect('/admin/slider')
-            }else{
-                console.log('error during record update : '+err);
-            }
-        });
-    },
-    deleteSlider: (req, res) => {
-        Slider.findByIdAndRemove(req.params.id, (err, doc) => {
-            if(!err){
-                res.redirect('/admin/slider');
-            }else{
-                console.log('error during delete record : '+ err);
-            }
-        });
-    },
 // Sidebar Customizer
     getSidebar: (req, res) => {
         Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit).then(popular => {

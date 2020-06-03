@@ -10,6 +10,10 @@ const SliderSchema = new Schema({
         type: Date,
         default: Date.now()
     },
+    position:{
+        type: String,
+        default: 'bottom'
+    },
     slideke:{
         type:Number,
         default: null

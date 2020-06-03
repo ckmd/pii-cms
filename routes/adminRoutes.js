@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
+const sliderController = require('../controllers/sliderController');
 const pengurusController = require('../controllers/pengurusController');
 const {isUserAuthenticated} = require('../config/customFunction');
 const fileManagerController = require('../controllers/fileManagerController');
@@ -38,20 +39,35 @@ router.route('/category/edit/:id')
 router.route('/category/delete/:id')
     .get(adminController.deleteCategory);
 
-    // Slider routes
+    // Slider Top routes
+router.route('/slider-top')
+    .get(sliderController.getSliderTop);
+
+router.route('/slider-top/create')
+    .get(sliderController.createSliderTop)
+    .post(sliderController.submitSliderTop);
+
+router.route('/slider-top/edit/:id')
+    .get(sliderController.editSliderTop)
+    .post(sliderController.submitEditSliderTop);
+
+router.route('/slider-top/delete/:id')
+    .get(sliderController.deleteSliderTop);
+
+    // Slider Quotes routes
 router.route('/slider')
-    .get(adminController.getSlider);
+    .get(sliderController.getSlider);
 
 router.route('/slider/create')
-    .get(adminController.createSlider)
-    .post(adminController.submitSlider);
+    .get(sliderController.createSlider)
+    .post(sliderController.submitSlider);
 
 router.route('/slider/edit/:id')
-    .get(adminController.editSlider)
-    .post(adminController.submitEditSlider);
+    .get(sliderController.editSlider)
+    .post(sliderController.submitEditSlider);
 
 router.route('/slider/delete/:id')
-    .get(adminController.deleteSlider);
+    .get(sliderController.deleteSlider);
 
 // custom sidebar routes
 router.route('/sidebar')

@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+    {{!-- <h5 class="card-category">Welcome To PII Admin Dashboard</h5> --}}
+        <h4 class="card-title">Edit Image in Slider</h4>
+    </div>
+    <div class="card-body">
+        <form action="/admin/slider-top/edit/{{slider._id}}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="_id" value="{{slider._id}}">
+            <div class="form-group">
+                <label for="slideke">Slide Ke</label>
+                <input type="number" class="form-control" name="slideke" id="slideke" placeholder="Enter The Title" value="{{slider.slideke}}">
+            </div>                
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Enter The Title" value="{{slider.title}}">
+            </div>
+            <img src="{{slider.file}}" alt="{{slider.title}}" width="100%">
+            <div>
+                <label for="file">File Upload</label>
+                <input type="file" class="form-control" id="file" name="uploadedFile">
+            </div>
+            <button class="btn btn-primary" type="submit">Edit Slider</button>
+        </form>
+    </div>
+</div>

@@ -18,8 +18,10 @@ module.exports = {
             for(j = 0; j <colban; j++){
             cars_indicator.push(i);}
         }
-        Slider.find().sort({slideke:'ascending'}).then(sliders => {
+        const slidersTop = Slider.find({position:'top'}).sort({slideke:'ascending'});
+        Slider.find({position:'bottom'}).sort({slideke:'ascending'}).then(sliders => {
             res.render('default/index', {
+                slidersTop: slidersTop, 
                 sliders: sliders, 
                 rubix:rubix, 
                 banner:banner, 
