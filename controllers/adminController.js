@@ -28,7 +28,7 @@ module.exports = {
         res.render('admin/index');
     },
     getPosts : (req, res) => {
-        Post.find().populate('category').then( posts => {
+        Post.find().collation({locale: "en" }).sort({'title':1}).populate('category').then( posts => {
             res.render('admin/posts/index', {posts : posts});
         });
     },
