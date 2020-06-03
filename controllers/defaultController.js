@@ -12,6 +12,12 @@ module.exports = {
         const banner = await Post.find({setAsBanner:true}).sort({bannerPosition:'ascending'});
         const dirlink = ["program-profesi-insinyur/info", "sertifikasi/mengapa-perlu-sertifikasi","registrasi/mengapa-perlu-stri"];
         const rubix = await Post.find({setAsRubix:true}).populate('category');
+        const rubix1 = await Post.find({setAsRubix:true, status:'Video'}).populate('category');
+        const rubix2 = await Post.find({setAsRubix:true, status:'News'}).populate('category');
+        const rubix3 = await Post.find({setAsRubix:true, status:'Artikel'}).populate('category');
+        const rubix4 = await Post.find({setAsRubix:true, status:'Info'}).populate('category');
+        const rubix5 = await Post.find({setAsRubix:true, status:'Tips'}).populate('category');
+        const rubix6 = await Post.find({setAsRubix:true, status:'Video'}).populate('category');
         const maxban = banner.length - 1;
         var cars_indicator = [];
         for(i = 0; i <banner.length; i++){
@@ -23,9 +29,15 @@ module.exports = {
             res.render('default/index', {
                 slidersTop: slidersTop, 
                 sliders: sliders, 
-                rubix:rubix, 
-                banner:banner, 
-                dirlink:dirlink, 
+                rubix:rubix,
+                rubix1:rubix1,
+                rubix2:rubix2,
+                rubix3:rubix3,
+                rubix4:rubix4,
+                rubix5:rubix5,
+                rubix6:rubix6,
+                banner:banner,
+                dirlink:dirlink,
                 cars_indicator:cars_indicator,
                 col:colban,
                 colmin1:colban-1,

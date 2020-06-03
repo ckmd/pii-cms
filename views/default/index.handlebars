@@ -55,10 +55,368 @@
             </div>
             {{/each}}
         </div>
-        </div>
+    </div>
 </div>
-
 <div class="row">
+    {{!-- rubix 1 --}}
+    <div id="carouselrubix1Indicators" class="carousel slide col-md-4 box" data-ride="carousel" data-interval="3900">
+        <ol class="carousel-indicators">
+            {{#each rubix1}}
+            <li data-target="#carouselrubix1Indicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+        {{#each rubix1}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <a href="/{{this.status}}/{{this.slug}}">
+                <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
+                    <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                    <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="container ml-1">
+                            <div class="labeltag-{{this.status}}">
+                                <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                    {{#ifCond this.category.title '!=' 'Tips'}}
+                                        {{this.status}} 
+                                    {{/ifCond}}
+                                    {{#ifCond this.category.title '==' 'Tips'}}
+                                        {{this.category.title}}
+                                    {{/ifCond}}
+                                    </span></div>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering For Kids</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span> By {{this.author}}</span>
+                                {{/ifCond}}
+                            </div>
+                            <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                            {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.sponsor1 '!=' ''}}
+                                    {{#ifCond this.sponsor2 '!=' ''}}
+                                        <center><p class="text-card-content">Brought to you by</p></center>
+                                        <div class="row">
+                                            <center>
+                                                <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                            </center>
+                                        </div>
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                            {{/ifCond}}
+                            {{#ifCond this.status '!=' 'Video'}}
+                                <p class="text-card-content">{{this.introText}}</p>
+                            {{/ifCond}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+{{!-- rubix 2 --}}
+    <div id="carouselrubix2Indicators" class="carousel slide col-md-4 box" data-ride="carousel" data-interval="3900">
+        <ol class="carousel-indicators">
+            {{#each rubix2}}
+            <li data-target="#carouselrubix2Indicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+        {{#each rubix2}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <a href="/{{this.status}}/{{this.slug}}">
+                <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
+                    <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                    <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="container ml-1">
+                            <div class="labeltag-{{this.status}}">
+                                <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                    {{#ifCond this.category.title '!=' 'Tips'}}
+                                        {{this.status}} 
+                                    {{/ifCond}}
+                                    {{#ifCond this.category.title '==' 'Tips'}}
+                                        {{this.category.title}}
+                                    {{/ifCond}}
+                                    </span></div>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering For Kids</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span> By {{this.author}}</span>
+                                {{/ifCond}}
+                            </div>
+                            <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                            {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.sponsor1 '!=' ''}}
+                                    {{#ifCond this.sponsor2 '!=' ''}}
+                                        <center><p class="text-card-content">Brought to you by</p></center>
+                                        <div class="row">
+                                            <center>
+                                                <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                            </center>
+                                        </div>
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                            {{/ifCond}}
+                            {{#ifCond this.status '!=' 'Video'}}
+                                <p class="text-card-content">{{this.introText}}</p>
+                            {{/ifCond}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+{{!-- rubix 3 --}}
+    <div id="carouselrubix3Indicators" class="carousel slide col-md-4 box" data-ride="carousel" data-interval="3900">
+        <ol class="carousel-indicators">
+            {{#each rubix3}}
+            <li data-target="#carouselrubix3Indicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+        {{#each rubix3}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <a href="/{{this.status}}/{{this.slug}}">
+                <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
+                    <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                    <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="container ml-1">
+                            <div class="labeltag-{{this.status}}">
+                                <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                    {{#ifCond this.category.title '!=' 'Tips'}}
+                                        {{this.status}} 
+                                    {{/ifCond}}
+                                    {{#ifCond this.category.title '==' 'Tips'}}
+                                        {{this.category.title}}
+                                    {{/ifCond}}
+                                    </span></div>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering For Kids</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span> By {{this.author}}</span>
+                                {{/ifCond}}
+                            </div>
+                            <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                            {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.sponsor1 '!=' ''}}
+                                    {{#ifCond this.sponsor2 '!=' ''}}
+                                        <center><p class="text-card-content">Brought to you by</p></center>
+                                        <div class="row">
+                                            <center>
+                                                <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                            </center>
+                                        </div>
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                            {{/ifCond}}
+                            {{#ifCond this.status '!=' 'Video'}}
+                                <p class="text-card-content">{{this.introText}}</p>
+                            {{/ifCond}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    {{!-- rubix 4 --}}
+    <div id="carouselrubix4Indicators" class="carousel slide col-md-4 box" data-ride="carousel" data-interval="3900">
+        <ol class="carousel-indicators">
+            {{#each rubix4}}
+            <li data-target="#carouselrubix4Indicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+        {{#each rubix4}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <a href="/{{this.status}}/{{this.slug}}">
+                <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
+                    <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                    <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="container ml-1">
+                            <div class="labeltag-{{this.status}}">
+                                <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                    {{#ifCond this.category.title '!=' 'Tips'}}
+                                        {{this.status}} 
+                                    {{/ifCond}}
+                                    {{#ifCond this.category.title '==' 'Tips'}}
+                                        {{this.category.title}}
+                                    {{/ifCond}}
+                                    </span></div>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering For Kids</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span> By {{this.author}}</span>
+                                {{/ifCond}}
+                            </div>
+                            <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                            {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.sponsor1 '!=' ''}}
+                                    {{#ifCond this.sponsor2 '!=' ''}}
+                                        <center><p class="text-card-content">Brought to you by</p></center>
+                                        <div class="row">
+                                            <center>
+                                                <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                            </center>
+                                        </div>
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                            {{/ifCond}}
+                            {{#ifCond this.status '!=' 'Video'}}
+                                <p class="text-card-content">{{this.introText}}</p>
+                            {{/ifCond}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+{{!-- rubix 5 --}}
+    <div id="carouselrubix5Indicators" class="carousel slide col-md-4 box" data-ride="carousel" data-interval="3900">
+        <ol class="carousel-indicators">
+            {{#each rubix5}}
+            <li data-target="#carouselrubix5Indicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+        {{#each rubix5}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <a href="/{{this.status}}/{{this.slug}}">
+                <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
+                    <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                    <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="container ml-1">
+                            <div class="labeltag-{{this.status}}">
+                                <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                    {{#ifCond this.category.title '!=' 'Tips'}}
+                                        {{this.status}} 
+                                    {{/ifCond}}
+                                    {{#ifCond this.category.title '==' 'Tips'}}
+                                        {{this.category.title}}
+                                    {{/ifCond}}
+                                    </span></div>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering For Kids</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span> By {{this.author}}</span>
+                                {{/ifCond}}
+                            </div>
+                            <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                            {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.sponsor1 '!=' ''}}
+                                    {{#ifCond this.sponsor2 '!=' ''}}
+                                        <center><p class="text-card-content">Brought to you by</p></center>
+                                        <div class="row">
+                                            <center>
+                                                <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                            </center>
+                                        </div>
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                            {{/ifCond}}
+                            {{#ifCond this.status '!=' 'Video'}}
+                                <p class="text-card-content">{{this.introText}}</p>
+                            {{/ifCond}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+{{!-- rubix 6 --}}
+    <div id="carouselrubix6Indicators" class="carousel slide col-md-4 box" data-ride="carousel" data-interval="3900">
+        <ol class="carousel-indicators">
+            {{#each rubix6}}
+            <li data-target="#carouselrubix6Indicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+        {{#each rubix6}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+            <a href="/{{this.status}}/{{this.slug}}">
+                <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
+                    <img class="card-img" src="{{this.file}}" style="object-fit: cover; height: 100%;" alt="">
+                    <div class="card-img-overlaysright justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="container ml-1">
+                            <div class="labeltag-{{this.status}}">
+                                <div id="{{this.status}}" ><span class="ml-2 text-white">
+                                    {{#ifCond this.category.title '!=' 'Tips'}}
+                                        {{this.status}} 
+                                    {{/ifCond}}
+                                    {{#ifCond this.category.title '==' 'Tips'}}
+                                        {{this.category.title}}
+                                    {{/ifCond}}
+                                    </span></div>
+                                {{#ifCond this.category.title '==' 'Video Inovasi'}}
+                                    <span>Inovasi by {{this.author}}</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Video Engineering'}}
+                                    <span>Engineering For Kids</span>
+                                {{/ifCond}}
+                                {{#ifCond this.category.title '==' 'Tips'}}
+                                    <span> By {{this.author}}</span>
+                                {{/ifCond}}
+                            </div>
+                            <h6 class="card-title {{this.status}}">{{this.title}}</h6>
+                            {{#ifCond this.status '==' 'Video'}}
+                                {{#ifCond this.sponsor1 '!=' ''}}
+                                    {{#ifCond this.sponsor2 '!=' ''}}
+                                        <center><p class="text-card-content">Brought to you by</p></center>
+                                        <div class="row">
+                                            <center>
+                                                <img id="sponsor" src="{{this.sponsor1}}" alt="">
+                                                <img id="sponsor" src="{{this.sponsor2}}" alt="">
+                                            </center>
+                                        </div>
+                                    {{/ifCond}}
+                                {{/ifCond}}
+                            {{/ifCond}}
+                            {{#ifCond this.status '!=' 'Video'}}
+                                <p class="text-card-content">{{this.introText}}</p>
+                            {{/ifCond}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</div>
+{{!-- old rubix --}}
+{{!-- <div class="row">
     {{#each rubix}}
     <div class="col-md-4 box">
         <a href="/{{this.status}}/{{this.slug}}">
@@ -110,7 +468,7 @@
         </a>
     </div>
     {{/each}}
-</div>
+</div> --}}
 {{!-- modal Popup --}}
 <div class="modal fade" id="initModal" role="dialog">
     <div class="modal-dialog modal-lg">            
@@ -128,107 +486,3 @@
         </div>        
     </div>
 </div>
-
-{{!-- <div class="row">
-    <div class="col-md-4 box">
-        <a href="/video/5ea0719c8ffe08448b1c79d4">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Inovasi-Mie-Instan.jpg" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-Video">
-                            <div id="Video" ><span class="ml-2 text-white"> Video </span></div>
-                            <span>Inovasi by Heru Dewanto</span>
-                        </div>
-                        <h6 class="card-title Video">Inovasi Mie Instant -  Seri Animasi Eps. 03</h6>
-                        <p class="text-card-content">Mari kita lihat kisah dibalik terciptanya mie instant</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4 box">
-        <a href="/news/5ea071e88ffe08448b1c79d5">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Insinyur-boeing-bergaji-murah.jpg" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-News">
-                            <div id="News" ><span class="ml-2 text-white"> News </span></div>
-                        </div>
-                        <h6 class="card-title News">ternyata Insinyur Boeing Outsourching & Bergaji Murah</h6>
-                        <p class="text-card-content">Persoalan ini mencuat di tengah misteri krisis 737 MAX yang diduga terkandung kesalahan perangkat lunak yang mematikan.</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4 box">
-        <a href="/artikel/5ea072178ffe08448b1c79d6">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Pentingkah-punya-gelar-profesi-insinyur.jpg" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlays justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-Artikel">
-                            <div id="Artikel" ><span class="ml-2 text-white"> Artikel </span></div>
-                        </div>
-                        <h6 class="card-title Artikel">pentingkah Punya Gelar Profesi Insinyur Setelah Lulus Kuliah?</h6>
-                        <p class="text-card-content">Sedangkan untuk kerja nggak diwajibkan punya gelar insinyur. Jadi masih pentingkah punya gelar insinyur?</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="row box">
-    <div class="col-md-4 box">
-        <a href="/news/5e9ddadad0b662114fb9a982">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Insinyur-Teknik-Sipil-Pertama-Indonesia-Lulusan-Belanda.jpg" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlaysright justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-News">
-                            <div id="News" ><span class="ml-2 text-white"> News </span></div>
-                        </div>
-                        <h6 class="card-title News">Insinyur Teknik Sipil Pertama Indonesia Lulusan Belanda</h6>
-                        <p class="text-card-content">Jembatan itu dibangun mulai dari Oktober 2007 sampai selesai pada November 2008 dengan menelan biaya Rp24,2 milyar.</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4 box">
-        <a href="/artikel/5ea072728ffe08448b1c79d7">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/Tips-rawat-mesin.jpg" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlaysright justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-Artikel">
-                            <div id="Artikel" ><span class="ml-2 text-white"> Tips </span></div>
-                            <span>By xxxx</span>
-                        </div>
-                        <h6 class="card-title Artikel">5 Tips Sederhana Merawat Mesin Mobil bagi Pemula</h6>
-                        <p class="text-card-content">Jika Anda kurang memahami seluk beluk mobil dan perawatannya, setidaknya Anda perlu memahami 5 hal ini agar mobil tetap dalam kondisi prima</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-md-4 box">
-        <a href="/video/5e9ddb23d0b662114fb9a983">
-            <div class="card rounded-0 border-0 img-hover-zoom" style="height: 200px">
-                <img class="card-img" src="/assets/img/video.PNG" style="object-fit: cover; height: 100%;" alt="">
-                <div class="card-img-overlaysright justify-content-end w-50" style="background-color: rgba(255, 255, 255, 0.8);">
-                    <div class="container ml-1">
-                        <div class="labeltag-Video">
-                            <div id="Video" ><span class="ml-2 text-white"> Video </span></div>
-                            <span>Engineering for Kids</span>
-                        </div>
-                        <h6 class="card-title Video">Yuk Bikin Percobaan Membuat Pelangi</h6>
-                        <p class="text-card-content">Isaac Newton dikenal sebagai orang pertama yang menemukan bahwa cahata putih tersusun dari warna-warna spektrum yang terlihat oleh mata.</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div> --}}
