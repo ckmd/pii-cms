@@ -9,7 +9,7 @@
     <div class="row" style="padding: 30px 60px">
         <!-- Blog Post -->
         {{#each pengurus}}
-            {{#ifCond ../jenisJabatan.slug '==' 'pengurus-pusat'}}
+            {{#ifCond ../punyaKetua '==' true}}
                 {{#ifCond @index '==' 0}}
                 <div class="col-md-12 text-center leader-pict">
                     <img src="{{this.file}}" width="20%" alt="" style="border-radius: 50%; margin-bottom:15px;">
@@ -27,7 +27,7 @@
                     </div>
                 {{/ifCond}}
             {{/ifCond}}
-            {{#ifCond ../jenisJabatan.slug '!=' 'pengurus-pusat'}}
+            {{#ifCond ../punyaKetua '==' false}}
             <div class="member-pict">
                 <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;">
                 <span class="tooltiptext">{{this.deskripsi}}</span>

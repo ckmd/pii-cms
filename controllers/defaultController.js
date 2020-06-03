@@ -142,10 +142,17 @@ module.exports = {
         res.render('default/searchresult', {posts: searchRes, que:req.body.query});
     },
     pengurus : async(req,res) => {
-        const jenisJabatan = await JenisJabatan.findOne({slug:req.params.slug});
+        const slug = req.params.slug;
+        let punyaKetua = false;
+        const jenisJabatan = await JenisJabatan.findOne({slug:slug});
         const jenid = jenisJabatan.id;
         const pengurus = await Pengurus.find({jenisJabatan:jenid}).sort({urutanPengurus:'ascending'});
-        res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan});
+        const daftarKetua = ["pengurus-pusat", "dewan-penasehat", "ceips", "forum-insinyur-muda", "forum-perempuan-insinyur", "majelis-kehormatan-etik", "majelis-standard-keinsinyuran"];
+        for(let i = 0; i < daftarKetua.length ; i++){
+            if(slug == daftarKetua[i])
+                punyaKetua = true;
+        }
+        res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan, punyaKetua:punyaKetua});
     },
     loginGet: (req, res) => {
         res.render('default/login');
