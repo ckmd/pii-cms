@@ -1,19 +1,24 @@
-{{!-- <div class="brdistance"><br></div> --}}
 <div class="row">
+    <div id="carouselTopIndicators" class="carousel slide col-md-12 box" data-ride="carousel" data-interval="7000">
+        <ol class="carousel-indicators">
+            {{#each slidersTop}}
+            <li data-target="#carouselTopIndicators" data-slide-to="{{@index}}"></li>
+            {{/each}}
+        </ol>
+        <div class="carousel-inner">
+            {{#each slidersTop}}
+            <div class="carousel-item {{#ifCond @index '==' 0}} active {{/ifCond}} ">
+                <img class="d-block w-100" src="{{this.file}}" alt="{{this.title}}">
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{!-- <div class="row">
     <div class="col-md-12 box rounded">
         <img src="/assets/img/PII_or_id-04.png" style="height: 100%; width:100%;" alt="">
     </div>
-
-    {{!-- <div class="col-md-4 box rounded">
-        <img src="/assets/img/pgn.PNG" style="height: 100%; width:100%;" alt="">
-    </div>
-    <div class="col-md-4 box rounded">
-        <img src="/assets/img/tripatra.PNG" style="height: 100%; width:100%;" alt="">
-    </div>
-    <div class="col-md-4 box rounded">
-        <img src="/assets/img/telkom.PNG" style="height: 100%; width:100%;" alt="">
-    </div> --}}
-</div>
+</div> --}}
 <div class="row">
     {{#each banner}}
     <div class="col-md box">
@@ -41,8 +46,6 @@
         <ol class="carousel-indicators">
             {{#each sliders}}
             <li data-target="#carouselExampleIndicators" data-slide-to="{{@index}}"></li>
-            {{!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --}}
             {{/each}}
         </ol>
         <div class="carousel-inner">
