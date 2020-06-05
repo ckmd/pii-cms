@@ -145,4 +145,34 @@ router.route('/pengurus-cabang/edit/:id')
 router.route('/pengurus-cabang/delete/:id')
     .get(pengurusController.deleteCabang);
 
+    // Wilayah / pengurus-wilayah
+router.route('/pengurus-wilayah')
+    .get(pengurusController.getWilayah);
+
+router.route('/pengurus-wilayah/create')
+    .get(pengurusController.createWilayah)
+    .post(pengurusController.submitWilayah);
+
+router.route('/pengurus-wilayah/edit/:id')
+    .get(pengurusController.editWilayah)
+    .post(pengurusController.submitEditWilayah);
+
+router.route('/pengurus-wilayah/delete/:id')
+    .get(pengurusController.deleteWilayah);
+
+    // Kejuruan / badan-kejuruan
+router.route('/badan-kejuruan')
+    .get(pengurusController.getKejuruan);
+
+router.route('/badan-kejuruan/create')
+    .get(pengurusController.createKejuruan)
+    .post(pengurusController.submitKejuruan);
+
+router.route('/badan-kejuruan/edit/:id')
+    .get(pengurusController.editKejuruan)
+    .post(pengurusController.submitEditKejuruan);
+
+router.route('/badan-kejuruan/delete/:id')
+    .get(pengurusController.deleteKejuruan);
+
 module.exports = router;

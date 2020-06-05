@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Semua Wilayah</h4>
+    </div>
+    <div class="card-body">
+        <a href="/admin/pengurus-wilayah/create" class="btn btn-primary">Tambahkan Wilayah Baru</a>
+        <div class="table-responsive">
+            <table id="datatab" class="table display">
+                <thead class=" text-primary">
+                    <tr class="text-center" style="white-space:nowrap">
+                        <th>Nama Wilayah</th>
+                        <th>Foto Wilayah</th>
+                        {{!-- <th>Deskripsi</th> --}}
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {{#each wilayahs}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td><img src="{{this.file}}" width="100px" alt="" style="border-radius: 50%;"></td>
+                        {{!-- <td>{{this.deskripsi}}</td> --}}
+                        <td>
+                            <a href="/admin/pengurus-wilayah/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                            <a href="/admin/pengurus-wilayah/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Wilayah ?');"></a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

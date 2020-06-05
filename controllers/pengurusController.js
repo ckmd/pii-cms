@@ -201,8 +201,8 @@ module.exports = {
                 req.body.file = `/uploads/cabang/${filename}`;
             }else{
                 const id = req.params.id;
-                Pengurus.findById(id).then( pengurus => {
-                    req.body.file = pengurus.file;
+                Cabang.findById(id).then( cabang => {
+                    req.body.file = cabang.file;
                 });
             }
         }
@@ -220,6 +220,174 @@ module.exports = {
         Cabang.findByIdAndRemove(req.params.id, (err, doc) => {
             if(!err){
                 res.redirect('/admin/pengurus-cabang');
+            }else{
+                console.log('error during delete record : '+ err);
+            }
+        });
+    },
+    // Wilayah / pengurus-wilayah
+    getWilayah: (req, res) => {
+        Wilayah.find().then(wilayahs => {
+            res.render('admin/pengurus-wilayah/index', {wilayahs:wilayahs});
+        });
+    },
+    createWilayah : (req, res) => {
+        res.render('admin/pengurus-wilayah/create');
+    },
+    submitWilayah:(req, res)=>{
+        let wilayahPicture;
+        let filename = '';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/wilayah/';
+                
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                wilayahPicture = `/uploads/wilayah/${filename}`;
+            }
+        }
+        // if empty, use default profile picture
+        else{
+            wilayahPicture = '/uploads/default-wilayah-picture.png';
+        }
+        const newWilayah = new Wilayah({
+            title: req.body.title,
+            description: req.body.description,
+            file: wilayahPicture,
+        });
+        newWilayah.save().then(wilayah => {
+            req.flash('success-message', 'Wilayah added successfully.');
+            res.redirect('/admin/pengurus-wilayah');
+        });
+    },
+    editWilayah: (req, res) => {
+        const id = req.params.id;
+        Wilayah.findById(id).then( wilayah => {
+            res.render('admin/pengurus-wilayah/edit', {wilayah:wilayah});
+        });
+    },
+    submitEditWilayah: (req, res) => {
+        let filename = '';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/wilayah/';
+            
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                req.body.file = `/uploads/wilayah/${filename}`;
+            }else{
+                const id = req.params.id;
+                Wilayah.findById(id).then( wilayah => {
+                    req.body.file = wilayah.file;
+                });
+            }
+        }
+        req.body.slug = req.body.title.replace(" ?","").replace(/\s+/g, '-').toLowerCase();
+        Wilayah.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                req.flash('success-message', 'Wilayah edited successfully.');
+                res.redirect('/admin/pengurus-wilayah')
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    deleteWilayah: (req, res) => {
+        Wilayah.findByIdAndRemove(req.params.id, (err, doc) => {
+            if(!err){
+                res.redirect('/admin/pengurus-wilayah');
+            }else{
+                console.log('error during delete record : '+ err);
+            }
+        });
+    },
+    // Kejuruan / badan-kejuruan
+    getKejuruan: (req, res) => {
+        Kejuruan.find().then(kejuruans => {
+            res.render('admin/badan-kejuruan/index', {kejuruans:kejuruans});
+        });
+    },
+    createKejuruan : (req, res) => {
+        res.render('admin/badan-kejuruan/create');
+    },
+    submitKejuruan:(req, res)=>{
+        let kejuruanPicture;
+        let filename = '';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/kejuruan/';
+                
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                kejuruanPicture = `/uploads/kejuruan/${filename}`;
+            }
+        }
+        // if empty, use default profile picture
+        else{
+            kejuruanPicture = '/uploads/default-kejuruan-picture.png';
+        }
+        const newKejuruan = new Kejuruan({
+            title: req.body.title,
+            description: req.body.description,
+            file: kejuruanPicture,
+        });
+        newKejuruan.save().then(kejuruan => {
+            req.flash('success-message', 'Badan Kejuruan added successfully.');
+            res.redirect('/admin/badan-kejuruan');
+        });
+    },
+    editKejuruan: (req, res) => {
+        const id = req.params.id;
+        Kejuruan.findById(id).then( kejuruan => {
+            res.render('admin/badan-kejuruan/edit', {kejuruan:kejuruan});
+        });
+    },
+    submitEditKejuruan: (req, res) => {
+        let filename = '';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/kejuruan/';
+            
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                req.body.file = `/uploads/kejuruan/${filename}`;
+            }else{
+                const id = req.params.id;
+                Kejuruan.findById(id).then( kejuruan => {
+                    req.body.file = kejuruan.file;
+                });
+            }
+        }
+        req.body.slug = req.body.title.replace(" ?","").replace(/\s+/g, '-').toLowerCase();
+        Kejuruan.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                req.flash('success-message', 'Badan Kejuruan edited successfully.');
+                res.redirect('/admin/badan-kejuruan')
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    deleteKejuruan: (req, res) => {
+        Kejuruan.findByIdAndRemove(req.params.id, (err, doc) => {
+            if(!err){
+                res.redirect('/admin/badan-kejuruan');
             }else{
                 console.log('error during delete record : '+ err);
             }

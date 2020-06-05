@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Edit Wilayah</h4>
+    </div>
+    <div class="card-body">
+        <form action="/admin/pengurus-wilayah/edit/{{wilayah._id}}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="_id" value="{{wilayah._id}}">        
+            <div class="form-group">
+                <label for="title">Nama Wilayah</label>
+                <input type="text" class="form-control" name="title" id="title" value="{{wilayah.title}}">
+            </div>
+            <img src="{{wilayah.file}}" width="25%" alt="{{wilayah.file}}" style="border-radius: 50%;">
+            <div>
+                <label for="file">Perbarui Foto Wilayah (disarankan rasio panjang:lebar 1:1)</label>
+                <input type="file" class="form-control" id="file" name="uploadedFile">
+            </div>
+            <div class="form-group">
+                <label for="deskripsi">Edit Deskripsi Wilayah</label>
+                <textarea name="description" id="description" class="form-control" value="">{{wilayah.description}}</textarea>
+            </div>
+            <button class="btn btn-primary btn-lg" type="submit">Simpan Perubahan</button>
+        </form>
+    </div>
+</div>

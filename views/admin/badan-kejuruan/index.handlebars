@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Semua Badan Kejuruan</h4>
+    </div>
+    <div class="card-body">
+        <a href="/admin/badan-kejuruan/create" class="btn btn-primary">Tambahkan Badan Kejuruan Baru</a>
+        <div class="table-responsive">
+            <table id="datatab" class="table display">
+                <thead class=" text-primary">
+                    <tr class="text-center" style="white-space:nowrap">
+                        <th>Nama Badan Kejuruan</th>
+                        <th>Foto Badan Kejuruan</th>
+                        {{!-- <th>Deskripsi</th> --}}
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    {{#each kejuruans}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td><img src="{{this.file}}" width="100px" alt="" style="border-radius: 50%;"></td>
+                        {{!-- <td>{{this.deskripsi}}</td> --}}
+                        <td>
+                            <a href="/admin/badan-kejuruan/edit/{{this._id}}" class="fa fa-lg fa-edit"></a>
+                            <a href="/admin/badan-kejuruan/delete/{{this._id}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Badan Kejuruan ?');"></a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
