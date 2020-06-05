@@ -114,7 +114,8 @@ router.route('/pengurus/edit/:id')
 
 router.route('/pengurus/delete/:id')
     .get(pengurusController.deletePengurus);
-// jabatan pengurus
+
+    // jabatan pengurus
 router.route('/jenis-jabatan')
     .get(pengurusController.getJenisJabatan);
 
@@ -128,5 +129,20 @@ router.route('/jenis-jabatan/edit/:id')
 
 router.route('/jenis-jabatan/delete/:id')
     .get(pengurusController.deleteJenisJabatan);
+
+    // Cabang / pengurus-cabang
+router.route('/pengurus-cabang')
+    .get(pengurusController.getCabang);
+
+router.route('/pengurus-cabang/create')
+    .get(pengurusController.createCabang)
+    .post(pengurusController.submitCabang);
+
+router.route('/pengurus-cabang/edit/:id')
+    .get(pengurusController.editCabang)
+    .post(pengurusController.submitEditCabang);
+
+router.route('/pengurus-cabang/delete/:id')
+    .get(pengurusController.deleteCabang);
 
 module.exports = router;

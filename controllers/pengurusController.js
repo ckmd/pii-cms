@@ -1,5 +1,8 @@
 const Pengurus = require('../models/pengurusModel').Pengurus;
 const JenisJabatan = require('../models/jenisJabatanModel').JenisJabatan;
+const Cabang = require('../models/cabangModel').Cabang;
+const Wilayah = require('../models/wilayahModel').Wilayah;
+const Kejuruan = require('../models/kejuruanModel').Kejuruan;
 const {isEmpty} = require('../config/customFunction');
 
 module.exports = {
@@ -133,6 +136,90 @@ module.exports = {
         JenisJabatan.findByIdAndRemove(req.params.id, (err, doc) => {
             if(!err){
                 res.redirect('/admin/jenis-jabatan');
+            }else{
+                console.log('error during delete record : '+ err);
+            }
+        });
+    },
+    // Cabang / pengurus-cabang
+    getCabang: (req, res) => {
+        Cabang.find().then(cabangs => {
+            res.render('admin/pengurus-cabang/index', {cabangs:cabangs});
+        });
+    },
+    createCabang : (req, res) => {
+        res.render('admin/pengurus-cabang/create');
+    },
+    submitCabang:(req, res)=>{
+        let cabangPicture;
+        let filename = '';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/cabang/';
+                
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                cabangPicture = `/uploads/cabang/${filename}`;
+            }
+        }
+        // if empty, use default profile picture
+        else{
+            cabangPicture = '/uploads/default-cabang-picture.png';
+        }
+        const newCabang = new Cabang({
+            title: req.body.title,
+            description: req.body.description,
+            file: cabangPicture,
+        });
+        newCabang.save().then(jenisJabatan => {
+            req.flash('success-message', 'Cabang added successfully.');
+            res.redirect('/admin/pengurus-cabang');
+        });
+    },
+    editCabang: (req, res) => {
+        const id = req.params.id;
+        Cabang.findById(id).then( cabang => {
+            res.render('admin/pengurus-cabang/edit', {cabang:cabang});
+        });
+    },
+    submitEditCabang: (req, res) => {
+        let filename = '';
+        if(!isEmpty(req.files)){
+            if(!isEmpty(req.files.uploadedFile)){
+                let file = req.files.uploadedFile;
+                filename = file.name;
+                let uploadDir = './public/uploads/cabang/';
+            
+                file.mv(uploadDir + filename, (err) =>{
+                    if(err)
+                        throw err;
+                });
+                req.body.file = `/uploads/cabang/${filename}`;
+            }else{
+                const id = req.params.id;
+                Pengurus.findById(id).then( pengurus => {
+                    req.body.file = pengurus.file;
+                });
+            }
+        }
+        req.body.slug = req.body.title.replace(" ?","").replace(/\s+/g, '-').toLowerCase();
+        Cabang.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                req.flash('success-message', 'Cabang edited successfully.');
+                res.redirect('/admin/pengurus-cabang')
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    deleteCabang: (req, res) => {
+        Cabang.findByIdAndRemove(req.params.id, (err, doc) => {
+            if(!err){
+                res.redirect('/admin/pengurus-cabang');
             }else{
                 console.log('error during delete record : '+ err);
             }
