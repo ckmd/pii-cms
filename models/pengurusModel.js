@@ -18,6 +18,18 @@ const PengurusSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'jenisJabatan'
     },
+    cabang:{
+        type: Schema.Types.ObjectId,
+        ref: 'cabang'
+    },
+    wilayah:{
+        type: Schema.Types.ObjectId,
+        ref: 'wilayah'
+    },
+    kejuruan:{
+        type: Schema.Types.ObjectId,
+        ref: 'kejuruan'
+    },
     file:{
         type:String,
         default: ''
@@ -29,7 +41,7 @@ const PengurusSchema = new Schema({
     creationDate: {
         type: Date,
         default: Date.now()
-    },
+    }
 });
 
 module.exports = {Pengurus: mongoose.model('pengurus', PengurusSchema)};
