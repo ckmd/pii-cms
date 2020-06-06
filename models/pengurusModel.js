@@ -20,15 +20,15 @@ const PengurusSchema = new Schema({
     },
     cabang:{
         type: Schema.Types.ObjectId,
-        ref: 'cabang'
+        ref: 'cabang',
     },
     wilayah:{
         type: Schema.Types.ObjectId,
-        ref: 'wilayah'
+        ref: 'wilayah',
     },
     kejuruan:{
         type: Schema.Types.ObjectId,
-        ref: 'kejuruan'
+        ref: 'kejuruan',
     },
     file:{
         type:String,

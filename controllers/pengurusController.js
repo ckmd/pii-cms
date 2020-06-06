@@ -8,6 +8,7 @@ const {isEmpty} = require('../config/customFunction');
 module.exports = {
     getPengurus : (req, res) => {
         Pengurus.find().populate('jenisJabatan').sort({urutanPengurus:'ascending'}).then( pengurus => {
+        // Pengurus.find().populate('jenisJabatan').populate('cabang').populate('wilayah').populate('kejuruan').sort({urutanPengurus:'ascending'}).then( pengurus => {
             res.render('admin/pengurus/index', {pengurus : pengurus});
         });
     },
@@ -31,12 +32,27 @@ module.exports = {
         else{
             profilePicture = '/uploads/default-profile-picture.png';
         }
+        let cabang = req.body.cabang;
+        let wilayah = req.body.wilayah;
+        let kejuruan = req.body.kejuruan;
+        if(req.body.cabang == ''){
+            cabang = null;
+        }
+        if(req.body.wilayah == ''){
+            wilayah = null;
+        }
+        if(req.body.kejuruan == ''){
+            kejuruan = null;
+        }
         const newPengurus = new Pengurus({
             nama: req.body.nama,
             deskripsi: req.body.deskripsi,
             jabatan: req.body.jabatan,
             urutanPengurus: req.body.urutanPengurus,
             jenisJabatan: req.body.jenisJabatan,
+            cabang: cabang,
+            wilayah: wilayah,
+            kejuruan: kejuruan,
             file: profilePicture,
         });
         newPengurus.save().then(pengurus => {
@@ -44,21 +60,26 @@ module.exports = {
             res.redirect('/admin/pengurus');
         });
     },
-    createPengurus : (req, res) => {
-        JenisJabatan.find().then(jabatans => {
-            res.render('admin/pengurus/create', {jabatans:jabatans});
-        });
+    createPengurus : async(req, res) => {
+        const jabatans = await JenisJabatan.find();
+        const cabangs = await Cabang.find();
+        const wilayahs = await Wilayah.find();
+        const kejuruans = await Kejuruan.find();
+        res.render('admin/pengurus/create', {jabatans:jabatans, wilayahs:wilayahs, cabangs:cabangs, kejuruans:kejuruans});
     },
-    editPengurus: (req, res) => {
+    editPengurus: async(req, res) => {
         const id = req.params.id;
+        const jabatans = await JenisJabatan.find();
+        const cabangs = await Cabang.find();
+        const wilayahs = await Wilayah.find();
+        const kejuruans = await Kejuruan.find();
         Pengurus.findById(id).then( pengurus => {
-            JenisJabatan.find().then( jabatans => {
-                res.render('admin/pengurus/edit', {pengurus : pengurus, jabatans:jabatans});
-            });
+            res.render('admin/pengurus/edit', {pengurus : pengurus, jabatans:jabatans, wilayahs:wilayahs, cabangs:cabangs, kejuruans:kejuruans});
         });
     },
     submitEditPengurus: (req, res) => {
         let filename = '';
+        let id = req.params.id;
         if(!isEmpty(req.files)){
             if(!isEmpty(req.files.uploadedFile)){
                 let file = req.files.uploadedFile;
@@ -71,11 +92,20 @@ module.exports = {
                 });
                 req.body.file = `/uploads/pengurus/${filename}`;
             }else{
-                const id = req.params.id;
                 Pengurus.findById(id).then( pengurus => {
                     req.body.file = pengurus.file;
                 });
             }
+        }
+        let pengurus = Pengurus.findById(id);
+        if(req.body.cabang == ""){
+            req.body.cabang = pengurus.cabang;
+        }
+        if(req.body.wilayah == ""){
+            req.body.wilayah = pengurus.wilayah;
+        }
+        if(req.body.kejuruan == ""){
+            req.body.kejuruan = pengurus.kejuruan;
         }
 
         Pengurus.findOneAndUpdate({_id: req.body._id}, req.body, {new: true, useFindAndModify: false}, (err, doc) =>{

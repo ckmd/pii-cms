@@ -4,11 +4,20 @@
     </div>
     <div class="card-body">
         <form action="/admin/pengurus/create" method="post" enctype="multipart/form-data">        
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pengurus" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Pengurus" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="jabatan">Jabatan</label>
+                        <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Masukkan Jabatan Pengurus" required>
+                    </div>
+                </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -23,8 +32,37 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="jabatan">Jabatan</label>
-                        <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Masukkan Jabatan Pengurus" required>
+                        <label for="kejuruan">Badan Kejuruan (opsional)</label>
+                        <select name="kejuruan" id="kejuruan" class="form-control">
+                            <option value="">Pilih Badan Kejuruan</option>
+                            {{#each kejuruans}}
+                                <option value="{{_id}}">{{title}}</option>    
+                            {{/each}}                                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wilayah">Wilayah (opsional)</label>
+                        <select name="wilayah" id="wilayah" class="form-control">
+                            <option value="">Pilih Wilayah</option>
+                            {{#each wilayahs}}
+                                <option value="{{_id}}">{{title}}</option>    
+                            {{/each}}                                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cabang">Cabang (opsional)</label>
+                        <select name="cabang" id="cabang" class="form-control">
+                            <option value="">Pilih Cabang</option>
+                            {{#each cabangs}}
+                                <option value="{{_id}}">{{title}}</option>    
+                            {{/each}}                                            
+                        </select>
                     </div>
                 </div>
             </div>

@@ -5,27 +5,78 @@
     </div>
     <div class="card-body">
         <form action="/admin/pengurus/edit/{{pengurus._id}}" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="_id" value="{{pengurus._id}}">        
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" class="form-control" name="nama" id="nama" value="{{pengurus.nama}}">
+            <input type="hidden" name="_id" value="{{pengurus._id}}">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" name="nama" id="nama" value="{{pengurus.nama}}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="jabatan">Jabatan</label>
+                        <input type="text" class="form-control" name="jabatan" id="jabatan" value="{{pengurus.jabatan}}">
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="jenisJabatan">Jenis Jabatan</label>
-                <select name="jenisJabatan" id="jenisJabatan" class="form-control">
-                    <option value="">Pilih Jenis Jabatan Pengurus</option>
-                    {{#select pengurus.jenisJabatan}}
-                        {{#each jabatans}}
-                            <option value="{{_id}}">{{title}}</option>    
-                        {{/each}}                                            
-                    {{/select}}
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="jabatan">Jabatan</label>
-                <input type="text" class="form-control" name="jabatan" id="jabatan" value="{{pengurus.jabatan}}">
-            </div>
+            <div class="row">
+                <div class="col-md-6">
 
+                    <div class="form-group">
+                        <label for="jenisJabatan">Jenis Jabatan</label>
+                        <select name="jenisJabatan" id="jenisJabatan" class="form-control">
+                            <option value="">Pilih Jenis Jabatan Pengurus</option>
+                            {{#select pengurus.jenisJabatan}}
+                                {{#each jabatans}}
+                                    <option value="{{_id}}">{{title}}</option>    
+                                {{/each}}                                            
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="kejuruan">Badan Kejuruan (opsional)</label>
+                        <select name="kejuruan" id="kejuruan" class="form-control">
+                            <option value="">Pilih Badan Kejuruan</option>
+                            {{#select pengurus.kejuruan}}
+                                {{#each kejuruans}}
+                                    <option value="{{_id}}">{{title}}</option>    
+                                {{/each}}                                            
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="wilayah">Wilayah (opsional)</label>
+                        <select name="wilayah" id="wilayah" class="form-control">
+                            <option value="">Pilih Wilayah</option>
+                            {{#select pengurus.jenisJabatan}}
+                                {{#each wilayahs}}
+                                    <option value="{{_id}}">{{title}}</option>    
+                                {{/each}}                                            
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cabang">Cabang (opsional)</label>
+                        <select name="cabang" id="cabang" class="form-control">
+                            <option value="">Pilih Cabang</option>
+                            {{#select pengurus.cabang}}
+                                {{#each cabangs}}
+                                    <option value="{{_id}}">{{title}}</option>    
+                                {{/each}}                                            
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="urutanPengurus">Urutan Pengurus</label>
                 <input type="number" class="form-control" name="urutanPengurus" id="urutanPengurus" value="{{pengurus.urutanPengurus}}">
