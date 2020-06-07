@@ -447,11 +447,24 @@
     html {
       scroll-behavior: smooth;
     }
-    .member-pict{
+    .member-pict, .member-pict-left{
       word-break: break-word; 
       text-align:center;
       width:20%;
       padding: 0px 10px;
+    }
+    .member-pict-left .tooltiptext{
+      font-size: 8pt;
+      visibility: hidden;
+      width: inherit;
+      background-color: black;
+      color: #fff;
+      text-align: justify;
+      border-radius: 6px;
+      padding: 5px;
+      margin: 100px 0px 0px -34%;
+      position: absolute;
+      z-index: 1;
     }
     .member-pict .tooltiptext{
       font-size: 8pt;
@@ -482,7 +495,7 @@
       z-index: 1;
     }
 
-    .member-pict:hover .tooltiptext , .leader-pict:hover .tooltiptext{
+    .member-pict:hover .tooltiptext , .member-pict-left:hover .tooltiptext , .leader-pict:hover .tooltiptext{
       visibility: visible;
     }
     </style>

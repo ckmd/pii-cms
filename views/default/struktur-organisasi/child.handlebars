@@ -18,7 +18,7 @@
             </div>
             {{/ifCond}}
             {{#ifCond @index '>' 0}}
-                <div class="member-pict">
+                <div class="member-pict{{#moduloIf @index 5 0}}-left{{/moduloIf}}">
                     <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;">
                     <span class="tooltiptext">{{this.deskripsi}}</span>
                     <strong><p>{{this.nama}}</p></strong>
