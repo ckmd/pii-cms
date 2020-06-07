@@ -1,0 +1,16 @@
+<div class="row" style="background-color: #fff; font-family: 'Montserrat'; text-transform: capitalize;">
+    <!-- Blog Entries Column -->
+    <div id="labelall">
+        <p class="card-text">{{induk.title}}</p>
+    </div>
+    <div class="row" style="padding: 30px 60px">
+        <!-- Blog Post -->
+        {{#each anak}}
+            <div class="member-pict">
+                <a href="/{{../induk.slug}}/{{this.slug}}"><img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;"></a>
+                <span class="tooltiptext">{{{this.description}}}</span>
+                <strong><p>{{this.title}}</p></strong>
+            </div>
+        {{/each}}
+    </div>
+</div>

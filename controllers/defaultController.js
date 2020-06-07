@@ -4,6 +4,9 @@ const Slider = require('../models/sliderModel').Slider;
 const Popup = require('../models/popupModel').Popup;
 const Pengurus = require('../models/pengurusModel').Pengurus;
 const JenisJabatan = require('../models/jenisJabatanModel').JenisJabatan;
+const Cabang = require('../models/cabangModel').Cabang;
+const Wilayah = require('../models/wilayahModel').Wilayah;
+const Kejuruan = require('../models/kejuruanModel').Kejuruan;
 const bcrypt = require('bcryptjs');
 
 module.exports = {
@@ -153,9 +156,17 @@ module.exports = {
         const searchRes = await Post.find({ $or:qq}).populate('category');
         res.render('default/searchresult', {posts: searchRes, que:req.body.query});
     },
+    pengurusKejuruan : async(req, res) => {
+        const slug = req.params.slug;
+        const kejuruan = await Kejuruan.find();
+        // belum selesai
+    },
     pengurus : async(req,res) => {
         const slug = req.params.slug;
         let punyaKetua = false;
+        const wilayah = await Wilayah.find().sort({title:'ascending'});
+        const cabang = await Cabang.find().sort({title:'ascending'});
+        const kejuruan = await Kejuruan.find().sort({title:'ascending'});
         const jenisJabatan = await JenisJabatan.findOne({slug:slug});
         const jenid = jenisJabatan.id;
         const pengurus = await Pengurus.find({jenisJabatan:jenid}).sort({urutanPengurus:'ascending'});
@@ -164,7 +175,15 @@ module.exports = {
             if(slug == daftarKetua[i])
                 punyaKetua = true;
         }
-        res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan, punyaKetua:punyaKetua});
+        if(slug == "pengurus-wilayah"){
+            res.render('default/struktur-organisasi/wilayah', {anak:wilayah, induk:jenisJabatan})
+        }else if(slug == "badan-kejuruan"){
+            res.render('default/struktur-organisasi/wilayah', {anak:kejuruan, induk:jenisJabatan})
+        }else if(slug == "pengurus-cabang"){
+            res.render('default/struktur-organisasi/wilayah', {anak:cabang, induk:jenisJabatan})            
+        }else{
+            res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan, punyaKetua:punyaKetua});
+        }
     },
     loginGet: (req, res) => {
         res.render('default/login');
