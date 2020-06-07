@@ -6,7 +6,7 @@
     <div class="row" style="padding: 30px 60px">
         <!-- Blog Post -->
         {{#each anak}}
-            <div class="member-pict{{#ifCond @index '>' 0}}{{#moduloIf @index 5 0}}-left{{/moduloIf}}{{/ifCond}}">
+            <div class="member-pict{{#ifCond @index '>' 0}}{{#moduloIf @index 4 0}}-left{{/moduloIf}}{{/ifCond}}">
                 <a href="/{{../induk.slug}}/{{this.slug}}"><img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;"></a>
                 <span class="tooltiptext">{{{this.description}}}</span>
                 <strong><p>{{this.title}}</p></strong>
