@@ -180,6 +180,9 @@ module.exports = {
 
     pengurus : async(req,res) => {
         const slug = req.params.slug;
+        if(slug === 'index'){
+            res.render('default/struktur-organisasi/index');
+        }
         let punyaKetua = false;
         const wilayah = await Wilayah.find().sort({title:'ascending'});
         const cabang = await Cabang.find().sort({title:'ascending'});
@@ -193,11 +196,11 @@ module.exports = {
                 punyaKetua = true;
         }
         if(slug == "pengurus-wilayah"){
-            res.render('default/struktur-organisasi/parent', {anak:wilayah, induk:jenisJabatan})
+            res.render('default/struktur-organisasi/parent', {anak:wilayah, induk:jenisJabatan});
         }else if(slug == "badan-kejuruan"){
-            res.render('default/struktur-organisasi/parent', {anak:kejuruan, induk:jenisJabatan})
+            res.render('default/struktur-organisasi/parent', {anak:kejuruan, induk:jenisJabatan});
         }else if(slug == "pengurus-cabang"){
-            res.render('default/struktur-organisasi/parent', {anak:cabang, induk:jenisJabatan})            
+            res.render('default/struktur-organisasi/parent', {anak:cabang, induk:jenisJabatan});
         }else{
             res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan, punyaKetua:punyaKetua});
         }
