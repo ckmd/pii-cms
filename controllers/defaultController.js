@@ -156,11 +156,28 @@ module.exports = {
         const searchRes = await Post.find({ $or:qq}).populate('category');
         res.render('default/searchresult', {posts: searchRes, que:req.body.query});
     },
-    pengurusKejuruan : async(req, res) => {
+    kejuruan : async(req, res) => {
         const slug = req.params.slug;
-        const kejuruan = await Kejuruan.find();
-        // belum selesai
+        const kejuruan = await Kejuruan.findOne({slug:slug});
+        const kejid = kejuruan.id;
+        const pengurus = await Pengurus.find({kejuruan:kejid}).sort({urutanPengurus:'ascending'});
+        res.render('default/struktur-organisasi/child', {pengurus: pengurus, child:kejuruan});
     },
+    wilayah : async(req, res) => {
+        const slug = req.params.slug;
+        const wilayah = await Wilayah.findOne({slug:slug});
+        const wilid = wilayah.id;
+        const pengurus = await Pengurus.find({wilayah:wilid}).sort({urutanPengurus:'ascending'});
+        res.render('default/struktur-organisasi/child', {pengurus: pengurus, child:wilayah});
+    },
+    cabang : async(req, res) => {
+        const slug = req.params.slug;
+        const cabang = await Cabang.findOne({slug:slug});
+        const cabid = cabang.id;
+        const pengurus = await Pengurus.find({cabang:cabid}).sort({urutanPengurus:'ascending'});
+        res.render('default/struktur-organisasi/child', {pengurus: pengurus, child:cabang});
+    },
+
     pengurus : async(req,res) => {
         const slug = req.params.slug;
         let punyaKetua = false;
@@ -176,11 +193,11 @@ module.exports = {
                 punyaKetua = true;
         }
         if(slug == "pengurus-wilayah"){
-            res.render('default/struktur-organisasi/wilayah', {anak:wilayah, induk:jenisJabatan})
+            res.render('default/struktur-organisasi/parent', {anak:wilayah, induk:jenisJabatan})
         }else if(slug == "badan-kejuruan"){
-            res.render('default/struktur-organisasi/wilayah', {anak:kejuruan, induk:jenisJabatan})
+            res.render('default/struktur-organisasi/parent', {anak:kejuruan, induk:jenisJabatan})
         }else if(slug == "pengurus-cabang"){
-            res.render('default/struktur-organisasi/wilayah', {anak:cabang, induk:jenisJabatan})            
+            res.render('default/struktur-organisasi/parent', {anak:cabang, induk:jenisJabatan})            
         }else{
             res.render('default/struktur-organisasi', {pengurus: pengurus, jenisJabatan:jenisJabatan, punyaKetua:punyaKetua});
         }

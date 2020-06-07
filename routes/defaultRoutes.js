@@ -104,6 +104,15 @@ router.route('/search')
 router.route('/struktur-organisasi/:slug')
     .get(defaultController.pengurus);
 
+router.route('/badan-kejuruan/:slug')
+    .get(defaultController.kejuruan);
+
+router.route('/pengurus-wilayah/:slug')
+    .get(defaultController.wilayah);
+
+router.route('/pengurus-cabang/:slug')
+    .get(defaultController.cabang);
+
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true
