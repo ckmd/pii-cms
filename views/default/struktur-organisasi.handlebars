@@ -28,7 +28,7 @@
                 {{/ifCond}}
             {{/ifCond}}
             {{#ifCond ../punyaKetua '==' false}}
-            <div class="member-pict{{#ifCond @index '>' 0}}{{#moduloIf @index 4 0}}-left{{/moduloIf}}{{/ifCond}}">
+            <div class="member-pict{{#moduloIf @index 5 4}}-left{{/moduloIf}}">
                 <img src="{{this.file}}" width="100%" alt="" style="border-radius: 50%; margin-bottom:10px;">
                 <span class="tooltiptext">{{this.deskripsi}}</span>
                 <strong><p>{{this.nama}}</p></strong>
