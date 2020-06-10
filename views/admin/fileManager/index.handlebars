@@ -18,7 +18,7 @@
                             {{#each images}}
                             <tr>
                                 <td style="width: 125px; height:150px"><img style="" src="/uploads/{{this}}" alt=""></td>
-                                <td class="text-left">{{this}}</td>
+                                <td class="text-left"><a href="/uploads/{{this}}" target="_blank">{{this}}</a></td>
                                 <td>
                                     <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a>
                                 </td>

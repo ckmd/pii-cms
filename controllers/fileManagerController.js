@@ -36,8 +36,17 @@ module.exports = {
         res.redirect('/admin/fileManager');
     },
     loadFiles : (req,res) => {
-        const images = fs.readdirSync('public/uploads')
-        res.render('admin/fileManager/index',{images:images});
+        const files = fs.readdirSync('public/uploads');
+        let pics = files;
+        let pdf = files;
+        let xlsx = files;
+        pics = pics.filter(item => (item.split('.').pop().toLowerCase() == 'png' || item.split('.').pop().toLowerCase() == 'jpg' || item.split('.').pop().toLowerCase() == 'jpeg'));
+        pdf = pdf.filter(item => (item.split('.').pop().toLowerCase() == 'pdf'));
+        xlsx = xlsx.filter(item => (item.split('.').pop().toLowerCase() == 'xlsx'));
+        console.log(pics, pics.length);
+        console.log(pdf, pdf.length);
+        console.log(xlsx, xlsx.length);
+        res.render('admin/fileManager/index',{images:pics, excels:xlsx, pdfs:pdf});
     },
     deleteFile : async(req,res) => {
         const postImage = '/uploads/'+ req.params.name;
