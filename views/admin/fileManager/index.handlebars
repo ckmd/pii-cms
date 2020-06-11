@@ -1,11 +1,94 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">File Manager</h4>
+                <h4 class="card-title">Upload New File (pdf, xlsx, image)</h4>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
+                <form action="/admin/fileManager/upload" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label for="file">New File Name</label>
+                        <input type="file" class="form-control" id="file" name="uploadedFile" required>
+                    </div>
+                    <button class="btn btn-primary btn-md" type="submit">Add New File</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">File Manager (pdf)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each pdfs}}
+                    <div class="col-md-2">
+                        <div style="">
+                            <a href="/uploads/{{this}}" target="_blank">
+                                <img style="" src="/uploads/pdf-logo.png" alt="">
+                                {{!-- <center>{{this}}</center> --}}
+                            </a>
+                            <input type="text" value="/uploads/{{this}}" id="pdfs{{@index}}" readonly>
+                            <button id="pdfs{{@index}}" onclick="copyFunction(this.id)">Copy</button>
+                            {{!-- <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a> --}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">File Manager (xlsx)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each excels}}
+                    <div class="col-md-2">
+                        <div style="">
+                            <a href="/uploads/{{this}}" target="_blank">
+                                <img style="" src="/uploads/xlsx-logo.png" alt="">
+                                {{!-- <center>{{this}}</center> --}}
+                            </a>
+                            <input type="text" value="/uploads/{{this}}" id="excels{{@index}}" readonly>
+                            <button id="excels{{@index}}" onclick="copyFunction(this.id)">Copy</button>
+                            {{!-- <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a> --}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">File Manager (Images)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#each images}}
+                    <div class="col-md-2">
+                        <div style="">
+                            <a href="/uploads/{{this}}" target="_blank">
+                                <img style="" src="/uploads/{{this}}" alt="">
+                                <center>{{this}}</center>
+                            </a>
+                            {{!-- <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a> --}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{!-- <div class="table-responsive">
                     <table id="datatab" class="table display">
                         <thead class="text-primary">
                             <tr class="text-center" style="white-space:nowrap">
@@ -26,23 +109,7 @@
                             {{/each}}
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Upload New Image</h4>
-            </div>
-            <div class="card-body">
-                <form action="/admin/fileManager/upload" method="post" enctype="multipart/form-data">
-                    <div>
-                        <label for="file">New Image Name</label>
-                        <input type="file" class="form-control" id="file" name="uploadedFile" required>
-                    </div>
-                    <button class="btn btn-primary btn-md" type="submit">Add New Image</button>
-                </form>
+                </div> --}}
             </div>
         </div>
     </div>

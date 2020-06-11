@@ -99,6 +99,31 @@ module.exports = {
             }
         });
     },
+    tipsall : async(req,res) => {
+        const posts = await Post.find({status:'Tips'});
+        res.render('default/tipsall', {posts: posts});
+    },
+    tips : async(req,res) => {
+        const post = await Post.findOne({status:'Tips',slug:req.params.slug});
+        post.views = post.views + 1;
+        const popular = await Post.find({}).populate('category').sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).populate('category').sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        const banner = await Post.find({setAsBanner:true});
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/tips', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+
     newsall : async(req,res) => {
         const posts = await Post.find({status:'News'});
         res.render('default/newsall', {posts: posts});

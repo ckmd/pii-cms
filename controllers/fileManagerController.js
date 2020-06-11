@@ -43,9 +43,6 @@ module.exports = {
         pics = pics.filter(item => (item.split('.').pop().toLowerCase() == 'png' || item.split('.').pop().toLowerCase() == 'jpg' || item.split('.').pop().toLowerCase() == 'jpeg'));
         pdf = pdf.filter(item => (item.split('.').pop().toLowerCase() == 'pdf'));
         xlsx = xlsx.filter(item => (item.split('.').pop().toLowerCase() == 'xlsx'));
-        console.log(pics, pics.length);
-        console.log(pdf, pdf.length);
-        console.log(xlsx, xlsx.length);
         res.render('admin/fileManager/index',{images:pics, excels:xlsx, pdfs:pdf});
     },
     deleteFile : async(req,res) => {

@@ -86,6 +86,12 @@ router.route('/artikel')
 router.route('/artikel/:slug')
     .get(defaultController.artikel);
 
+router.route('/tips')
+    .get(defaultController.tipsall);
+
+router.route('/tips/:slug')
+    .get(defaultController.tips);
+
 router.route('/news')
     .get(defaultController.newsall);
 
