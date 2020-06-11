@@ -29,8 +29,10 @@
                         <div style="">
                             <a href="/uploads/{{this}}" target="_blank">
                                 <img style="" src="/uploads/pdf-logo.png" alt="">
-                                <center>{{this}}</center>
+                                {{!-- <center>{{this}}</center> --}}
                             </a>
+                            <input type="text" value="/uploads/{{this}}" id="pdfs{{@index}}" readonly>
+                            <button id="pdfs{{@index}}" onclick="copyFunction(this.id)">Copy</button>
                             {{!-- <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a> --}}
                         </div>
                     </div>
@@ -53,8 +55,10 @@
                         <div style="">
                             <a href="/uploads/{{this}}" target="_blank">
                                 <img style="" src="/uploads/xlsx-logo.png" alt="">
-                                <center>{{this}}</center>
+                                {{!-- <center>{{this}}</center> --}}
                             </a>
+                            <input type="text" value="/uploads/{{this}}" id="excels{{@index}}" readonly>
+                            <button id="excels{{@index}}" onclick="copyFunction(this.id)">Copy</button>
                             {{!-- <a href="/admin/delete-fileManager/{{this}}" class="fa fa-lg fa-trash" onclick="return confirm('Are you sure to delete this Image ?');"></a> --}}
                         </div>
                     </div>
