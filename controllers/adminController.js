@@ -287,15 +287,18 @@ module.exports = {
         const popup = await Popup.find();
         if(popup.length < 1){
             var filename = '';
-            if(!isEmpty(req.files.popupFile)){
-                let file = req.files.popupFile;
-                filename = file.name;
-                let uploadDir = './public/uploads/';
-                
-                file.mv(uploadDir + filename, (err) =>{
-                    if(err)
-                    throw err;
-                });
+            console.log(req.files);
+            if(!isEmpty(req.files)){
+                if(!isEmpty(req.files.popupFile)){
+                    let file = req.files.popupFile;
+                    filename = file.name;
+                    let uploadDir = './public/uploads/';
+                    
+                    file.mv(uploadDir + filename, (err) =>{
+                        if(err)
+                        throw err;
+                    });
+                }
             }
             const newPopup = new Popup({
                 title: filename,
@@ -306,21 +309,25 @@ module.exports = {
                 req.flash('success-message', 'Popup Added successfully.');
             });
         } else{
-            var filename = '';
-            if(!isEmpty(req.files.popupFile)){
-                let file = req.files.popupFile;
-                filename = file.name;
-                let uploadDir = './public/uploads/';
-            
-                file.mv(uploadDir + filename, (err) =>{
-                    if(err)
-                        throw err;
-                });
-                const popp = await Popup.findOne();
-                popp.overwrite({ title: filename, file: `/uploads/${filename}`, link : req.body.popupLink });
-                await popp.save();
-                req.flash('success-message', 'Popup Updated successfully.');
+            const popp = await Popup.findOne();
+            let filename = '';
+            if(!isEmpty(req.files)){
+                if(!isEmpty(req.files.popupFile)){
+                    let file = req.files.popupFile;
+                    filename = file.name;
+                    let uploadDir = './public/uploads/';
+                
+                    file.mv(uploadDir + filename, (err) =>{
+                        if(err)
+                            throw err;
+                    });
+                    popp.overwrite({ title: filename, file: `/uploads/${filename}`, link : req.body.popupLink });
+                }
+            }else{
+                popp.overwrite({ title: popp.title, file: popp.file, link : req.body.popupLink });
             }
+            await popp.save();
+            req.flash('success-message', 'Popup Updated successfully.');
         }
         res.redirect('/admin/popup');
         // colban = parseInt(req.body.banyakColumn);
