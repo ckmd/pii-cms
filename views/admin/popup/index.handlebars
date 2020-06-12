@@ -24,12 +24,12 @@
                 <form action="/admin/popup" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="file">Upload Popup Image</label>
-                        <input type="file" class="form-control" id="file" name="popupFile" required>
+                        <input type="file" class="form-control" id="file" name="popupFile">
                     </div><br>
                     <div class="form-group">
                         <label for="popupLink">Popup Redirect Link (opsional)</label>
                         <label for="popupLink">Contoh : www.pii.or.id</label>
-                        <input type="text" class="form-control" name="popupLink" id="popupLink" placeholder="Enter The popup redirect Link">
+                        <input type="text" class="form-control" name="popupLink" id="popupLink" placeholder="Enter The popup redirect Link" required>
                     </div>
 
                     <button class="btn btn-primary btn-md" type="submit">Set as Popup</button>
