@@ -272,7 +272,8 @@ module.exports = {
         res.render('default/publikasi/events-all', {posts: posts});
     },
     getEachEvents : async(req,res) => {
-        const post = await Post.findOne({status:'Events',slug:req.params.slug});
+        const post = await Post.findOne({status:'Events',slug:'fgd'});
+        console.log(post);
         post.views = post.views + 1;
         // create navbar post
         const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
