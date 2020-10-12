@@ -67,11 +67,29 @@ router.route('/Gallery')
 router.route('/Gallery/:slug')
     .get(navbarController.getEachGallery);
 
-router.route('/Events')
-    .get(navbarController.getEvents);
+router.route('/Events-engineer-room')
+    .get(navbarController.getEventsEngineerRoom);
 
-router.route('/Events/:slug')
-    .get(navbarController.getEachEvents);
+router.route('/Events-engineer-room/:slug')
+    .get(navbarController.getEachEventsEngineerRoom);
+
+router.route('/Events-webinar')
+    .get(navbarController.getEventsWebinar);
+
+router.route('/Events-webinar/:slug')
+    .get(navbarController.getEachEventsWebinar);
+    
+router.route('/Events-fgd')
+    .get(navbarController.getEventsFgd);
+
+router.route('/Events-fgd/:slug')
+    .get(navbarController.getEachEventsFgd);
+
+router.route('/Events-others')
+    .get(navbarController.getEventsOthers);
+
+router.route('/Events-others/:slug')
+    .get(navbarController.getEachEventsOthers);
 
     // default routing
 router.route('/info')

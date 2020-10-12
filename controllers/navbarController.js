@@ -267,12 +267,12 @@ module.exports = {
             }
         });
     },
-    getEvents : async(req,res) => {
-        const posts = await Post.find({status:'Events'});
-        res.render('default/publikasi/events-all', {posts: posts});
+    getEventsEngineerRoom : async(req,res) => {
+        const posts = await Post.find({status:'Events-engineer-room'});
+        res.render('default/events/engineer-room', {posts: posts});
     },
-    getEachEvents : async(req,res) => {
-        const post = await Post.findOne({status:'Events',slug:req.params.slug.toLowerCase()});
+    getEachEventsEngineerRoom : async(req,res) => {
+        const post = await Post.findOne({status:'Events-engineer-room',slug:req.params.slug.toLowerCase()});
         post.views = post.views + 1;
         // create navbar post
         const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
@@ -287,7 +287,85 @@ module.exports = {
         // update views
         Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
             if(!err){
-                res.render('default/publikasi/events', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+                res.render('default/events/details', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    getEventsWebinar : async(req,res) => {
+        const posts = await Post.find({status:'Events-webinar'});
+        res.render('default/events/webinar', {posts: posts});
+    },
+    getEachEventsWebinar : async(req,res) => {
+        const post = await Post.findOne({status:'Events-webinar',slug:req.params.slug.toLowerCase()});
+        post.views = post.views + 1;
+        // create navbar post
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        const banner = await Post.find({setAsBanner:true});
+        // update views
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/events/details', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },
+    getEventsFgd : async(req,res) => {
+        const posts = await Post.find({status:'Events-fgd'});
+        res.render('default/events/fgd', {posts: posts});
+    },
+    getEachEventsFgd : async(req,res) => {
+        const post = await Post.findOne({status:'Events-fgd',slug:req.params.slug.toLowerCase()});
+        post.views = post.views + 1;
+        // create navbar post
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        const banner = await Post.find({setAsBanner:true});
+        // update views
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/events/details', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
+            }else{
+                console.log('error during record update : '+err);
+            }
+        });
+    },    
+    getEventsOthers : async(req,res) => {
+        const posts = await Post.find({status:'Events-others'});
+        res.render('default/events/others', {posts: posts});
+    },
+    getEachEventsOthers : async(req,res) => {
+        const post = await Post.findOne({status:'Events-others',slug:req.params.slug.toLowerCase()});
+        post.views = post.views + 1;
+        // create navbar post
+        const popular = await Post.find({}).sort({views:'descending'}).limit(sidebarlimit);
+        const recent = await Post.find({}).sort({creationDate:'descending'}).limit(sidebarlimit);
+        var sidebarposts = '';
+        if(tipesidebarpost == 'recent'){
+            sidebarposts = recent;
+        } else{
+            sidebarposts = popular;
+        }
+        const banner = await Post.find({setAsBanner:true});
+        // update views
+        Post.findOneAndUpdate({_id: post._id}, post, {new: true, useFindAndModify: false}, (err, doc) =>{
+            if(!err){
+                res.render('default/events/details', {post : post, sidebarposts:sidebarposts, sidebarBanner:banner});
             }else{
                 console.log('error during record update : '+err);
             }
